@@ -1,0 +1,55 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    tools:context="de.kochon.enrico.secrettalkmessenger.activities.ShowKeyActivity"
+    android:background="@color/app_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+            <TextView
+               android:id="@+id/textviewSerializedKey"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               />
+
+             <de.kochon.enrico.secrettalkmessenger.views.CharView 
+              android:id="@+id/keyRepresentationGraphicalView"
+              android:layout_width="match_parent"
+              android:layout_height="200dp"
+              />
+
+            <Button
+              android:id="@+id/buttonShowKeyActivitySendOverAir"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/vertical_spacer"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:text="@string/btncaptionSendOverAir" />
+                
+            <Button
+              android:id="@+id/buttonShowKeyActivityDelete"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/vertical_spacer"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:text="@string/btncaptionDelete" />
+
+            <Button
+              android:id="@+id/buttonShowKeyActivityBack"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/vertical_spacer"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:text="@string/btncaptionBack" />
+                
+   </LinearLayout>
+</ScrollView>

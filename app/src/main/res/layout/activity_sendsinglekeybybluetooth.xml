@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<EditText
+	android:id="@+id/mainTextArea"
+	android:editable="false"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    />
+<TextView
+	android:id="@+id/labelPaired"
+	android:editable="false"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="paired:"
+    />
+<ListView 
+	android:id="@+id/pairedBtDevices"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	/>
+<TextView
+	android:id="@+id/labelDiscovered"
+	android:editable="false"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="discovered:"
+    />
+<ListView 
+	android:id="@+id/discoBtDevices"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	/>
+<Button
+	android:id="@+id/discoverButton"
+	android:text="discover"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>

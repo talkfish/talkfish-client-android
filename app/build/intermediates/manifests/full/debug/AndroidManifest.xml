@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="de.kochon.enrico.secrettalkmessenger"
+    android:versionCode="9"
+    android:versionName="0.0.9" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/internet_group_chat"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.WelcomeActivity"
+            android:label="@string/activityCaptionWelcome" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.ConversationListActivity"
+            android:label="@string/activityCaptionChats" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.CreateNewConversationActivity"
+            android:label="@string/activityCaptionCreateNewConversation" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.ChannelListActivity"
+            android:label="@string/activityCaptionChannels" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.EditChannelActivity"
+            android:label="@string/activityCaptionEditChannel" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.SettingsActivity"
+            android:label="@string/activityCaptionSettings"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.ChatActivity"
+            android:label="@string/activityCaptionChat"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.KeyListActivity"
+            android:label="@string/activityCaptionKeys" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.ShowKeyActivity"
+            android:label="@string/activityCaptionShowKey" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.AddKeysActivity"
+            android:label="@string/activityCaptionAddKeys" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.SendSingleKeyByBluetoothActivity"
+            android:label="@string/activityCaptionSendSingleKeyByBluetooth" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.ReceiveKeyByBluetoothActivity"
+            android:label="@string/activityCaptionReceiveKeyByBluetooth" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.SendKeyBatchByBluetoothActivity"
+            android:label="@string/activityCaptionSendKeyBatchByBluetooth" />
+        <activity
+            android:name="de.kochon.enrico.secrettalkmessenger.activities.RenameActivity"
+            android:label="@string/activityCaptionRename" />
+
+        <service
+            android:name="de.kochon.enrico.secrettalkmessenger.service.CheckNewMessages"
+            android:label="MessageUpdateService" />
+"
+        <receiver
+            android:name="de.kochon.enrico.secrettalkmessenger.service.KeepAliveCheck"
+            android:exported="false" />
+        <receiver
+            android:name="de.kochon.enrico.secrettalkmessenger.service.PeriodicMessageCheck"
+            android:exported="false" />
+        <receiver android:name="de.kochon.enrico.secrettalkmessenger.service.AutoStartMessageChecker" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,5 @@
+
+    <resources>
+        <color name="app_background">#fff</color>
+        <color name="app_foreground">#000</color>
+    </resources>

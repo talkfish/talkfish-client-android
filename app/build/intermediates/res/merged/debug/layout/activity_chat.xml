@@ -1,0 +1,41 @@
+ <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content">
+
+   <LinearLayout 
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_above="@+id/editNewMessageActivityChat"
+       android:orientation="vertical" >
+
+      <TextView
+         android:id="@+id/textViewContactNickActivityChat"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:gravity="center"
+         android:textStyle="bold"/>
+       <ScrollView
+           android:id="@+id/mainChatScrollView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@drawable/mergui_archipelago">
+         <LinearLayout 
+             android:id="@+id/mainChatArea"
+             android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:orientation="vertical">
+         </LinearLayout>
+               
+       </ScrollView>
+   </LinearLayout>
+   <EditText
+      android:id="@+id/editNewMessageActivityChat"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/inputmessage_hint"
+      android:inputType="text"
+      android:imeOptions="actionSend"
+      android:maxLength="50"
+      android:layout_alignParentBottom="true" />
+</RelativeLayout>
+    

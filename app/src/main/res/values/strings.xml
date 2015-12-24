@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TalkFish</string>
+
+    <string name="messageNoNewMessagesInChan">Leider sind auf Kanal %d momentan keine neuen Nachrichten verfügbar!</string>
+    <string name="messageNewMessagesInConv">Es wurden neue Nachrichten von %s empfangen!</string>
+
+    <string name="btncaptionWelcome">Willkommen und Aktuelles</string>
+    <string name="btncaptionChats">Unterhaltungen</string>
+    <string name="btncaptionSettings">Einstellungen</string>
+
+    <string name="btncaptionOK">OK</string>
+    <string name="btncaptionBack">Zurück</string>
+    <string name="btncaptionDelete">Löschen</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="btncaptionReload">Aktualisieren</string>
+
+    <string name="activityCaptionWelcome">Willkommen</string>
+    <string name="logocontent">Logo: Secret Talk by enno and friends</string>
+    <string name="welcome">Herzlich willkommen $!\n\nDies ist der SecretTalk Messenger. 
+    Ihr Name ist $, dies kann jederzeit in den Einstellungen geändert werden, muss es aber nicht :-) 
+    SecretTalk achtet in ganz besonderem Maße auf Ihre Privatsphäre. Deshalb wird kein Zugriff auf Ihre Telefonkontakte gefordert.
+    Jede Unterhaltung ist von Ihrem Adressbuch unabhängig. SecretTalk wird niemals Ihre
+    Standortdaten oder jedwede Geräteidentifikation erfassen.
+    Auch ganz allgemein folgt SecretTalk dem Prinzip der Datensparsamkeit. Ihr eingestellter Name, also $, wird niemals übertragen. Alle Informationen
+    werden mit Sinn und Verstand eingesetzt und es wird grundsätzlich vermieden, zuviele Informationen zu verarbeiten. 
+    Das Kommunikationsprotokoll ist Metadatenfrei. Kontextinformationen, beispielsweise Datum und Uhrzeit, sind als Teil der Nachricht komplett verschlüsselt.
+    Nähere Informationen im Web unter https://de.wikipedia.org/wiki/Die_Gedanken_sind_frei\n 
+    \n
+    Als Programmsymbol wird internet-group-chat.png des Tango-Projekts verwendet, siehe http://tango.freedesktop.org/Tango_Icon_Library\n
+    Die komplette App steht unter der GPL v3, der genaue Lizenztext kann hier abgerufen werden: https://www.gnu.org/licenses/gpl.html\n
+    \n
+    Viel Spaß mit dem SecretTalk Messenger!</string>
+
+    <string name="news">\nNeuigkeiten:\n\n
+Version 0.0.9 vom 08.12.2015:\n Begrenzung der Eingabemenge im Chatfenster, optisch ansprechendere Gestaltung des Willkommensbildschirms, Wechsel des App-Icons.\n\n
+Version 0.0.8 vom 13.11.2015:\n Schlüsselaustausch über Bluetooth stark beschleunigt und benutzerfreundlicher gestaltet.\n\n
+Version 0.0.7 vom 12.11.2015:\n Der Hintergrunddienst zum automatischen Nachrichtenabruf ist nun wesentlich stabiler, so dass keine Nachrichten verpasst werden.\n\n
+Version 0.0.6 vom 11.11.2015:\n Die Nachrichten einer Unterhaltung können nun entfernt werden. Dies spart Speicherplatz und beschleunigt die App.
+    </string>
+
+    <string name="activityCaptionChats">Unterhaltungen</string>
+    <string name="btncaptionChatsAdd">Beginne neue Unterhaltung</string>
+    <string name="btncaptionChatsRefresh">Auf Aktualisierungen prüfen</string>
+    <string name="btncaptionChatsDetails">Detail</string>
+    <string name="btncaptionChatsAddKeys">...</string>
+    <string name="btncaptionChatsReceive">#</string>
+
+    <string name="activityCaptionCreateNewConversation">Erstelle neue Unterhaltung</string>
+    <string name="textNewConversationName">Kontakt:</string>
+
+    <string name="textConversationName">Kontakt:</string>
+    <string name="textChannelReceive">Empfangskanal:</string>
+    <string name="textChannelSend">Sendekanal:</string>
+    <string name="btncaptionKeys">Schlüsselübersicht</string>
+    <string name="btncaptionRenameConversation">Kontakt umbenennen</string>
+    <string name="btncaptionDeleteMessages">Nachrichtenverlauf löschen</string>
+    <string name="btncaptionDeleteConversation">Unterhaltung vollständig löschen</string>
+
+    <string name="activityCaptionSettings">Einstellungen</string>
+    <string name="textConfigName">Name:</string>
+    <string name="btncaptionChannels">Kanäle</string>
+    <string name="btncaptionDownloadLatest">Neueste Version herunterladen</string>
+    <string name="captionSettingsAlarmOnOff">Aktualisierung im Hintergrund:</string>
+    <string name="captionSettingsBackgroundMobile">immer</string>
+    <string name="captionSettingsBackgroundWifi">nur im WLAN</string>
+    <string name="captionSettingsBackgroundOff">nie</string>
+
+    <string name="activityCaptionChannels">Kanäle</string>
+    <string name="btncaptionChannelsOK">Zurück</string>
+
+    <string name="activityCaptionAddKeys">Erzeuge und Übertrage neue Schlüssel</string>
+    <string name="activityCaptionKeys">Schlüsselübersicht</string>
+    <string name="btncaptionKeysAdd">Schlüssel generieren ohne Austausch</string>
+    <string name="btncaptionKeysAddAndSend">Schlüssel generieren und austauschen</string>
+    <string name="btncaptionKeysReceive">Schlüssel empfangen</string>
+
+    <string name="activityCaptionShowKey">Schlüsseldetails</string>
+    <string name="btncaptionSendOverAir">Über Bluetooth senden</string>
+
+    <string name="activityCaptionEditChannel">Kanalparameter</string>
+    <string name="textChannelID">ID:</string>
+    <string name="textChannelName">Bezeichnung:</string>
+    <string name="textChannelProtocol">Protokoll:</string>
+    <string name="textChannelEndpoint">URL:</string>
+
+    <string name="activityCaptionChat">Chat</string>
+    <string name="inputmessage_hint">Nachricht eingeben</string>
+
+    <string name="activityCaptionSendSingleKeyByBluetooth">Sende 1 Schlüssel per BT</string>
+    <string name="activityCaptionReceiveKeyByBluetooth">Empfange Schlüssel per BT</string>
+
+    <string name="activityCaptionSendKeyBatchByBluetooth">Sende Schlüssel per BT</string>
+
+    <string name="select_device">Select Me!</string>
+    <string name="none_paired">Bisher ist kein Bluetoothgerät gekoppelt.</string>
+
+    <string name="activityCaptionRename">Umbenennen</string>
+    <string name="activityRenameCaptionOldName">Bisherige Bezeichnung:</string>
+    <string name="activityRenameCaptionNewName">Neue Bezeichnung:</string>
+</resources>

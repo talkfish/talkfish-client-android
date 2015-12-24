@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+            <LinearLayout
+              android:layout_marginTop="@dimen/vertical_spacer"
+              android:layout_marginLeft="@dimen/activity_horizontal_margin"
+              android:layout_marginRight="@dimen/activity_horizontal_margin"
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content">
+            
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/activity_horizontal_margin"
+                        android:textColor="@color/app_foreground"
+                        android:text="@string/textConversationName" />
+                    
+                        <TextView
+                        android:id="@+id/receiveViewConversationName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/app_foreground"
+                        android:inputType="text"/>
+                
+            </LinearLayout>
+<EditText
+	android:id="@+id/receiveText"
+	android:editable="false"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    />
+<Button
+	android:id="@+id/receiveButtonBack"
+	android:text="back"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	/>
+</LinearLayout>

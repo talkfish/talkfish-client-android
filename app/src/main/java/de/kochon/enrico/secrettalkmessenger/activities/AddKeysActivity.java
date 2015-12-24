@@ -1,0 +1,250 @@
+package de.kochon.enrico.secrettalkmessenger.activities;
+
+import de.kochon.enrico.secrettalkmessenger.R;
+import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.model.Conversation;
+import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.content.Intent;
+
+import java.util.ArrayList;
+
+
+public class AddKeysActivity extends Activity {
+
+   protected Button btnBack;
+   protected Button btnRenameConversation;
+   protected Button btnDeleteMessages;
+   protected Button btnDeleteConversation;
+   protected Button btnAdd;
+   protected Button btnAddAndSend;
+   protected Button btnReceive;
+   protected Button btnKeys;
+   protected TextView nameText;
+   protected Conversation conversation;
+   protected long conversationID;
+
+   public final static String SHOW_CONVERSATION_ID_KEY = "SHOW_CONVERSATION_ID_KEY";
+
+   public final static int REQUESTCODE_CHANGE_CONVERSATION_NAME = 1;
+
+   
+   protected void initConversation() {
+      conversation = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+      nameText = (TextView) findViewById(R.id.viewConversationName);
+      if (  null != conversation && null != nameText) 
+      {
+         nameText.setText(conversation.getNick());
+      }
+      else {
+         Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
+         Toast.LENGTH_LONG).show();
+      }
+   }
+
+
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_addkeys);
+
+      Intent data = getIntent();
+      if (data.hasExtra(SHOW_CONVERSATION_ID_KEY)) {
+         conversationID = data.getLongExtra(SHOW_CONVERSATION_ID_KEY, -1);
+         initConversation();
+      }
+
+      btnBack = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityBack);
+      if (btnBack != null) {
+         btnBack.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+               // build reply
+               Intent reply = new Intent();
+               Bundle result = new Bundle();
+               setResult(RESULT_OK, reply);
+               finish();
+            }
+         });
+      }
+
+      btnRenameConversation = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityRenameConversation);
+      if (btnRenameConversation != null) {
+         btnRenameConversation.setOnClickListener(new OnClickListener() { 
+               public void onClick(View v) { 
+                  if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
+                     ArrayList<String> bundleParam = new ArrayList<String>();
+                     String caption = "Name des Kontaktes ändern.";
+                     String currentName = AddKeysActivity.this.conversation.getNick();
+                     bundleParam.add(caption);
+                     bundleParam.add(currentName);
+                     Intent intentRename = new Intent(AddKeysActivity.this, RenameActivity.class);
+                     Bundle state = new Bundle();
+                     state.putStringArrayList(RenameActivity.STRINGPARAM_KEY, bundleParam);
+                     intentRename.putExtras(state); 
+                     startActivityForResult(intentRename, REQUESTCODE_CHANGE_CONVERSATION_NAME);
+                  } else {
+                     Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Kontakt kann nicht umbenannt werden.", Toast.LENGTH_LONG).show();
+                  }
+               }
+         });
+      }
+
+      btnDeleteMessages = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityDeleteMessages);
+      if (btnDeleteMessages != null) {
+         btnDeleteMessages.setOnClickListener(new OnClickListener() { 
+               public void onClick(View v) { 
+                  if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
+                     int rows = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).
+                                    getDataAccessHelper().deleteMessagesAndUsedKeys(
+                                       AddKeysActivity.this.conversation.getID());
+                     if (rows>0) {
+                        Intent reply = new Intent();
+                        Bundle result = new Bundle();
+                        setResult(RESULT_OK, reply);
+                        finish();
+                     } else {
+                        Toast.makeText(AddKeysActivity.this, 
+                           String.format("Technischer Fehler. Nachrichten aus Unterhaltung mit ID %d können nicht gelöscht werden.", AddKeysActivity.this.conversation.getID()),
+                           Toast.LENGTH_LONG).show();
+                     }
+                  } else {
+                     Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Nachrichten können nicht gelöscht werden.", Toast.LENGTH_LONG).show();
+                  }
+               }
+         });
+      }
+
+      btnDeleteConversation = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityDeleteConversation);
+      if (btnDeleteConversation != null) {
+         btnDeleteConversation.setOnClickListener(new OnClickListener() { 
+               public void onClick(View v) { 
+                  if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
+                     int rows = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).
+                                    getDataAccessHelper().deleteConversation(
+                                       AddKeysActivity.this.conversation.getID());
+                     if (rows>0) {
+                        Intent reply = new Intent();
+                        Bundle result = new Bundle();
+                        setResult(RESULT_OK, reply);
+                        finish();
+                     } else {
+                        Toast.makeText(AddKeysActivity.this, 
+                           String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht gelöscht werden.", AddKeysActivity.this.conversation.getID()),
+                           Toast.LENGTH_LONG).show();
+                     }
+                  } else {
+                     Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Unterhaltung kann nicht gelöscht werden.", Toast.LENGTH_LONG).show();
+                  }
+               }
+         });
+      }
+
+      btnAdd = (Button) findViewById(R.id.buttonKeysAdd);
+      if (btnAdd != null) {
+         btnAdd.setOnClickListener(new OnClickListener() { 
+               public void onClick(View v) { 
+                  if (AddKeysActivity.this.conversation != null) { 
+                     Messagekey rKey = new Messagekey(true);
+                     Messagekey sKey = new Messagekey(false);
+                     long kID = -1;
+                     kID = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).getDataAccessHelper().addNewKeyToConversation(
+                                                                                          AddKeysActivity.this.conversation, rKey);
+                     if (-1 == kID) {
+                        Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey für Empfang konnte nicht nicht angelegt werden.",
+                        Toast.LENGTH_LONG).show();
+                     }
+                     kID = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).getDataAccessHelper().addNewKeyToConversation(
+                                                                                          AddKeysActivity.this.conversation, sKey);
+                     if (-1 == kID) {
+                        Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey zum Senden konnte nicht nicht angelegt werden.",
+                        Toast.LENGTH_LONG).show();
+                     }
+                  } else {
+                     Toast.makeText(AddKeysActivity.this, String.format("Technischer Fehler. Die Unterhaltung mit ID %d wurde nicht geladen.", 
+                                                         AddKeysActivity.this.conversation.getID()),
+                     Toast.LENGTH_LONG).show();
+                  }
+               } 
+         });
+      }
+
+      btnAddAndSend = (Button) findViewById(R.id.buttonKeysAddAndSend);
+      if (btnAddAndSend != null) {
+         btnAddAndSend.setOnClickListener(new OnClickListener() { 
+               public void onClick(View v) { 
+                  if (AddKeysActivity.this.conversation != null) { 
+                     Intent intentAddAndSendKeys = new Intent(AddKeysActivity.this, SendKeyBatchByBluetoothActivity.class);
+                     Bundle state = new Bundle();
+                     state.putLong(SendKeyBatchByBluetoothActivity.SHOW_CONVERSATION_ID_KEY, AddKeysActivity.this.conversation.getID());
+                     intentAddAndSendKeys.putExtras(state); 
+                     startActivityForResult(intentAddAndSendKeys, 0);
+                  } else {
+                     Toast.makeText(AddKeysActivity.this, String.format("Technischer Fehler. Die Unterhaltung mit ID %d wurde nicht geladen.", 
+                                                         AddKeysActivity.this.conversation.getID()),
+                     Toast.LENGTH_LONG).show();
+                  }
+               } 
+         });
+      }
+
+      btnReceive = (Button) findViewById(R.id.buttonKeysReceive);
+      if (btnReceive != null) {
+         btnReceive.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+               Intent intentReceiveKeyByBluetooth = new Intent(AddKeysActivity.this, ReceiveKeyByBluetoothActivity.class);
+               Bundle state = new Bundle();
+               state.putLong(ReceiveKeyByBluetoothActivity.SHOW_CONVERSATION_ID_KEY, AddKeysActivity.this.conversation.getID());
+               intentReceiveKeyByBluetooth.putExtras(state); 
+               startActivityForResult(intentReceiveKeyByBluetooth,0);
+            }
+         });
+      }
+
+      btnKeys = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityKeys);
+      if (btnKeys != null && conversation != null) {
+         btnKeys.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+               Intent intentOpenKeymanagement = new Intent(AddKeysActivity.this, KeyListActivity.class);
+               Bundle state = new Bundle();
+               state.putLong(KeyListActivity.CONVERSATION_ID_KEY, conversation.getID()); 
+               intentOpenKeymanagement.putExtras(state); 
+               startActivityForResult(intentOpenKeymanagement, 0);
+            }
+         });
+      }
+      
+   }
+
+
+   @Override
+   public void onActivityResult(int requestCode, int resultCode, Intent data) {
+      super.onActivityResult(requestCode, resultCode, data);
+      switch (resultCode) {
+         case Activity.RESULT_OK:
+            if ( (REQUESTCODE_CHANGE_CONVERSATION_NAME == requestCode)
+                 && (data.hasExtra(RenameActivity.STRINGRESULT_KEY)) )
+            {
+               String newConversationName = data.getStringExtra(RenameActivity.STRINGRESULT_KEY);
+               if (null != newConversationName) {
+                  conversation.setNick(newConversationName);
+                  if (1==((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().updateConversation(conversation)) {
+                     initConversation();
+                     Toast.makeText(this, "Kontaktname geändert.", Toast.LENGTH_LONG).show();
+                  } else {
+                     Toast.makeText(this, "Fehler beim Speichern der Änderung.", Toast.LENGTH_LONG).show();
+                  }
+               }
+            }
+            break;
+         case Activity.RESULT_CANCELED:
+            break;
+         default:
+      }
+   }
+}
