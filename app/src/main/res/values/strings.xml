@@ -34,6 +34,7 @@
     Viel Spaß mit dem SecretTalk Messenger!</string>
 
     <string name="news">\nNeuigkeiten:\n\n
+Version 0.0.10 vom 30.12.2015:\n Anhebung des Caches um Faktor 10000 zur Vorbereitung des Foto-Austauschs.\n\n
 Version 0.0.9 vom 08.12.2015:\n Begrenzung der Eingabemenge im Chatfenster, optisch ansprechendere Gestaltung des Willkommensbildschirms, Wechsel des App-Icons.\n\n
 Version 0.0.8 vom 13.11.2015:\n Schlüsselaustausch über Bluetooth stark beschleunigt und benutzerfreundlicher gestaltet.\n\n
 Version 0.0.7 vom 12.11.2015:\n Der Hintergrunddienst zum automatischen Nachrichtenabruf ist nun wesentlich stabiler, so dass keine Nachrichten verpasst werden.\n\n

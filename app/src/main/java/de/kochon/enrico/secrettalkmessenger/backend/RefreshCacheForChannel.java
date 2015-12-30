@@ -41,7 +41,7 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
                }
                for (int i=persistedOffset+1; i<=messagelimit; i++) {
                   int i_representant = i%SecretTalkChannelCache.CACHE_SIZE;
-                  String targetfile = String.format("%sm_%03d.txt", baseurl, i_representant);
+                  String targetfile = String.format("%sm_%07d.txt", baseurl, i_representant);
                   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to download %s", targetfile));
                   String currentMessage = NetworkIO.loadFileFromServer(targetfile);
 

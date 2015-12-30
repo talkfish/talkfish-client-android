@@ -164,7 +164,7 @@ public class CheckNewMessages extends Service {
                            SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - loading %d files from server", myIter, (messagelimit - persistedOffset)));
                            for (int i=persistedOffset+1; i<=messagelimit; i++) {
                               int i_representant = i%SecretTalkChannelCache.CACHE_SIZE;
-                              String targetfile = String.format("%sm_%03d.txt", baseurl, i_representant);
+                              String targetfile = String.format("%sm_%07d.txt", baseurl, i_representant);
                               SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - trying to download %s", myIter, targetfile));
                               String currentMessage = NetworkIO.loadFileFromServer(targetfile);
                               SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - successfully downloaded %s", myIter, targetfile));

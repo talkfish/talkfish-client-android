@@ -11,7 +11,7 @@ public class SecretTalkChannelCache {
 
    private boolean initialized;
 
-   public final static int CACHE_SIZE = 193;
+   public final static int CACHE_SIZE = 1930000;
 
    // TODO Rundenzähler 
    // ACHTUNG: ohne Abbildung der aktuellen Runde,
