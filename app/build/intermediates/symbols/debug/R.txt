@@ -243,6 +243,7 @@ int drawable ic_launcher 0x7f020058
 int drawable internet_group_chat 0x7f020059
 int drawable logo_draft_secret_talk_zapfino 0x7f02005a
 int drawable mergui_archipelago 0x7f02005b
+int drawable talkfish_alpha 0x7f02005c
 int id action_bar 0x7f0b001c
 int id action_bar_activity_content 0x7f0b0000
 int id action_bar_container 0x7f0b001b

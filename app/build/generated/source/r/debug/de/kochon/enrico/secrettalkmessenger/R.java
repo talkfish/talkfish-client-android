@@ -822,6 +822,7 @@ containing a value of this type.
         public static final int internet_group_chat=0x7f020059;
         public static final int logo_draft_secret_talk_zapfino=0x7f02005a;
         public static final int mergui_archipelago=0x7f02005b;
+        public static final int talkfish_alpha=0x7f02005c;
     }
     public static final class id {
         public static final int action_bar=0x7f0b001c;

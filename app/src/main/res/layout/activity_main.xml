@@ -19,7 +19,7 @@
             android:layout_gravity="center"
     		android:layout_marginTop="@dimen/vertical_spacer"
             android:contentDescription="@string/logocontent"
-            android:src="@drawable/logo_draft_secret_talk_zapfino" />
+            android:src="@drawable/talkfish_alpha" />
                 
         <Button
             android:id="@+id/buttonWelcome"
