@@ -147,7 +147,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
    private void initializeData(SQLiteDatabase db) {
       // create default channel for directions receiving and sending
-      final String DEFAULTENDPOINT = "http://fishnode1.de";
+      final String DEFAULTENDPOINT = "http://fishnode1.de/prod";
 
       Log.d(SecretTalkMessengerApplication.LOGKEY, "initializing data, creating default channels");
       ContentValues channelValuesDefaultReceive = new ContentValues();

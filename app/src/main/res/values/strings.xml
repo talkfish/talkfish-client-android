@@ -17,13 +17,13 @@
     <string name="btncaptionReload">Aktualisieren</string>
 
     <string name="activityCaptionWelcome">Willkommen</string>
-    <string name="logocontent">Logo: Secret Talk by enno and friends</string>
-    <string name="welcome">Herzlich willkommen $!\n\nDies ist der SecretTalk Messenger. 
+    <string name="logocontent">Logo: TalkFish by enno and friends</string>
+    <string name="welcome">Herzlich willkommen $!\n\nDies ist der TalkFish Messenger.
     Ihr Name ist $, dies kann jederzeit in den Einstellungen geändert werden, muss es aber nicht :-) 
-    SecretTalk achtet in ganz besonderem Maße auf Ihre Privatsphäre. Deshalb wird kein Zugriff auf Ihre Telefonkontakte gefordert.
-    Jede Unterhaltung ist von Ihrem Adressbuch unabhängig. SecretTalk wird niemals Ihre
+    TalkFish achtet in ganz besonderem Maße auf Ihre Privatsphäre. Deshalb wird kein Zugriff auf Ihre Telefonkontakte gefordert.
+    Jede Unterhaltung ist von Ihrem Adressbuch unabhängig. TalkFish wird niemals Ihre
     Standortdaten oder jedwede Geräteidentifikation erfassen.
-    Auch ganz allgemein folgt SecretTalk dem Prinzip der Datensparsamkeit. Ihr eingestellter Name, also $, wird niemals übertragen. Alle Informationen
+    Auch ganz allgemein folgt TalkFish dem Prinzip der Datensparsamkeit. Ihr eingestellter Name, also $, wird niemals übertragen. Alle Informationen
     werden mit Sinn und Verstand eingesetzt und es wird grundsätzlich vermieden, zuviele Informationen zu verarbeiten. 
     Das Kommunikationsprotokoll ist Metadatenfrei. Kontextinformationen, beispielsweise Datum und Uhrzeit, sind als Teil der Nachricht komplett verschlüsselt.
     Nähere Informationen im Web unter https://de.wikipedia.org/wiki/Die_Gedanken_sind_frei\n 
@@ -31,7 +31,8 @@
     Als Programmsymbol wird internet-group-chat.png des Tango-Projekts verwendet, siehe http://tango.freedesktop.org/Tango_Icon_Library\n
     Die komplette App steht unter der GPL v3, der genaue Lizenztext kann hier abgerufen werden: https://www.gnu.org/licenses/gpl.html\n
     \n
-    Viel Spaß mit dem SecretTalk Messenger!</string>
+        Falls weitere Fragen offen sind, besuchen Sie bitte die Website http://www.talkfish.de oder schreiben Sie mir eine kurze E-Mail an enrico@talkfish.de\n\n
+    Viel Spaß mit dem TalkFish Messenger!</string>
 
     <string name="news">\nNeuigkeiten:\n\n
 Version 0.0.10 vom 30.12.2015:\n Anhebung des Caches um Faktor 10000 zur Vorbereitung des Foto-Austauschs.\n\n
