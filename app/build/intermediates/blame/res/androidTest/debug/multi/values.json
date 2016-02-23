@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "outputFile": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/androidTest/debug/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,31 @@
                     "endOffset": 115
                 },
                 "from": {
-                    "file": "C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\androidTest\\res\\values\\strings.xml",
+                    "file": "/home/enno/StudioProjects/talkfish-client-android/app/src/androidTest/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 64,
+                        "endOffset": 116
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 64,
+                    "endOffset": 115
+                },
+                "from": {
+                    "file": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\androidTest\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
-        "source": "C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\menu\\main.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/menu/main.xml"
     }
 ]
