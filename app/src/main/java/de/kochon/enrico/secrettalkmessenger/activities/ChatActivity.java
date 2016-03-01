@@ -41,13 +41,15 @@ import android.text.util.Linkify;
 
 public class ChatActivity extends Activity {
 	
-   private EditText chatMessage;
-   private TextView conversationNick;
-   private ScrollView chatscroll;
+    private EditText chatMessage;
+    private TextView conversationNick;
+    private ScrollView chatscroll;
 	
-   private Conversation conversation;
-   private Channel receivingChan;
-   private Channel sendingChan;
+    private Conversation conversation;
+    private Channel receivingChan;
+    private Channel sendingChan;
+    private CountedMessage currentMessageToBeSent;
+
 
    public final static String SHOW_CONVERSATION_ID_KEY = "SHOW_CONVERSATION_ID_KEY";
 
@@ -104,8 +106,15 @@ public class ChatActivity extends Activity {
 
       @Override
       protected void onPostExecute(Boolean success) {
-         if (!success) {
-            Toast.makeText(ChatActivity.this, "Die Nachricht konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
+         if (success) {
+             chatMessage.setText("");
+             currentMessageToBeSent = conversation.addSentMessage(currentMessageToBeSent);
+             ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().addNewMessage(currentMessageToBeSent);
+             ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().updateConversation(conversation);
+
+         } else {
+             currentMessageToBeSent = null;
+             Toast.makeText(ChatActivity.this, "Die Nachricht konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
          }
          ChatActivity.this.fullReload();
          ChatActivity.this.setProgressBarIndeterminateVisibility(false);
@@ -241,7 +250,7 @@ public class ChatActivity extends Activity {
             Log.d(SecretTalkMessengerApplication.LOGKEY, "fullReload: error conversation is null!");
          }
       } else {
-         Toast.makeText(this, "ERROR: chan for receiving not properly loaded, could not refresh messages.", Toast.LENGTH_LONG).show();
+         Toast.makeText(this, "FEHLER: Empfangskanal nicht vollständig geladen, Nachrichten können nicht aktualisiert werden.", Toast.LENGTH_LONG).show();
       }
    }
 
@@ -259,7 +268,6 @@ public class ChatActivity extends Activity {
       if (sendingChan != null && conversation != null && conversation.getSendKeyAmount()!=0) {
          SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM./HH:mm");
          String message = String.format("%s>%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
-         chatMessage.setText("");
 
          byte fullmessagebytes[] = message.getBytes();
          String limitedmessage = message;
@@ -269,15 +277,12 @@ public class ChatActivity extends Activity {
          }
 		   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to encrypt and send this message: >%s<", limitedmessage));
 
-         CountedMessage cm = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
-         cm = conversation.addSentMessage(cm);
-         ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().addNewMessage(cm);
-         ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().updateConversation(conversation);
+         currentMessageToBeSent = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
 
          Messagekey k = conversation.getKeyForSending();
 
          if (null != k) {
-            EncryptedMessage cryptogram = EncryptedMessage.encrypt(cm, k);
+            EncryptedMessage cryptogram = EncryptedMessage.encrypt(currentMessageToBeSent, k);
             k.setIsUsed(true);
             ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().updateKey(k);
 
@@ -287,16 +292,18 @@ public class ChatActivity extends Activity {
 			   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to send %s", websafe));
             task.execute(sendingChan.endpoint, websafe);
          } else {
-            Toast.makeText(this, "Fehler: Kein zulässiger Schlüssel vorhanden!", Toast.LENGTH_LONG).show();
-		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Could not obtain key!");
+             currentMessageToBeSent = null;
+             Toast.makeText(this, "Fehler: Kein zulässiger Schlüssel vorhanden!", Toast.LENGTH_LONG).show();
+             Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Could not obtain key!");
          }
       } else {
-         Toast.makeText(this, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.", Toast.LENGTH_LONG).show();
-		   Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
-         if (sendingChan == null) {
+          currentMessageToBeSent = null;
+          Toast.makeText(this, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.", Toast.LENGTH_LONG).show();
+          Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
+          if (sendingChan == null) {
 		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Chan for sending not properly loaded.");
-         }
-         if (conversation == null) {
+          }
+          if (conversation == null) {
 		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Conversation not properly loaded.");
          }
          if (conversation != null && conversation.getSendKeyAmount()==0) {

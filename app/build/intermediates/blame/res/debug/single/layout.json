@@ -4,38 +4,6 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/rowlayout_big.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_keys.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_keys.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_simple_decor.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_simple_decor.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_decor_overlay.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_decor_overlay.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_icon.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chats.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_chats.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_expanded_menu_layout.xml"
     },
@@ -48,8 +16,12 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_list_menu_item_radio.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_decor_overlay.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_decor_overlay.xml"
+    },
+    {
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_icon.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
@@ -68,40 +40,20 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_activity_chooser_view_include.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_decor.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_decor.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_title_item.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/rowlayout.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/rowlayout.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/rowitem_bluetooth_endpoint.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/rowitem_bluetooth_endpoint.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rowitem_bluetooth_endpoint.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\rowitem_bluetooth_endpoint.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_editchannel.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_editchannel.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_rename.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_rename.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/rowlayout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/rowlayout.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_tabbar.xml",
@@ -112,8 +64,20 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_sendsinglekeybybluetooth.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rowlayout_small.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\rowlayout_small.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_mode_close_item.xml"
+    },
+    {
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_simple_decor.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_simple_decor.xml"
+    },
+    {
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_channels.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_channels.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_receivekeybybluetooth.xml",
@@ -124,80 +88,8 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_receivekeybybluetooth.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_receivekeybybluetooth.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_home.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_home.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_settings.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_settings.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_simple_decor.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_simple_decor.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sendkeybatchbybluetooth.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_sendkeybatchbybluetooth.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rowlayout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\rowlayout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_mode_close_item.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_showkey.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_showkey.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sendsinglekeybybluetooth.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_sendsinglekeybybluetooth.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_channels.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_channels.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_chats.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_chats.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_decor_overlay.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_decor_overlay.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_include.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_activity_chooser_view_include.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\rowlayout_big.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\rowlayout_big.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_search_view.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
@@ -206,10 +98,6 @@
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_sendkeybatchbybluetooth.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_sendkeybatchbybluetooth.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_tabbar.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_tabbar.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_showkey.xml",
@@ -224,20 +112,12 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_search_view.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_createnewconversationactivity.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_createnewconversationactivity.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chat.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_chat.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_chat.xml",
@@ -256,18 +136,6 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_mode_bar.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_welcome.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_welcome.xml"
     },
@@ -284,68 +152,24 @@
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_rename.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_mode_close_item.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_tab.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_tab.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_welcome.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_welcome.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_createnewconversationactivity.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_createnewconversationactivity.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/rowlayout_small.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/rowlayout_small.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_list_menu_item_layout.xml"
+        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_addkeys.xml",
+        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_addkeys.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_decor.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/layout/abc_action_bar_decor.xml"
     },
     {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_decor_include.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_decor_include.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_channels.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_channels.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_addkeys.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_addkeys.xml"
-    },
-    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_editchannel.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/layout/activity_editchannel.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\19.1.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_addkeys.xml",
-        "source": "/home/enno/StudioProjects/talkfish-client-android/C:\\Users\\Enrico\\AndroidStudioProjects\\SecretTalkMessenger\\app\\src\\main\\res\\layout\\activity_addkeys.xml"
     },
     {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/layout/activity_keys.xml",
