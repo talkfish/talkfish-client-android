@@ -24,12 +24,12 @@ public class AddKeysActivity extends Activity {
    protected Button btnRenameConversation;
    protected Button btnDeleteMessages;
    protected Button btnDeleteConversation;
-   protected Button btnAdd;
    protected Button btnAddAndSend;
    protected Button btnReceive;
    protected Button btnKeys;
    protected TextView nameText;
    protected TextView conversationDetails;
+   protected TextView keyDetails;
    protected Conversation conversation;
    protected long conversationID;
 
@@ -41,16 +41,23 @@ public class AddKeysActivity extends Activity {
    protected void initConversation() {
       conversation = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
       nameText = (TextView) findViewById(R.id.viewConversationName);
-      conversationDetails = (TextView) findViewById(R.id.viewConversationDetails);
-      if (  null != conversation && null != nameText && null != conversationDetails)
+      conversationDetails = (TextView) findViewById(R.id.viewConversationMessageDetails);
+       keyDetails = (TextView) findViewById(R.id.viewConversationKeyDetails);
+      if (  null != conversation && null != nameText && null != conversationDetails && null != keyDetails)
       {
-         nameText.setText(conversation.getNick());
-         conversationDetails.setSingleLine(false);
-         SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM.yyyy/HH:mm:ss");
-         String lastmessagedateformatted = daytimeformat.format(conversation.getLastMessageTime());
-         conversationDetails.setText(String.format("letzte Nachricht erhalten: %s\n\n" +
-                 "Verfügbare Schlüssel\nZum Senden: %d\nZum Empfangen: %d",
-                 lastmessagedateformatted, conversation.countActiveSendKeys(), conversation.countActiveReceiveKeys()));
+          nameText.setText(conversation.getNick());
+
+          conversationDetails.setSingleLine(false);
+          SimpleDateFormat simpleGermanDate = new SimpleDateFormat("dd.MM.yyyy");
+          SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm:ss");
+          String dateFormatted = simpleGermanDate.format(conversation.getLastMessageTime());
+          String timeFormatted = simpleTime.format(conversation.getLastMessageTime());
+          conversationDetails.setText(String.format("Letzte Nachricht am %s um %s erhalten.\n\n",
+                  dateFormatted, timeFormatted));
+
+          keyDetails.setSingleLine(false);
+          keyDetails.setText(String.format("Sendeschlüssel: %d\nEmpfangsschlüssel: %d",
+                 conversation.countActiveSendKeys(), conversation.countActiveReceiveKeys()));
       }
       else {
          Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
@@ -111,7 +118,7 @@ public class AddKeysActivity extends Activity {
                   if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
                      int rows = ((TFApp)(AddKeysActivity.this.getApplication())).
                              getDAH().deleteMessagesAndUsedKeys(
-                                       AddKeysActivity.this.conversation.getID());
+                             AddKeysActivity.this.conversation.getID());
                      if (rows>0) {
                         Intent reply = new Intent();
                         Bundle result = new Bundle();

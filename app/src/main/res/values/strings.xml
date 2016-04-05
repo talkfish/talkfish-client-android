@@ -61,12 +61,13 @@ Version 0.0.6 vom 11.11.2015:\n Die Nachrichten einer Unterhaltung können nun e
     <string name="textConversationName">Kontakt:</string>
     <string name="textChannelReceive">Empfangskanal:</string>
     <string name="textChannelSend">Sendekanal:</string>
-    <string name="btncaptionKeys">Übersicht</string>
-    <string name="activityCaptionKeygroup">Schlüssel:</string>
-    <string name="btncaptionRenameConversation">ändern</string>
+    <string name="btncaptionKeys">Details</string>
+    <string name="activityCaptionKeyinfogroup">Schlüsselübersicht:</string>
+    <string name="activityCaptionKeyexchangegroup">Schlüsselaustausch:</string>
+    <string name="btncaptionRenameConversation">Ändern</string>
     <string name="textDeleteGroup">Löschen:</string>
-    <string name="btncaptionDeleteMessages">Verlauf löschen</string>
-    <string name="btncaptionDeleteConversation">Kontakt entfernen</string>
+    <string name="btncaptionDeleteMessages">Verlauf</string>
+    <string name="btncaptionDeleteConversation">Kontakt</string>
 
     <string name="activityCaptionSettings">Einstellungen</string>
     <string name="textConfigName">Name:</string>

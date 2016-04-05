@@ -4,6 +4,8 @@
     <dimen name="activity_horizontal_margin">4dp</dimen>
     <dimen name="activity_vertical_margin">4dp</dimen>
     <dimen name="vertical_spacer">4dp</dimen>
+    <dimen name="huge_vertical_spacer">16dp</dimen>
+
     <dimen name="centered_content_width">220dp</dimen>
 
 </resources>

@@ -114,6 +114,7 @@
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
+    <dimen name="huge_vertical_spacer">16dp</dimen>
     <dimen name="vertical_spacer">4dp</dimen>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_menu_divider" type="id"/>
@@ -142,7 +143,8 @@
     <string name="activityCaptionChats">Unterhaltungen</string>
     <string name="activityCaptionCreateNewConversation">Erstelle neue Unterhaltung</string>
     <string name="activityCaptionEditChannel">Kanalparameter</string>
-    <string name="activityCaptionKeygroup">Schlüssel:</string>
+    <string name="activityCaptionKeyexchangegroup">Schlüsselaustausch:</string>
+    <string name="activityCaptionKeyinfogroup">Schlüsselübersicht:</string>
     <string name="activityCaptionKeys">Übersicht</string>
     <string name="activityCaptionReceiveKeyByBluetooth">Empfange Schlüssel per BT</string>
     <string name="activityCaptionRename">Umbenennen</string>
@@ -164,15 +166,15 @@
     <string name="btncaptionChatsReceive">#</string>
     <string name="btncaptionChatsRefresh">Auf Aktualisierungen prüfen</string>
     <string name="btncaptionDelete">Löschen</string>
-    <string name="btncaptionDeleteConversation">Kontakt entfernen</string>
-    <string name="btncaptionDeleteMessages">Verlauf löschen</string>
+    <string name="btncaptionDeleteConversation">Kontakt</string>
+    <string name="btncaptionDeleteMessages">Verlauf</string>
     <string name="btncaptionDownloadLatest">Neueste Version herunterladen</string>
-    <string name="btncaptionKeys">Übersicht</string>
+    <string name="btncaptionKeys">Details</string>
     <string name="btncaptionKeysAddAndSend">Senden</string>
     <string name="btncaptionKeysReceive">Empfangen</string>
     <string name="btncaptionOK">OK</string>
     <string name="btncaptionReload">Aktualisieren</string>
-    <string name="btncaptionRenameConversation">ändern</string>
+    <string name="btncaptionRenameConversation">Ändern</string>
     <string name="btncaptionSendOverAir">Über Bluetooth senden</string>
     <string name="btncaptionSettings">Einstellungen</string>
     <string name="btncaptionWelcome">Willkommen und Aktuelles</string>
