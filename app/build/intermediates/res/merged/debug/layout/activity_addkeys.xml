@@ -31,12 +31,17 @@
                     
                         <TextView
                         android:id="@+id/viewConversationName"
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:textColor="@color/app_foreground"
                         android:inputType="text"
                              />
-                
+                <Button
+                    android:id="@+id/buttonShowConversationPropertiesActivityRenameConversation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btncaptionRenameConversation" />
             </LinearLayout>
 
         <TextView
@@ -49,73 +54,89 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:inputType="text"/>
 
-            <Button
-              android:id="@+id/buttonShowConversationPropertiesActivityRenameConversation"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/vertical_spacer"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="@string/btncaptionRenameConversation" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_foreground"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/activityCaptionKeygroup" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/vertical_spacer"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-            <Button
-              android:id="@+id/buttonShowConversationPropertiesActivityDeleteMessages"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/vertical_spacer"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="@string/btncaptionDeleteMessages" />
+        <Button
+            android:id="@+id/buttonShowConversationPropertiesActivityKeys"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btncaptionKeys" />
 
-            <Button
-              android:id="@+id/buttonShowConversationPropertiesActivityDeleteConversation"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/vertical_spacer"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="@string/btncaptionDeleteConversation" />
-            
-            <Button
-              android:id="@+id/buttonShowConversationPropertiesActivityKeys"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/vertical_spacer"
-              android:layout_marginLeft="@dimen/activity_horizontal_margin"
-              android:layout_marginRight="@dimen/activity_horizontal_margin"
-              android:text="@string/btncaptionKeys" />
-              
-             <Button
-               android:id="@+id/buttonKeysAdd"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/vertical_spacer"
-               android:layout_marginLeft="@dimen/activity_horizontal_margin"
-               android:layout_marginRight="@dimen/activity_horizontal_margin"
-               android:text="@string/btncaptionKeysAdd" />
-              
-             <Button
-               android:id="@+id/buttonKeysAddAndSend"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/vertical_spacer"
-               android:layout_marginLeft="@dimen/activity_horizontal_margin"
-               android:layout_marginRight="@dimen/activity_horizontal_margin"
-               android:text="@string/btncaptionKeysAddAndSend" />
+        <Button
+            android:id="@+id/buttonKeysAddAndSend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btncaptionKeysAddAndSend" />
 
-             <Button
-               android:id="@+id/buttonKeysReceive"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="@dimen/vertical_spacer"
-               android:layout_marginLeft="@dimen/activity_horizontal_margin"
-               android:layout_marginRight="@dimen/activity_horizontal_margin"
-               android:text="@string/btncaptionKeysReceive" />
+        <Button
+            android:id="@+id/buttonKeysReceive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btncaptionKeysReceive" />
 
-            <Button
+    </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_foreground"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/textDeleteGroup" />
+    <LinearLayout
+        android:layout_marginTop="@dimen/vertical_spacer"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c12222">
+
+
+        <Button
+            android:id="@+id/buttonShowConversationPropertiesActivityDeleteMessages"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btncaptionDeleteMessages" />
+
+        <Button
+            android:id="@+id/buttonShowConversationPropertiesActivityDeleteConversation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btncaptionDeleteConversation" />
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
               android:id="@+id/buttonShowConversationPropertiesActivityBack"
-              android:layout_width="match_parent"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+                android:layout_gravity="right"
               android:layout_marginTop="@dimen/vertical_spacer"
               android:layout_marginLeft="@dimen/activity_horizontal_margin"
               android:layout_marginRight="@dimen/activity_horizontal_margin"

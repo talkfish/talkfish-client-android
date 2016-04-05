@@ -154,35 +154,6 @@ public class AddKeysActivity extends Activity {
          });
       }
 
-      btnAdd = (Button) findViewById(R.id.buttonKeysAdd);
-      if (btnAdd != null) {
-         btnAdd.setOnClickListener(new OnClickListener() { 
-               public void onClick(View v) { 
-                  if (AddKeysActivity.this.conversation != null) { 
-                     Messagekey rKey = new Messagekey(true);
-                     Messagekey sKey = new Messagekey(false);
-                     long kID = -1;
-                     kID = ((TFApp)(AddKeysActivity.this.getApplication())).getDAH().addNewKeyToConversation(
-                                                                                          AddKeysActivity.this.conversation, rKey);
-                     if (-1 == kID) {
-                        Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey für Empfang konnte nicht nicht angelegt werden.",
-                        Toast.LENGTH_LONG).show();
-                     }
-                     kID = ((TFApp)(AddKeysActivity.this.getApplication())).getDAH().addNewKeyToConversation(
-                                                                                          AddKeysActivity.this.conversation, sKey);
-                     if (-1 == kID) {
-                        Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey zum Senden konnte nicht nicht angelegt werden.",
-                        Toast.LENGTH_LONG).show();
-                     }
-                  } else {
-                     Toast.makeText(AddKeysActivity.this, String.format("Technischer Fehler. Die Unterhaltung mit ID %d wurde nicht geladen.", 
-                                                         AddKeysActivity.this.conversation.getID()),
-                     Toast.LENGTH_LONG).show();
-                  }
-               } 
-         });
-      }
-
       btnAddAndSend = (Button) findViewById(R.id.buttonKeysAddAndSend);
       if (btnAddAndSend != null) {
          btnAddAndSend.setOnClickListener(new OnClickListener() { 
@@ -194,8 +165,7 @@ public class AddKeysActivity extends Activity {
                      intentAddAndSendKeys.putExtras(state); 
                      startActivityForResult(intentAddAndSendKeys, 0);
                   } else {
-                     Toast.makeText(AddKeysActivity.this, String.format("Technischer Fehler. Die Unterhaltung mit ID %d wurde nicht geladen.", 
-                                                         AddKeysActivity.this.conversation.getID()),
+                     Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Die Unterhaltung wurde nicht geladen.",
                      Toast.LENGTH_LONG).show();
                   }
                } 

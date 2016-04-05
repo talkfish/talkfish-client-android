@@ -142,7 +142,8 @@
     <string name="activityCaptionChats">Unterhaltungen</string>
     <string name="activityCaptionCreateNewConversation">Erstelle neue Unterhaltung</string>
     <string name="activityCaptionEditChannel">Kanalparameter</string>
-    <string name="activityCaptionKeys">Schlüsselübersicht</string>
+    <string name="activityCaptionKeygroup">Schlüssel:</string>
+    <string name="activityCaptionKeys">Übersicht</string>
     <string name="activityCaptionReceiveKeyByBluetooth">Empfange Schlüssel per BT</string>
     <string name="activityCaptionRename">Umbenennen</string>
     <string name="activityCaptionSendKeyBatchByBluetooth">Sende Schlüssel per BT</string>
@@ -163,16 +164,15 @@
     <string name="btncaptionChatsReceive">#</string>
     <string name="btncaptionChatsRefresh">Auf Aktualisierungen prüfen</string>
     <string name="btncaptionDelete">Löschen</string>
-    <string name="btncaptionDeleteConversation">Unterhaltung vollständig löschen</string>
-    <string name="btncaptionDeleteMessages">Nachrichtenverlauf löschen</string>
+    <string name="btncaptionDeleteConversation">Kontakt entfernen</string>
+    <string name="btncaptionDeleteMessages">Verlauf löschen</string>
     <string name="btncaptionDownloadLatest">Neueste Version herunterladen</string>
-    <string name="btncaptionKeys">Schlüsselübersicht</string>
-    <string name="btncaptionKeysAdd">Schlüssel generieren ohne Austausch</string>
-    <string name="btncaptionKeysAddAndSend">Schlüssel generieren und austauschen</string>
-    <string name="btncaptionKeysReceive">Schlüssel empfangen</string>
+    <string name="btncaptionKeys">Übersicht</string>
+    <string name="btncaptionKeysAddAndSend">Senden</string>
+    <string name="btncaptionKeysReceive">Empfangen</string>
     <string name="btncaptionOK">OK</string>
     <string name="btncaptionReload">Aktualisieren</string>
-    <string name="btncaptionRenameConversation">Kontakt umbenennen</string>
+    <string name="btncaptionRenameConversation">ändern</string>
     <string name="btncaptionSendOverAir">Über Bluetooth senden</string>
     <string name="btncaptionSettings">Einstellungen</string>
     <string name="btncaptionWelcome">Willkommen und Aktuelles</string>
@@ -202,6 +202,7 @@ Version 0.0.6 vom 11.11.2015:\n Die Nachrichten einer Unterhaltung können nun e
     <string name="textChannelSend">Sendekanal:</string>
     <string name="textConfigName">Name:</string>
     <string name="textConversationName">Kontakt:</string>
+    <string name="textDeleteGroup">Löschen:</string>
     <string name="textNewConversationName">Kontakt:</string>
     <string name="welcome">Herzlich willkommen $!\n\nDies ist der TalkFish Messenger.
     Ihr Name ist $, dies kann jederzeit in den Einstellungen geändert werden, muss es aber nicht :-) 

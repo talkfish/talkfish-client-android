@@ -1519,32 +1519,46 @@
                     "startLine": 144,
                     "startColumn": 4,
                     "startOffset": 13506,
-                    "endColumn": 66,
-                    "endOffset": 13568
+                    "endColumn": 62,
+                    "endOffset": 13564
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 4739,
+                        "endColumn": 62,
+                        "endOffset": 4797
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 145,
                     "startColumn": 4,
-                    "startOffset": 13573,
-                    "endColumn": 90,
-                    "endOffset": 13659
+                    "startOffset": 13569,
+                    "endColumn": 57,
+                    "endOffset": 13622
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 4,
+                        "startOffset": 5803,
+                        "endColumn": 57,
+                        "endOffset": 5856
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 146,
                     "startColumn": 4,
-                    "startOffset": 13664,
-                    "endColumn": 60,
-                    "endOffset": 13720
+                    "startOffset": 13627,
+                    "endColumn": 90,
+                    "endOffset": 13713
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1554,9 +1568,9 @@
                 "to": {
                     "startLine": 147,
                     "startColumn": 4,
-                    "startOffset": 13725,
-                    "endColumn": 89,
-                    "endOffset": 13810
+                    "startOffset": 13718,
+                    "endColumn": 60,
+                    "endOffset": 13774
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1566,9 +1580,9 @@
                 "to": {
                     "startLine": 148,
                     "startColumn": 4,
-                    "startOffset": 13815,
-                    "endColumn": 92,
-                    "endOffset": 13903
+                    "startOffset": 13779,
+                    "endColumn": 89,
+                    "endOffset": 13864
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1578,9 +1592,9 @@
                 "to": {
                     "startLine": 149,
                     "startColumn": 4,
-                    "startOffset": 13908,
-                    "endColumn": 65,
-                    "endOffset": 13969
+                    "startOffset": 13869,
+                    "endColumn": 92,
+                    "endOffset": 13957
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1590,9 +1604,9 @@
                 "to": {
                     "startLine": 150,
                     "startColumn": 4,
-                    "startOffset": 13974,
-                    "endColumn": 67,
-                    "endOffset": 14037
+                    "startOffset": 13962,
+                    "endColumn": 65,
+                    "endOffset": 14023
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1602,9 +1616,9 @@
                 "to": {
                     "startLine": 151,
                     "startColumn": 4,
-                    "startOffset": 14042,
-                    "endColumn": 61,
-                    "endOffset": 14099
+                    "startOffset": 14028,
+                    "endColumn": 67,
+                    "endOffset": 14091
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1614,9 +1628,9 @@
                 "to": {
                     "startLine": 152,
                     "startColumn": 4,
-                    "startOffset": 14104,
-                    "endColumn": 74,
-                    "endOffset": 14174
+                    "startOffset": 14096,
+                    "endColumn": 61,
+                    "endOffset": 14153
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1626,9 +1640,9 @@
                 "to": {
                     "startLine": 153,
                     "startColumn": 4,
-                    "startOffset": 14179,
-                    "endColumn": 79,
-                    "endOffset": 14254
+                    "startOffset": 14158,
+                    "endColumn": 74,
+                    "endOffset": 14228
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1638,9 +1652,9 @@
                 "to": {
                     "startLine": 154,
                     "startColumn": 4,
-                    "startOffset": 14259,
-                    "endColumn": 45,
-                    "endOffset": 14300
+                    "startOffset": 14233,
+                    "endColumn": 79,
+                    "endOffset": 14308
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1650,9 +1664,9 @@
                 "to": {
                     "startLine": 155,
                     "startColumn": 4,
-                    "startOffset": 14305,
-                    "endColumn": 49,
-                    "endOffset": 14350
+                    "startOffset": 14313,
+                    "endColumn": 45,
+                    "endOffset": 14354
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1662,8 +1676,8 @@
                 "to": {
                     "startLine": 156,
                     "startColumn": 4,
-                    "startOffset": 14355,
-                    "endColumn": 53,
+                    "startOffset": 14359,
+                    "endColumn": 49,
                     "endOffset": 14404
                 },
                 "from": {
@@ -1675,8 +1689,8 @@
                     "startLine": 157,
                     "startColumn": 4,
                     "startOffset": 14409,
-                    "endColumn": 55,
-                    "endOffset": 14460
+                    "endColumn": 53,
+                    "endOffset": 14458
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1686,9 +1700,9 @@
                 "to": {
                     "startLine": 158,
                     "startColumn": 4,
-                    "startOffset": 14465,
-                    "endColumn": 58,
-                    "endOffset": 14519
+                    "startOffset": 14463,
+                    "endColumn": 55,
+                    "endOffset": 14514
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1698,9 +1712,9 @@
                 "to": {
                     "startLine": 159,
                     "startColumn": 4,
-                    "startOffset": 14524,
-                    "endColumn": 72,
-                    "endOffset": 14592
+                    "startOffset": 14519,
+                    "endColumn": 58,
+                    "endOffset": 14573
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1710,9 +1724,9 @@
                 "to": {
                     "startLine": 160,
                     "startColumn": 4,
-                    "startOffset": 14597,
-                    "endColumn": 54,
-                    "endOffset": 14647
+                    "startOffset": 14578,
+                    "endColumn": 72,
+                    "endOffset": 14646
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1722,9 +1736,9 @@
                 "to": {
                     "startLine": 161,
                     "startColumn": 4,
-                    "startOffset": 14652,
-                    "endColumn": 57,
-                    "endOffset": 14705
+                    "startOffset": 14651,
+                    "endColumn": 54,
+                    "endOffset": 14701
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1734,9 +1748,9 @@
                 "to": {
                     "startLine": 162,
                     "startColumn": 4,
-                    "startOffset": 14710,
-                    "endColumn": 52,
-                    "endOffset": 14758
+                    "startOffset": 14706,
+                    "endColumn": 57,
+                    "endOffset": 14759
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1746,9 +1760,9 @@
                 "to": {
                     "startLine": 163,
                     "startColumn": 4,
-                    "startOffset": 14763,
-                    "endColumn": 78,
-                    "endOffset": 14837
+                    "startOffset": 14764,
+                    "endColumn": 52,
+                    "endOffset": 14812
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1758,9 +1772,9 @@
                 "to": {
                     "startLine": 164,
                     "startColumn": 4,
-                    "startOffset": 14842,
-                    "endColumn": 52,
-                    "endOffset": 14890
+                    "startOffset": 14817,
+                    "endColumn": 78,
+                    "endOffset": 14891
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1770,9 +1784,9 @@
                 "to": {
                     "startLine": 165,
                     "startColumn": 4,
-                    "startOffset": 14895,
-                    "endColumn": 89,
-                    "endOffset": 14980
+                    "startOffset": 14896,
+                    "endColumn": 52,
+                    "endOffset": 14944
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1782,33 +1796,47 @@
                 "to": {
                     "startLine": 166,
                     "startColumn": 4,
-                    "startOffset": 14985,
-                    "endColumn": 79,
-                    "endOffset": 15060
+                    "startOffset": 14949,
+                    "endColumn": 74,
+                    "endOffset": 15019
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 4988,
+                        "endColumn": 74,
+                        "endOffset": 5058
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 167,
                     "startColumn": 4,
-                    "startOffset": 15065,
-                    "endColumn": 82,
-                    "endOffset": 15143
+                    "startOffset": 15024,
+                    "endColumn": 68,
+                    "endOffset": 15088
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 4919,
+                        "endColumn": 68,
+                        "endOffset": 4983
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 168,
                     "startColumn": 4,
-                    "startOffset": 15148,
-                    "endColumn": 61,
-                    "endOffset": 15205
+                    "startOffset": 15093,
+                    "endColumn": 82,
+                    "endOffset": 15171
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1818,45 +1846,66 @@
                 "to": {
                     "startLine": 169,
                     "startColumn": 4,
-                    "startOffset": 15210,
-                    "endColumn": 81,
-                    "endOffset": 15287
+                    "startOffset": 15176,
+                    "endColumn": 52,
+                    "endOffset": 15224
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 4686,
+                        "endColumn": 52,
+                        "endOffset": 4734
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 170,
                     "startColumn": 4,
-                    "startOffset": 15292,
-                    "endColumn": 89,
-                    "endOffset": 15377
+                    "startOffset": 15229,
+                    "endColumn": 59,
+                    "endOffset": 15284
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 84,
+                        "startColumn": 4,
+                        "startOffset": 5861,
+                        "endColumn": 59,
+                        "endOffset": 5916
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 171,
                     "startColumn": 4,
-                    "startOffset": 15382,
-                    "endColumn": 69,
-                    "endOffset": 15447
+                    "startOffset": 15289,
+                    "endColumn": 59,
+                    "endOffset": 15344
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 85,
+                        "startColumn": 4,
+                        "startOffset": 5921,
+                        "endColumn": 59,
+                        "endOffset": 5976
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 172,
                     "startColumn": 4,
-                    "startOffset": 15452,
+                    "startOffset": 15349,
                     "endColumn": 43,
-                    "endOffset": 15491
+                    "endOffset": 15388
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1866,9 +1915,9 @@
                 "to": {
                     "startLine": 173,
                     "startColumn": 4,
-                    "startOffset": 15496,
+                    "startOffset": 15393,
                     "endColumn": 58,
-                    "endOffset": 15550
+                    "endOffset": 15447
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1878,21 +1927,28 @@
                 "to": {
                     "startLine": 174,
                     "startColumn": 4,
-                    "startOffset": 15555,
-                    "endColumn": 75,
-                    "endOffset": 15626
+                    "startOffset": 15452,
+                    "endColumn": 63,
+                    "endOffset": 15511
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 65,
+                        "startColumn": 4,
+                        "startOffset": 4802,
+                        "endColumn": 63,
+                        "endOffset": 4861
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 175,
                     "startColumn": 4,
-                    "startOffset": 15631,
+                    "startOffset": 15516,
                     "endColumn": 71,
-                    "endOffset": 15698
+                    "endOffset": 15583
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1902,9 +1958,9 @@
                 "to": {
                     "startLine": 176,
                     "startColumn": 4,
-                    "startOffset": 15703,
+                    "startOffset": 15588,
                     "endColumn": 60,
-                    "endOffset": 15759
+                    "endOffset": 15644
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1914,9 +1970,9 @@
                 "to": {
                     "startLine": 177,
                     "startColumn": 4,
-                    "startOffset": 15764,
+                    "startOffset": 15649,
                     "endColumn": 70,
-                    "endOffset": 15830
+                    "endOffset": 15715
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1926,9 +1982,9 @@
                 "to": {
                     "startLine": 178,
                     "startColumn": 4,
-                    "startOffset": 15835,
+                    "startOffset": 15720,
                     "endColumn": 84,
-                    "endOffset": 15915
+                    "endOffset": 15800
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1938,9 +1994,9 @@
                 "to": {
                     "startLine": 179,
                     "startColumn": 4,
-                    "startOffset": 15920,
+                    "startOffset": 15805,
                     "endColumn": 65,
-                    "endOffset": 15981
+                    "endOffset": 15866
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1950,9 +2006,9 @@
                 "to": {
                     "startLine": 180,
                     "startColumn": 4,
-                    "startOffset": 15986,
+                    "startOffset": 15871,
                     "endColumn": 60,
-                    "endOffset": 16042
+                    "endOffset": 15927
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1962,9 +2018,9 @@
                 "to": {
                     "startLine": 181,
                     "startColumn": 4,
-                    "startOffset": 16047,
+                    "startOffset": 15932,
                     "endColumn": 69,
-                    "endOffset": 16112
+                    "endOffset": 15997
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1974,9 +2030,9 @@
                 "to": {
                     "startLine": 182,
                     "startColumn": 4,
-                    "startOffset": 16117,
+                    "startOffset": 16002,
                     "endColumn": 64,
-                    "endOffset": 16177
+                    "endOffset": 16062
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1986,9 +2042,9 @@
                 "to": {
                     "startLine": 183,
                     "startColumn": 4,
-                    "startOffset": 16182,
+                    "startOffset": 16067,
                     "endColumn": 74,
-                    "endOffset": 16252
+                    "endOffset": 16137
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -1998,9 +2054,9 @@
                 "to": {
                     "startLine": 184,
                     "startColumn": 4,
-                    "startOffset": 16257,
+                    "startOffset": 16142,
                     "endColumn": 97,
-                    "endOffset": 16350
+                    "endOffset": 16235
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2010,9 +2066,9 @@
                 "to": {
                     "startLine": 185,
                     "startColumn": 4,
-                    "startOffset": 16355,
+                    "startOffset": 16240,
                     "endColumn": 123,
-                    "endOffset": 16474
+                    "endOffset": 16359
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2022,30 +2078,22 @@
                 "to": {
                     "startLine": 186,
                     "startColumn": 4,
-                    "startOffset": 16479,
+                    "startOffset": 16364,
                     "endLine": 193,
                     "endColumn": 13,
-                    "endOffset": 17381
+                    "endOffset": 17266
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 41,
-                        "startColumn": 4,
-                        "startOffset": 3065,
-                        "endLine": 48,
-                        "endColumn": 13,
-                        "endOffset": 3967
-                    }
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 194,
                     "startColumn": 4,
-                    "startOffset": 17386,
+                    "startOffset": 17271,
                     "endColumn": 81,
-                    "endOffset": 17463
+                    "endOffset": 17348
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2055,9 +2103,9 @@
                 "to": {
                     "startLine": 195,
                     "startColumn": 4,
-                    "startOffset": 17468,
+                    "startOffset": 17353,
                     "endColumn": 52,
-                    "endOffset": 17516
+                    "endOffset": 17401
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2067,9 +2115,9 @@
                 "to": {
                     "startLine": 196,
                     "startColumn": 4,
-                    "startOffset": 17521,
+                    "startOffset": 17406,
                     "endColumn": 52,
-                    "endOffset": 17569
+                    "endOffset": 17454
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2079,9 +2127,9 @@
                 "to": {
                     "startLine": 197,
                     "startColumn": 4,
-                    "startOffset": 17574,
+                    "startOffset": 17459,
                     "endColumn": 45,
-                    "endOffset": 17615
+                    "endOffset": 17500
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2091,9 +2139,9 @@
                 "to": {
                     "startLine": 198,
                     "startColumn": 4,
-                    "startOffset": 17620,
+                    "startOffset": 17505,
                     "endColumn": 56,
-                    "endOffset": 17672
+                    "endOffset": 17557
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2103,9 +2151,9 @@
                 "to": {
                     "startLine": 199,
                     "startColumn": 4,
-                    "startOffset": 17677,
+                    "startOffset": 17562,
                     "endColumn": 58,
-                    "endOffset": 17731
+                    "endOffset": 17616
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2115,9 +2163,9 @@
                 "to": {
                     "startLine": 200,
                     "startColumn": 4,
-                    "startOffset": 17736,
+                    "startOffset": 17621,
                     "endColumn": 61,
-                    "endOffset": 17793
+                    "endOffset": 17678
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2127,9 +2175,9 @@
                 "to": {
                     "startLine": 201,
                     "startColumn": 4,
-                    "startOffset": 17798,
+                    "startOffset": 17683,
                     "endColumn": 55,
-                    "endOffset": 17849
+                    "endOffset": 17734
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2139,9 +2187,9 @@
                 "to": {
                     "startLine": 202,
                     "startColumn": 4,
-                    "startOffset": 17854,
+                    "startOffset": 17739,
                     "endColumn": 48,
-                    "endOffset": 17898
+                    "endOffset": 17783
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2151,9 +2199,9 @@
                 "to": {
                     "startLine": 203,
                     "startColumn": 4,
-                    "startOffset": 17903,
+                    "startOffset": 17788,
                     "endColumn": 57,
-                    "endOffset": 17956
+                    "endOffset": 17841
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2163,22 +2211,28 @@
                 "to": {
                     "startLine": 204,
                     "startColumn": 4,
-                    "startOffset": 17961,
-                    "endColumn": 60,
-                    "endOffset": 18017
+                    "startOffset": 17846,
+                    "endColumn": 52,
+                    "endOffset": 17894
                 },
                 "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 66,
+                        "startColumn": 4,
+                        "startOffset": 4866,
+                        "endColumn": 52,
+                        "endOffset": 4914
+                    }
                 }
             },
             {
                 "to": {
                     "startLine": 205,
                     "startColumn": 4,
-                    "startOffset": 18022,
-                    "endLine": 224,
-                    "endColumn": 50,
-                    "endOffset": 20166
+                    "startOffset": 17899,
+                    "endColumn": 60,
+                    "endOffset": 17955
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
@@ -2186,12 +2240,25 @@
             },
             {
                 "to": {
-                    "startLine": 225,
+                    "startLine": 206,
                     "startColumn": 4,
-                    "startOffset": 20171,
-                    "endLine": 231,
+                    "startOffset": 17960,
+                    "endLine": 225,
+                    "endColumn": 50,
+                    "endOffset": 20104
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 226,
+                    "startColumn": 4,
+                    "startOffset": 20109,
+                    "endLine": 232,
                     "endColumn": 12,
-                    "endOffset": 20459
+                    "endOffset": 20397
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/styles.xml"
@@ -2199,12 +2266,12 @@
             },
             {
                 "to": {
-                    "startLine": 232,
+                    "startLine": 233,
                     "startColumn": 4,
-                    "startOffset": 20464,
-                    "endLine": 234,
+                    "startOffset": 20402,
+                    "endLine": 235,
                     "endColumn": 12,
-                    "endOffset": 20619
+                    "endOffset": 20557
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/values/styles.xml"
@@ -2212,12 +2279,12 @@
             },
             {
                 "to": {
-                    "startLine": 235,
+                    "startLine": 236,
                     "startColumn": 4,
-                    "startOffset": 20624,
-                    "endLine": 237,
+                    "startOffset": 20562,
+                    "endLine": 238,
                     "endColumn": 12,
-                    "endOffset": 20819
+                    "endOffset": 20757
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2225,12 +2292,12 @@
             },
             {
                 "to": {
-                    "startLine": 238,
+                    "startLine": 239,
                     "startColumn": 4,
-                    "startOffset": 20824,
-                    "endLine": 242,
+                    "startOffset": 20762,
+                    "endLine": 243,
                     "endColumn": 12,
-                    "endOffset": 21102
+                    "endOffset": 21040
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2238,12 +2305,12 @@
             },
             {
                 "to": {
-                    "startLine": 243,
+                    "startLine": 244,
                     "startColumn": 4,
-                    "startOffset": 21107,
-                    "endLine": 246,
+                    "startOffset": 21045,
+                    "endLine": 247,
                     "endColumn": 12,
-                    "endOffset": 21310
+                    "endOffset": 21248
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2251,12 +2318,12 @@
             },
             {
                 "to": {
-                    "startLine": 247,
+                    "startLine": 248,
                     "startColumn": 4,
-                    "startOffset": 21315,
-                    "endLine": 249,
+                    "startOffset": 21253,
+                    "endLine": 250,
                     "endColumn": 12,
-                    "endOffset": 21441
+                    "endOffset": 21379
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2264,12 +2331,12 @@
             },
             {
                 "to": {
-                    "startLine": 250,
+                    "startLine": 251,
                     "startColumn": 4,
-                    "startOffset": 21446,
-                    "endLine": 253,
+                    "startOffset": 21384,
+                    "endLine": 254,
                     "endColumn": 12,
-                    "endOffset": 21703
+                    "endOffset": 21641
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2277,12 +2344,12 @@
             },
             {
                 "to": {
-                    "startLine": 254,
+                    "startLine": 255,
                     "startColumn": 4,
-                    "startOffset": 21708,
-                    "endLine": 257,
+                    "startOffset": 21646,
+                    "endLine": 258,
                     "endColumn": 12,
-                    "endOffset": 21965
+                    "endOffset": 21903
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2290,12 +2357,12 @@
             },
             {
                 "to": {
-                    "startLine": 258,
+                    "startLine": 259,
                     "startColumn": 4,
-                    "startOffset": 21970,
-                    "endLine": 261,
+                    "startOffset": 21908,
+                    "endLine": 262,
                     "endColumn": 12,
-                    "endOffset": 22243
+                    "endOffset": 22181
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2303,12 +2370,12 @@
             },
             {
                 "to": {
-                    "startLine": 262,
+                    "startLine": 263,
                     "startColumn": 4,
-                    "startOffset": 22248,
-                    "endLine": 265,
+                    "startOffset": 22186,
+                    "endLine": 266,
                     "endColumn": 12,
-                    "endOffset": 22457
+                    "endOffset": 22395
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2316,24 +2383,12 @@
             },
             {
                 "to": {
-                    "startLine": 266,
+                    "startLine": 267,
                     "startColumn": 4,
-                    "startOffset": 22462,
-                    "endLine": 268,
+                    "startOffset": 22400,
+                    "endLine": 269,
                     "endColumn": 12,
-                    "endOffset": 22594
-                },
-                "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
-                }
-            },
-            {
-                "to": {
-                    "startLine": 269,
-                    "startColumn": 4,
-                    "startOffset": 22599,
-                    "endColumn": 140,
-                    "endOffset": 22735
+                    "endOffset": 22532
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2343,9 +2398,9 @@
                 "to": {
                     "startLine": 270,
                     "startColumn": 4,
-                    "startOffset": 22740,
+                    "startOffset": 22537,
                     "endColumn": 140,
-                    "endOffset": 22876
+                    "endOffset": 22673
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2355,9 +2410,9 @@
                 "to": {
                     "startLine": 271,
                     "startColumn": 4,
-                    "startOffset": 22881,
-                    "endColumn": 139,
-                    "endOffset": 23016
+                    "startOffset": 22678,
+                    "endColumn": 140,
+                    "endOffset": 22814
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2367,9 +2422,9 @@
                 "to": {
                     "startLine": 272,
                     "startColumn": 4,
-                    "startOffset": 23021,
-                    "endColumn": 133,
-                    "endOffset": 23150
+                    "startOffset": 22819,
+                    "endColumn": 139,
+                    "endOffset": 22954
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2379,9 +2434,9 @@
                 "to": {
                     "startLine": 273,
                     "startColumn": 4,
-                    "startOffset": 23155,
-                    "endColumn": 141,
-                    "endOffset": 23292
+                    "startOffset": 22959,
+                    "endColumn": 133,
+                    "endOffset": 23088
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2391,9 +2446,9 @@
                 "to": {
                     "startLine": 274,
                     "startColumn": 4,
-                    "startOffset": 23297,
+                    "startOffset": 23093,
                     "endColumn": 141,
-                    "endOffset": 23434
+                    "endOffset": 23230
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2403,9 +2458,9 @@
                 "to": {
                     "startLine": 275,
                     "startColumn": 4,
-                    "startOffset": 23439,
-                    "endColumn": 127,
-                    "endOffset": 23562
+                    "startOffset": 23235,
+                    "endColumn": 141,
+                    "endOffset": 23372
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2415,9 +2470,9 @@
                 "to": {
                     "startLine": 276,
                     "startColumn": 4,
-                    "startOffset": 23567,
-                    "endColumn": 121,
-                    "endOffset": 23684
+                    "startOffset": 23377,
+                    "endColumn": 127,
+                    "endOffset": 23500
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2427,9 +2482,9 @@
                 "to": {
                     "startLine": 277,
                     "startColumn": 4,
-                    "startOffset": 23689,
-                    "endColumn": 127,
-                    "endOffset": 23812
+                    "startOffset": 23505,
+                    "endColumn": 121,
+                    "endOffset": 23622
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2439,9 +2494,9 @@
                 "to": {
                     "startLine": 278,
                     "startColumn": 4,
-                    "startOffset": 23817,
-                    "endColumn": 135,
-                    "endOffset": 23948
+                    "startOffset": 23627,
+                    "endColumn": 127,
+                    "endOffset": 23750
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2451,9 +2506,9 @@
                 "to": {
                     "startLine": 279,
                     "startColumn": 4,
-                    "startOffset": 23953,
-                    "endColumn": 151,
-                    "endOffset": 24100
+                    "startOffset": 23755,
+                    "endColumn": 135,
+                    "endOffset": 23886
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2463,9 +2518,9 @@
                 "to": {
                     "startLine": 280,
                     "startColumn": 4,
-                    "startOffset": 24105,
-                    "endColumn": 129,
-                    "endOffset": 24230
+                    "startOffset": 23891,
+                    "endColumn": 151,
+                    "endOffset": 24038
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2475,9 +2530,9 @@
                 "to": {
                     "startLine": 281,
                     "startColumn": 4,
-                    "startOffset": 24235,
-                    "endColumn": 145,
-                    "endOffset": 24376
+                    "startOffset": 24043,
+                    "endColumn": 129,
+                    "endOffset": 24168
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2487,9 +2542,9 @@
                 "to": {
                     "startLine": 282,
                     "startColumn": 4,
-                    "startOffset": 24381,
-                    "endColumn": 137,
-                    "endOffset": 24514
+                    "startOffset": 24173,
+                    "endColumn": 145,
+                    "endOffset": 24314
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2499,9 +2554,9 @@
                 "to": {
                     "startLine": 283,
                     "startColumn": 4,
-                    "startOffset": 24519,
-                    "endColumn": 153,
-                    "endOffset": 24668
+                    "startOffset": 24319,
+                    "endColumn": 137,
+                    "endOffset": 24452
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2511,9 +2566,9 @@
                 "to": {
                     "startLine": 284,
                     "startColumn": 4,
-                    "startOffset": 24673,
-                    "endColumn": 131,
-                    "endOffset": 24800
+                    "startOffset": 24457,
+                    "endColumn": 153,
+                    "endOffset": 24606
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2523,9 +2578,9 @@
                 "to": {
                     "startLine": 285,
                     "startColumn": 4,
-                    "startOffset": 24805,
-                    "endColumn": 147,
-                    "endOffset": 24948
+                    "startOffset": 24611,
+                    "endColumn": 131,
+                    "endOffset": 24738
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2535,10 +2590,9 @@
                 "to": {
                     "startLine": 286,
                     "startColumn": 4,
-                    "startOffset": 24953,
-                    "endLine": 290,
-                    "endColumn": 12,
-                    "endOffset": 25243
+                    "startOffset": 24743,
+                    "endColumn": 147,
+                    "endOffset": 24886
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2546,12 +2600,12 @@
             },
             {
                 "to": {
-                    "startLine": 291,
+                    "startLine": 287,
                     "startColumn": 4,
-                    "startOffset": 25248,
-                    "endLine": 293,
+                    "startOffset": 24891,
+                    "endLine": 291,
                     "endColumn": 12,
-                    "endOffset": 25455
+                    "endOffset": 25181
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2559,12 +2613,12 @@
             },
             {
                 "to": {
-                    "startLine": 294,
+                    "startLine": 292,
                     "startColumn": 4,
-                    "startOffset": 25460,
-                    "endLine": 296,
+                    "startOffset": 25186,
+                    "endLine": 294,
                     "endColumn": 12,
-                    "endOffset": 25683
+                    "endOffset": 25393
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2572,12 +2626,12 @@
             },
             {
                 "to": {
-                    "startLine": 297,
+                    "startLine": 295,
                     "startColumn": 4,
-                    "startOffset": 25688,
-                    "endLine": 299,
+                    "startOffset": 25398,
+                    "endLine": 297,
                     "endColumn": 12,
-                    "endOffset": 25890
+                    "endOffset": 25621
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2585,12 +2639,12 @@
             },
             {
                 "to": {
-                    "startLine": 300,
+                    "startLine": 298,
                     "startColumn": 4,
-                    "startOffset": 25895,
-                    "endLine": 302,
+                    "startOffset": 25626,
+                    "endLine": 300,
                     "endColumn": 12,
-                    "endOffset": 26113
+                    "endOffset": 25828
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2598,12 +2652,12 @@
             },
             {
                 "to": {
-                    "startLine": 303,
+                    "startLine": 301,
                     "startColumn": 4,
-                    "startOffset": 26118,
-                    "endLine": 305,
+                    "startOffset": 25833,
+                    "endLine": 303,
                     "endColumn": 12,
-                    "endOffset": 26319
+                    "endOffset": 26051
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2611,12 +2665,12 @@
             },
             {
                 "to": {
-                    "startLine": 306,
+                    "startLine": 304,
                     "startColumn": 4,
-                    "startOffset": 26324,
-                    "endLine": 308,
+                    "startOffset": 26056,
+                    "endLine": 306,
                     "endColumn": 12,
-                    "endOffset": 26548
+                    "endOffset": 26257
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2624,11 +2678,12 @@
             },
             {
                 "to": {
-                    "startLine": 309,
+                    "startLine": 307,
                     "startColumn": 4,
-                    "startOffset": 26553,
-                    "endColumn": 112,
-                    "endOffset": 26661
+                    "startOffset": 26262,
+                    "endLine": 309,
+                    "endColumn": 12,
+                    "endOffset": 26486
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2638,9 +2693,9 @@
                 "to": {
                     "startLine": 310,
                     "startColumn": 4,
-                    "startOffset": 26666,
-                    "endColumn": 128,
-                    "endOffset": 26790
+                    "startOffset": 26491,
+                    "endColumn": 112,
+                    "endOffset": 26599
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2650,10 +2705,9 @@
                 "to": {
                     "startLine": 311,
                     "startColumn": 4,
-                    "startOffset": 26795,
-                    "endLine": 313,
-                    "endColumn": 12,
-                    "endOffset": 26998
+                    "startOffset": 26604,
+                    "endColumn": 128,
+                    "endOffset": 26728
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2661,11 +2715,12 @@
             },
             {
                 "to": {
-                    "startLine": 314,
+                    "startLine": 312,
                     "startColumn": 4,
-                    "startOffset": 27003,
-                    "endColumn": 123,
-                    "endOffset": 27122
+                    "startOffset": 26733,
+                    "endLine": 314,
+                    "endColumn": 12,
+                    "endOffset": 26936
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2675,9 +2730,9 @@
                 "to": {
                     "startLine": 315,
                     "startColumn": 4,
-                    "startOffset": 27127,
-                    "endColumn": 129,
-                    "endOffset": 27252
+                    "startOffset": 26941,
+                    "endColumn": 123,
+                    "endOffset": 27060
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2687,9 +2742,9 @@
                 "to": {
                     "startLine": 316,
                     "startColumn": 4,
-                    "startOffset": 27257,
+                    "startOffset": 27065,
                     "endColumn": 129,
-                    "endOffset": 27382
+                    "endOffset": 27190
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2699,10 +2754,9 @@
                 "to": {
                     "startLine": 317,
                     "startColumn": 4,
-                    "startOffset": 27387,
-                    "endLine": 319,
-                    "endColumn": 12,
-                    "endOffset": 27596
+                    "startOffset": 27195,
+                    "endColumn": 129,
+                    "endOffset": 27320
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2710,11 +2764,12 @@
             },
             {
                 "to": {
-                    "startLine": 320,
+                    "startLine": 318,
                     "startColumn": 4,
-                    "startOffset": 27601,
-                    "endColumn": 133,
-                    "endOffset": 27730
+                    "startOffset": 27325,
+                    "endLine": 320,
+                    "endColumn": 12,
+                    "endOffset": 27534
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2724,10 +2779,9 @@
                 "to": {
                     "startLine": 321,
                     "startColumn": 4,
-                    "startOffset": 27735,
-                    "endLine": 354,
-                    "endColumn": 12,
-                    "endOffset": 30219
+                    "startOffset": 27539,
+                    "endColumn": 133,
+                    "endOffset": 27668
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2735,12 +2789,12 @@
             },
             {
                 "to": {
-                    "startLine": 355,
+                    "startLine": 322,
                     "startColumn": 4,
-                    "startOffset": 30224,
-                    "endLine": 358,
+                    "startOffset": 27673,
+                    "endLine": 355,
                     "endColumn": 12,
-                    "endOffset": 30506
+                    "endOffset": 30157
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2748,12 +2802,12 @@
             },
             {
                 "to": {
-                    "startLine": 359,
+                    "startLine": 356,
                     "startColumn": 4,
-                    "startOffset": 30511,
-                    "endLine": 362,
+                    "startOffset": 30162,
+                    "endLine": 359,
                     "endColumn": 12,
-                    "endOffset": 30797
+                    "endOffset": 30444
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2761,11 +2815,12 @@
             },
             {
                 "to": {
-                    "startLine": 363,
+                    "startLine": 360,
                     "startColumn": 4,
-                    "startOffset": 30802,
-                    "endColumn": 89,
-                    "endOffset": 30887
+                    "startOffset": 30449,
+                    "endLine": 363,
+                    "endColumn": 12,
+                    "endOffset": 30735
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2775,9 +2830,9 @@
                 "to": {
                     "startLine": 364,
                     "startColumn": 4,
-                    "startOffset": 30892,
-                    "endColumn": 103,
-                    "endOffset": 30991
+                    "startOffset": 30740,
+                    "endColumn": 89,
+                    "endOffset": 30825
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2787,9 +2842,9 @@
                 "to": {
                     "startLine": 365,
                     "startColumn": 4,
-                    "startOffset": 30996,
-                    "endColumn": 97,
-                    "endOffset": 31089
+                    "startOffset": 30830,
+                    "endColumn": 103,
+                    "endOffset": 30929
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2799,10 +2854,9 @@
                 "to": {
                     "startLine": 366,
                     "startColumn": 4,
-                    "startOffset": 31094,
-                    "endLine": 399,
-                    "endColumn": 12,
-                    "endOffset": 33717
+                    "startOffset": 30934,
+                    "endColumn": 97,
+                    "endOffset": 31027
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2810,12 +2864,12 @@
             },
             {
                 "to": {
-                    "startLine": 400,
+                    "startLine": 367,
                     "startColumn": 4,
-                    "startOffset": 33722,
-                    "endLine": 433,
+                    "startOffset": 31032,
+                    "endLine": 400,
                     "endColumn": 12,
-                    "endOffset": 36269
+                    "endOffset": 33655
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2823,11 +2877,12 @@
             },
             {
                 "to": {
-                    "startLine": 434,
+                    "startLine": 401,
                     "startColumn": 4,
-                    "startOffset": 36274,
-                    "endColumn": 109,
-                    "endOffset": 36379
+                    "startOffset": 33660,
+                    "endLine": 434,
+                    "endColumn": 12,
+                    "endOffset": 36207
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2837,9 +2892,9 @@
                 "to": {
                     "startLine": 435,
                     "startColumn": 4,
-                    "startOffset": 36384,
-                    "endColumn": 53,
-                    "endOffset": 36433
+                    "startOffset": 36212,
+                    "endColumn": 109,
+                    "endOffset": 36317
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2849,10 +2904,9 @@
                 "to": {
                     "startLine": 436,
                     "startColumn": 4,
-                    "startOffset": 36438,
-                    "endLine": 482,
-                    "endColumn": 12,
-                    "endOffset": 39807
+                    "startOffset": 36322,
+                    "endColumn": 53,
+                    "endOffset": 36371
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2860,12 +2914,12 @@
             },
             {
                 "to": {
-                    "startLine": 483,
+                    "startLine": 437,
                     "startColumn": 4,
-                    "startOffset": 39812,
-                    "endLine": 516,
+                    "startOffset": 36376,
+                    "endLine": 483,
                     "endColumn": 12,
-                    "endOffset": 42222
+                    "endOffset": 39745
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2873,11 +2927,12 @@
             },
             {
                 "to": {
-                    "startLine": 517,
+                    "startLine": 484,
                     "startColumn": 4,
-                    "startOffset": 42227,
-                    "endColumn": 110,
-                    "endOffset": 42333
+                    "startOffset": 39750,
+                    "endLine": 517,
+                    "endColumn": 12,
+                    "endOffset": 42160
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2887,9 +2942,9 @@
                 "to": {
                     "startLine": 518,
                     "startColumn": 4,
-                    "startOffset": 42338,
-                    "endColumn": 86,
-                    "endOffset": 42420
+                    "startOffset": 42165,
+                    "endColumn": 110,
+                    "endOffset": 42271
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2899,10 +2954,9 @@
                 "to": {
                     "startLine": 519,
                     "startColumn": 4,
-                    "startOffset": 42425,
-                    "endLine": 567,
-                    "endColumn": 12,
-                    "endOffset": 45923
+                    "startOffset": 42276,
+                    "endColumn": 86,
+                    "endOffset": 42358
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2910,12 +2964,12 @@
             },
             {
                 "to": {
-                    "startLine": 568,
+                    "startLine": 520,
                     "startColumn": 4,
-                    "startOffset": 45928,
-                    "endLine": 593,
+                    "startOffset": 42363,
+                    "endLine": 568,
                     "endColumn": 12,
-                    "endOffset": 47841
+                    "endOffset": 45861
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2923,11 +2977,12 @@
             },
             {
                 "to": {
-                    "startLine": 594,
+                    "startLine": 569,
                     "startColumn": 4,
-                    "startOffset": 47846,
-                    "endColumn": 98,
-                    "endOffset": 47940
+                    "startOffset": 45866,
+                    "endLine": 594,
+                    "endColumn": 12,
+                    "endOffset": 47779
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2937,9 +2992,9 @@
                 "to": {
                     "startLine": 595,
                     "startColumn": 4,
-                    "startOffset": 47945,
-                    "endColumn": 65,
-                    "endOffset": 48006
+                    "startOffset": 47784,
+                    "endColumn": 98,
+                    "endOffset": 47878
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2949,9 +3004,9 @@
                 "to": {
                     "startLine": 596,
                     "startColumn": 4,
-                    "startOffset": 48011,
-                    "endColumn": 87,
-                    "endOffset": 48094
+                    "startOffset": 47883,
+                    "endColumn": 65,
+                    "endOffset": 47944
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2961,9 +3016,9 @@
                 "to": {
                     "startLine": 597,
                     "startColumn": 4,
-                    "startOffset": 48099,
-                    "endColumn": 99,
-                    "endOffset": 48194
+                    "startOffset": 47949,
+                    "endColumn": 87,
+                    "endOffset": 48032
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2973,9 +3028,9 @@
                 "to": {
                     "startLine": 598,
                     "startColumn": 4,
-                    "startOffset": 48199,
-                    "endColumn": 101,
-                    "endOffset": 48296
+                    "startOffset": 48037,
+                    "endColumn": 99,
+                    "endOffset": 48132
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2985,9 +3040,9 @@
                 "to": {
                     "startLine": 599,
                     "startColumn": 4,
-                    "startOffset": 48301,
-                    "endColumn": 103,
-                    "endOffset": 48400
+                    "startOffset": 48137,
+                    "endColumn": 101,
+                    "endOffset": 48234
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -2997,9 +3052,9 @@
                 "to": {
                     "startLine": 600,
                     "startColumn": 4,
-                    "startOffset": 48405,
+                    "startOffset": 48239,
                     "endColumn": 103,
-                    "endOffset": 48504
+                    "endOffset": 48338
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3009,9 +3064,9 @@
                 "to": {
                     "startLine": 601,
                     "startColumn": 4,
-                    "startOffset": 48509,
-                    "endColumn": 93,
-                    "endOffset": 48598
+                    "startOffset": 48343,
+                    "endColumn": 103,
+                    "endOffset": 48442
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3021,9 +3076,9 @@
                 "to": {
                     "startLine": 602,
                     "startColumn": 4,
-                    "startOffset": 48603,
-                    "endColumn": 113,
-                    "endOffset": 48712
+                    "startOffset": 48447,
+                    "endColumn": 93,
+                    "endOffset": 48536
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3033,9 +3088,9 @@
                 "to": {
                     "startLine": 603,
                     "startColumn": 4,
-                    "startOffset": 48717,
-                    "endColumn": 111,
-                    "endOffset": 48824
+                    "startOffset": 48541,
+                    "endColumn": 113,
+                    "endOffset": 48650
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3045,9 +3100,9 @@
                 "to": {
                     "startLine": 604,
                     "startColumn": 4,
-                    "startOffset": 48829,
-                    "endColumn": 89,
-                    "endOffset": 48914
+                    "startOffset": 48655,
+                    "endColumn": 111,
+                    "endOffset": 48762
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3057,9 +3112,9 @@
                 "to": {
                     "startLine": 605,
                     "startColumn": 4,
-                    "startOffset": 48919,
-                    "endColumn": 107,
-                    "endOffset": 49022
+                    "startOffset": 48767,
+                    "endColumn": 89,
+                    "endOffset": 48852
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3069,9 +3124,9 @@
                 "to": {
                     "startLine": 606,
                     "startColumn": 4,
-                    "startOffset": 49027,
-                    "endColumn": 109,
-                    "endOffset": 49132
+                    "startOffset": 48857,
+                    "endColumn": 107,
+                    "endOffset": 48960
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3081,10 +3136,9 @@
                 "to": {
                     "startLine": 607,
                     "startColumn": 4,
-                    "startOffset": 49137,
-                    "endLine": 621,
-                    "endColumn": 12,
-                    "endOffset": 50285
+                    "startOffset": 48965,
+                    "endColumn": 109,
+                    "endOffset": 49070
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3092,12 +3146,12 @@
             },
             {
                 "to": {
-                    "startLine": 622,
+                    "startLine": 608,
                     "startColumn": 4,
-                    "startOffset": 50290,
-                    "endLine": 626,
+                    "startOffset": 49075,
+                    "endLine": 622,
                     "endColumn": 12,
-                    "endOffset": 50639
+                    "endOffset": 50223
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3105,12 +3159,12 @@
             },
             {
                 "to": {
-                    "startLine": 627,
+                    "startLine": 623,
                     "startColumn": 4,
-                    "startOffset": 50644,
-                    "endLine": 631,
+                    "startOffset": 50228,
+                    "endLine": 627,
                     "endColumn": 12,
-                    "endOffset": 50876
+                    "endOffset": 50577
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3118,12 +3172,12 @@
             },
             {
                 "to": {
-                    "startLine": 632,
+                    "startLine": 628,
                     "startColumn": 4,
-                    "startOffset": 50881,
-                    "endLine": 640,
+                    "startOffset": 50582,
+                    "endLine": 632,
                     "endColumn": 12,
-                    "endOffset": 51350
+                    "endOffset": 50814
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3131,12 +3185,12 @@
             },
             {
                 "to": {
-                    "startLine": 641,
+                    "startLine": 633,
                     "startColumn": 4,
-                    "startOffset": 51355,
-                    "endLine": 647,
+                    "startOffset": 50819,
+                    "endLine": 641,
                     "endColumn": 12,
-                    "endOffset": 51737
+                    "endOffset": 51288
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3144,12 +3198,12 @@
             },
             {
                 "to": {
-                    "startLine": 648,
+                    "startLine": 642,
                     "startColumn": 4,
-                    "startOffset": 51742,
-                    "endLine": 657,
+                    "startOffset": 51293,
+                    "endLine": 648,
                     "endColumn": 12,
-                    "endOffset": 52323
+                    "endOffset": 51675
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3157,11 +3211,12 @@
             },
             {
                 "to": {
-                    "startLine": 658,
+                    "startLine": 649,
                     "startColumn": 4,
-                    "startOffset": 52328,
-                    "endColumn": 108,
-                    "endOffset": 52432
+                    "startOffset": 51680,
+                    "endLine": 658,
+                    "endColumn": 12,
+                    "endOffset": 52261
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3171,10 +3226,9 @@
                 "to": {
                     "startLine": 659,
                     "startColumn": 4,
-                    "startOffset": 52437,
-                    "endLine": 661,
-                    "endColumn": 12,
-                    "endOffset": 52644
+                    "startOffset": 52266,
+                    "endColumn": 108,
+                    "endOffset": 52370
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3182,12 +3236,12 @@
             },
             {
                 "to": {
-                    "startLine": 662,
+                    "startLine": 660,
                     "startColumn": 4,
-                    "startOffset": 52649,
-                    "endLine": 668,
+                    "startOffset": 52375,
+                    "endLine": 662,
                     "endColumn": 12,
-                    "endOffset": 53120
+                    "endOffset": 52582
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3195,12 +3249,12 @@
             },
             {
                 "to": {
-                    "startLine": 669,
+                    "startLine": 663,
                     "startColumn": 4,
-                    "startOffset": 53125,
-                    "endLine": 675,
+                    "startOffset": 52587,
+                    "endLine": 669,
                     "endColumn": 12,
-                    "endOffset": 53494
+                    "endOffset": 53058
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3208,12 +3262,12 @@
             },
             {
                 "to": {
-                    "startLine": 676,
+                    "startLine": 670,
                     "startColumn": 4,
-                    "startOffset": 53499,
-                    "endLine": 680,
+                    "startOffset": 53063,
+                    "endLine": 676,
                     "endColumn": 12,
-                    "endOffset": 53873
+                    "endOffset": 53432
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3221,12 +3275,12 @@
             },
             {
                 "to": {
-                    "startLine": 681,
+                    "startLine": 677,
                     "startColumn": 4,
-                    "startOffset": 53878,
-                    "endLine": 686,
+                    "startOffset": 53437,
+                    "endLine": 681,
                     "endColumn": 12,
-                    "endOffset": 54226
+                    "endOffset": 53811
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3234,12 +3288,12 @@
             },
             {
                 "to": {
-                    "startLine": 687,
+                    "startLine": 682,
                     "startColumn": 4,
-                    "startOffset": 54231,
-                    "endLine": 693,
+                    "startOffset": 53816,
+                    "endLine": 687,
                     "endColumn": 12,
-                    "endOffset": 54686
+                    "endOffset": 54164
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3247,12 +3301,12 @@
             },
             {
                 "to": {
-                    "startLine": 694,
+                    "startLine": 688,
                     "startColumn": 4,
-                    "startOffset": 54691,
-                    "endLine": 696,
+                    "startOffset": 54169,
+                    "endLine": 694,
                     "endColumn": 12,
-                    "endOffset": 54878
+                    "endOffset": 54624
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3260,12 +3314,12 @@
             },
             {
                 "to": {
-                    "startLine": 697,
+                    "startLine": 695,
                     "startColumn": 4,
-                    "startOffset": 54883,
-                    "endLine": 700,
+                    "startOffset": 54629,
+                    "endLine": 697,
                     "endColumn": 12,
-                    "endOffset": 55137
+                    "endOffset": 54816
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3273,11 +3327,12 @@
             },
             {
                 "to": {
-                    "startLine": 701,
+                    "startLine": 698,
                     "startColumn": 4,
-                    "startOffset": 55142,
-                    "endColumn": 105,
-                    "endOffset": 55243
+                    "startOffset": 54821,
+                    "endLine": 701,
+                    "endColumn": 12,
+                    "endOffset": 55075
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3287,10 +3342,9 @@
                 "to": {
                     "startLine": 702,
                     "startColumn": 4,
-                    "startOffset": 55248,
-                    "endLine": 707,
-                    "endColumn": 12,
-                    "endOffset": 55687
+                    "startOffset": 55080,
+                    "endColumn": 105,
+                    "endOffset": 55181
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3298,11 +3352,12 @@
             },
             {
                 "to": {
-                    "startLine": 708,
+                    "startLine": 703,
                     "startColumn": 4,
-                    "startOffset": 55692,
-                    "endColumn": 111,
-                    "endOffset": 55799
+                    "startOffset": 55186,
+                    "endLine": 708,
+                    "endColumn": 12,
+                    "endOffset": 55625
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3312,10 +3367,9 @@
                 "to": {
                     "startLine": 709,
                     "startColumn": 4,
-                    "startOffset": 55804,
-                    "endLine": 719,
-                    "endColumn": 12,
-                    "endOffset": 56498
+                    "startOffset": 55630,
+                    "endColumn": 111,
+                    "endOffset": 55737
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3323,11 +3377,12 @@
             },
             {
                 "to": {
-                    "startLine": 720,
+                    "startLine": 710,
                     "startColumn": 4,
-                    "startOffset": 56503,
-                    "endColumn": 109,
-                    "endOffset": 56608
+                    "startOffset": 55742,
+                    "endLine": 720,
+                    "endColumn": 12,
+                    "endOffset": 56436
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3337,9 +3392,9 @@
                 "to": {
                     "startLine": 721,
                     "startColumn": 4,
-                    "startOffset": 56613,
-                    "endColumn": 99,
-                    "endOffset": 56708
+                    "startOffset": 56441,
+                    "endColumn": 109,
+                    "endOffset": 56546
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3349,9 +3404,9 @@
                 "to": {
                     "startLine": 722,
                     "startColumn": 4,
-                    "startOffset": 56713,
-                    "endColumn": 111,
-                    "endOffset": 56820
+                    "startOffset": 56551,
+                    "endColumn": 99,
+                    "endOffset": 56646
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3361,9 +3416,9 @@
                 "to": {
                     "startLine": 723,
                     "startColumn": 4,
-                    "startOffset": 56825,
-                    "endColumn": 127,
-                    "endOffset": 56948
+                    "startOffset": 56651,
+                    "endColumn": 111,
+                    "endOffset": 56758
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3373,9 +3428,9 @@
                 "to": {
                     "startLine": 724,
                     "startColumn": 4,
-                    "startOffset": 56953,
-                    "endColumn": 113,
-                    "endOffset": 57062
+                    "startOffset": 56763,
+                    "endColumn": 127,
+                    "endOffset": 56886
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3385,9 +3440,9 @@
                 "to": {
                     "startLine": 725,
                     "startColumn": 4,
-                    "startOffset": 57067,
-                    "endColumn": 129,
-                    "endOffset": 57192
+                    "startOffset": 56891,
+                    "endColumn": 113,
+                    "endOffset": 57000
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3397,9 +3452,9 @@
                 "to": {
                     "startLine": 726,
                     "startColumn": 4,
-                    "startOffset": 57197,
-                    "endColumn": 115,
-                    "endOffset": 57308
+                    "startOffset": 57005,
+                    "endColumn": 129,
+                    "endOffset": 57130
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3409,9 +3464,9 @@
                 "to": {
                     "startLine": 727,
                     "startColumn": 4,
-                    "startOffset": 57313,
-                    "endColumn": 131,
-                    "endOffset": 57440
+                    "startOffset": 57135,
+                    "endColumn": 115,
+                    "endOffset": 57246
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3421,9 +3476,9 @@
                 "to": {
                     "startLine": 728,
                     "startColumn": 4,
-                    "startOffset": 57445,
-                    "endColumn": 115,
-                    "endOffset": 57556
+                    "startOffset": 57251,
+                    "endColumn": 131,
+                    "endOffset": 57378
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3433,9 +3488,9 @@
                 "to": {
                     "startLine": 729,
                     "startColumn": 4,
-                    "startOffset": 57561,
-                    "endColumn": 131,
-                    "endOffset": 57688
+                    "startOffset": 57383,
+                    "endColumn": 115,
+                    "endOffset": 57494
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3445,9 +3500,9 @@
                 "to": {
                     "startLine": 730,
                     "startColumn": 4,
-                    "startOffset": 57693,
-                    "endColumn": 105,
-                    "endOffset": 57794
+                    "startOffset": 57499,
+                    "endColumn": 131,
+                    "endOffset": 57626
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3457,9 +3512,9 @@
                 "to": {
                     "startLine": 731,
                     "startColumn": 4,
-                    "startOffset": 57799,
-                    "endColumn": 125,
-                    "endOffset": 57920
+                    "startOffset": 57631,
+                    "endColumn": 105,
+                    "endOffset": 57732
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3469,9 +3524,9 @@
                 "to": {
                     "startLine": 732,
                     "startColumn": 4,
-                    "startOffset": 57925,
-                    "endColumn": 123,
-                    "endOffset": 58044
+                    "startOffset": 57737,
+                    "endColumn": 125,
+                    "endOffset": 57858
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3481,9 +3536,9 @@
                 "to": {
                     "startLine": 733,
                     "startColumn": 4,
-                    "startOffset": 58049,
-                    "endColumn": 117,
-                    "endOffset": 58162
+                    "startOffset": 57863,
+                    "endColumn": 123,
+                    "endOffset": 57982
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3493,9 +3548,9 @@
                 "to": {
                     "startLine": 734,
                     "startColumn": 4,
-                    "startOffset": 58167,
-                    "endColumn": 119,
-                    "endOffset": 58282
+                    "startOffset": 57987,
+                    "endColumn": 117,
+                    "endOffset": 58100
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3505,9 +3560,9 @@
                 "to": {
                     "startLine": 735,
                     "startColumn": 4,
-                    "startOffset": 58287,
-                    "endColumn": 121,
-                    "endOffset": 58404
+                    "startOffset": 58105,
+                    "endColumn": 119,
+                    "endOffset": 58220
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3517,10 +3572,9 @@
                 "to": {
                     "startLine": 736,
                     "startColumn": 4,
-                    "startOffset": 58409,
-                    "endLine": 744,
-                    "endColumn": 12,
-                    "endOffset": 59157
+                    "startOffset": 58225,
+                    "endColumn": 121,
+                    "endOffset": 58342
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3528,12 +3582,12 @@
             },
             {
                 "to": {
-                    "startLine": 745,
+                    "startLine": 737,
                     "startColumn": 4,
-                    "startOffset": 59162,
-                    "endLine": 749,
+                    "startOffset": 58347,
+                    "endLine": 745,
                     "endColumn": 12,
-                    "endOffset": 59526
+                    "endOffset": 59095
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3541,12 +3595,12 @@
             },
             {
                 "to": {
-                    "startLine": 750,
+                    "startLine": 746,
                     "startColumn": 4,
-                    "startOffset": 59531,
-                    "endLine": 755,
+                    "startOffset": 59100,
+                    "endLine": 750,
                     "endColumn": 12,
-                    "endOffset": 60082
+                    "endOffset": 59464
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3554,11 +3608,12 @@
             },
             {
                 "to": {
-                    "startLine": 756,
+                    "startLine": 751,
                     "startColumn": 4,
-                    "startOffset": 60087,
-                    "endColumn": 112,
-                    "endOffset": 60195
+                    "startOffset": 59469,
+                    "endLine": 756,
+                    "endColumn": 12,
+                    "endOffset": 60020
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3568,9 +3623,9 @@
                 "to": {
                     "startLine": 757,
                     "startColumn": 4,
-                    "startOffset": 60200,
-                    "endColumn": 126,
-                    "endOffset": 60322
+                    "startOffset": 60025,
+                    "endColumn": 112,
+                    "endOffset": 60133
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3580,9 +3635,9 @@
                 "to": {
                     "startLine": 758,
                     "startColumn": 4,
-                    "startOffset": 60327,
-                    "endColumn": 114,
-                    "endOffset": 60437
+                    "startOffset": 60138,
+                    "endColumn": 126,
+                    "endOffset": 60260
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3592,10 +3647,9 @@
                 "to": {
                     "startLine": 759,
                     "startColumn": 4,
-                    "startOffset": 60442,
-                    "endLine": 761,
-                    "endColumn": 12,
-                    "endOffset": 60673
+                    "startOffset": 60265,
+                    "endColumn": 114,
+                    "endOffset": 60375
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3603,11 +3657,12 @@
             },
             {
                 "to": {
-                    "startLine": 762,
+                    "startLine": 760,
                     "startColumn": 4,
-                    "startOffset": 60678,
-                    "endColumn": 114,
-                    "endOffset": 60788
+                    "startOffset": 60380,
+                    "endLine": 762,
+                    "endColumn": 12,
+                    "endOffset": 60611
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3617,9 +3672,9 @@
                 "to": {
                     "startLine": 763,
                     "startColumn": 4,
-                    "startOffset": 60793,
-                    "endColumn": 128,
-                    "endOffset": 60917
+                    "startOffset": 60616,
+                    "endColumn": 114,
+                    "endOffset": 60726
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3629,9 +3684,9 @@
                 "to": {
                     "startLine": 764,
                     "startColumn": 4,
-                    "startOffset": 60922,
-                    "endColumn": 104,
-                    "endOffset": 61022
+                    "startOffset": 60731,
+                    "endColumn": 128,
+                    "endOffset": 60855
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3641,9 +3696,9 @@
                 "to": {
                     "startLine": 765,
                     "startColumn": 4,
-                    "startOffset": 61027,
-                    "endColumn": 120,
-                    "endOffset": 61143
+                    "startOffset": 60860,
+                    "endColumn": 104,
+                    "endOffset": 60960
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3653,61 +3708,61 @@
                 "to": {
                     "startLine": 766,
                     "startColumn": 4,
-                    "startOffset": 61148,
-                    "endLine": 768,
-                    "endColumn": 12,
-                    "endOffset": 61368
-                },
-                "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
-                }
-            },
-            {
-                "to": {
-                    "startLine": 769,
-                    "startColumn": 4,
-                    "startOffset": 61373,
-                    "endLine": 772,
-                    "endColumn": 12,
-                    "endOffset": 61733
-                },
-                "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
-                }
-            },
-            {
-                "to": {
-                    "startLine": 773,
-                    "startColumn": 4,
-                    "startOffset": 61738,
-                    "endLine": 775,
-                    "endColumn": 12,
-                    "endOffset": 61950
-                },
-                "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
-                }
-            },
-            {
-                "to": {
-                    "startLine": 776,
-                    "startColumn": 4,
-                    "startOffset": 61955,
-                    "endLine": 780,
-                    "endColumn": 12,
-                    "endOffset": 62337
-                },
-                "from": {
-                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
-                }
-            },
-            {
-                "to": {
-                    "startLine": 781,
-                    "startColumn": 4,
-                    "startOffset": 62342,
+                    "startOffset": 60965,
                     "endColumn": 120,
-                    "endOffset": 62458
+                    "endOffset": 61081
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 767,
+                    "startColumn": 4,
+                    "startOffset": 61086,
+                    "endLine": 769,
+                    "endColumn": 12,
+                    "endOffset": 61306
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 770,
+                    "startColumn": 4,
+                    "startOffset": 61311,
+                    "endLine": 773,
+                    "endColumn": 12,
+                    "endOffset": 61671
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 774,
+                    "startColumn": 4,
+                    "startOffset": 61676,
+                    "endLine": 776,
+                    "endColumn": 12,
+                    "endOffset": 61888
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 777,
+                    "startColumn": 4,
+                    "startOffset": 61893,
+                    "endLine": 781,
+                    "endColumn": 12,
+                    "endOffset": 62275
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3717,10 +3772,9 @@
                 "to": {
                     "startLine": 782,
                     "startColumn": 4,
-                    "startOffset": 62463,
-                    "endLine": 788,
-                    "endColumn": 12,
-                    "endOffset": 62926
+                    "startOffset": 62280,
+                    "endColumn": 120,
+                    "endOffset": 62396
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3728,12 +3782,12 @@
             },
             {
                 "to": {
-                    "startLine": 789,
+                    "startLine": 783,
                     "startColumn": 4,
-                    "startOffset": 62931,
-                    "endLine": 791,
+                    "startOffset": 62401,
+                    "endLine": 789,
                     "endColumn": 12,
-                    "endOffset": 63125
+                    "endOffset": 62864
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3741,11 +3795,12 @@
             },
             {
                 "to": {
-                    "startLine": 792,
+                    "startLine": 790,
                     "startColumn": 4,
-                    "startOffset": 63130,
-                    "endColumn": 117,
-                    "endOffset": 63243
+                    "startOffset": 62869,
+                    "endLine": 792,
+                    "endColumn": 12,
+                    "endOffset": 63063
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3755,10 +3810,9 @@
                 "to": {
                     "startLine": 793,
                     "startColumn": 4,
-                    "startOffset": 63248,
-                    "endLine": 797,
-                    "endColumn": 12,
-                    "endOffset": 63622
+                    "startOffset": 63068,
+                    "endColumn": 117,
+                    "endOffset": 63181
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3766,11 +3820,12 @@
             },
             {
                 "to": {
-                    "startLine": 798,
+                    "startLine": 794,
                     "startColumn": 4,
-                    "startOffset": 63627,
-                    "endColumn": 121,
-                    "endOffset": 63744
+                    "startOffset": 63186,
+                    "endLine": 798,
+                    "endColumn": 12,
+                    "endOffset": 63560
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3780,9 +3835,9 @@
                 "to": {
                     "startLine": 799,
                     "startColumn": 4,
-                    "startOffset": 63749,
-                    "endColumn": 111,
-                    "endOffset": 63856
+                    "startOffset": 63565,
+                    "endColumn": 121,
+                    "endOffset": 63682
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3792,9 +3847,9 @@
                 "to": {
                     "startLine": 800,
                     "startColumn": 4,
-                    "startOffset": 63861,
-                    "endColumn": 115,
-                    "endOffset": 63972
+                    "startOffset": 63687,
+                    "endColumn": 111,
+                    "endOffset": 63794
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3804,9 +3859,9 @@
                 "to": {
                     "startLine": 801,
                     "startColumn": 4,
-                    "startOffset": 63977,
-                    "endColumn": 99,
-                    "endOffset": 64072
+                    "startOffset": 63799,
+                    "endColumn": 115,
+                    "endOffset": 63910
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3816,9 +3871,9 @@
                 "to": {
                     "startLine": 802,
                     "startColumn": 4,
-                    "startOffset": 64077,
-                    "endColumn": 114,
-                    "endOffset": 64187
+                    "startOffset": 63915,
+                    "endColumn": 99,
+                    "endOffset": 64010
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3828,9 +3883,9 @@
                 "to": {
                     "startLine": 803,
                     "startColumn": 4,
-                    "startOffset": 64192,
-                    "endColumn": 99,
-                    "endOffset": 64287
+                    "startOffset": 64015,
+                    "endColumn": 114,
+                    "endOffset": 64125
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3840,9 +3895,9 @@
                 "to": {
                     "startLine": 804,
                     "startColumn": 4,
-                    "startOffset": 64292,
-                    "endColumn": 103,
-                    "endOffset": 64391
+                    "startOffset": 64130,
+                    "endColumn": 99,
+                    "endOffset": 64225
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3852,9 +3907,9 @@
                 "to": {
                     "startLine": 805,
                     "startColumn": 4,
-                    "startOffset": 64396,
-                    "endColumn": 95,
-                    "endOffset": 64487
+                    "startOffset": 64230,
+                    "endColumn": 103,
+                    "endOffset": 64329
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3864,9 +3919,9 @@
                 "to": {
                     "startLine": 806,
                     "startColumn": 4,
-                    "startOffset": 64492,
-                    "endColumn": 87,
-                    "endOffset": 64575
+                    "startOffset": 64334,
+                    "endColumn": 95,
+                    "endOffset": 64425
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3876,9 +3931,9 @@
                 "to": {
                     "startLine": 807,
                     "startColumn": 4,
-                    "startOffset": 64580,
-                    "endColumn": 91,
-                    "endOffset": 64667
+                    "startOffset": 64430,
+                    "endColumn": 87,
+                    "endOffset": 64513
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3888,9 +3943,9 @@
                 "to": {
                     "startLine": 808,
                     "startColumn": 4,
-                    "startOffset": 64672,
-                    "endColumn": 113,
-                    "endOffset": 64781
+                    "startOffset": 64518,
+                    "endColumn": 91,
+                    "endOffset": 64605
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
@@ -3900,9 +3955,21 @@
                 "to": {
                     "startLine": 809,
                     "startColumn": 4,
-                    "startOffset": 64786,
+                    "startOffset": 64610,
+                    "endColumn": 113,
+                    "endOffset": 64719
+                },
+                "from": {
+                    "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 810,
+                    "startColumn": 4,
+                    "startOffset": 64724,
                     "endColumn": 102,
-                    "endOffset": 64884
+                    "endOffset": 64822
                 },
                 "from": {
                     "file": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/res/values/values.xml"
