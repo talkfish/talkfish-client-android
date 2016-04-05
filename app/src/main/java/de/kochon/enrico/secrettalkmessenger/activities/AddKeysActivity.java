@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -28,6 +29,7 @@ public class AddKeysActivity extends Activity {
    protected Button btnReceive;
    protected Button btnKeys;
    protected TextView nameText;
+   protected TextView conversationDetails;
    protected Conversation conversation;
    protected long conversationID;
 
@@ -37,11 +39,18 @@ public class AddKeysActivity extends Activity {
 
    
    protected void initConversation() {
-      conversation = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+      conversation = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
       nameText = (TextView) findViewById(R.id.viewConversationName);
-      if (  null != conversation && null != nameText) 
+      conversationDetails = (TextView) findViewById(R.id.viewConversationDetails);
+      if (  null != conversation && null != nameText && null != conversationDetails)
       {
          nameText.setText(conversation.getNick());
+         conversationDetails.setSingleLine(false);
+         SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM.yyyy/HH:mm:ss");
+         String lastmessagedateformatted = daytimeformat.format(conversation.getLastMessageTime());
+         conversationDetails.setText(String.format("letzte Nachricht erhalten: %s\n\n" +
+                 "Verfügbare Schlüssel\nZum Senden: %d\nZum Empfangen: %d",
+                 lastmessagedateformatted, conversation.countActiveSendKeys(), conversation.countActiveReceiveKeys()));
       }
       else {
          Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
@@ -100,8 +109,8 @@ public class AddKeysActivity extends Activity {
          btnDeleteMessages.setOnClickListener(new OnClickListener() { 
                public void onClick(View v) { 
                   if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
-                     int rows = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).
-                                    getDataAccessHelper().deleteMessagesAndUsedKeys(
+                     int rows = ((TFApp)(AddKeysActivity.this.getApplication())).
+                             getDAH().deleteMessagesAndUsedKeys(
                                        AddKeysActivity.this.conversation.getID());
                      if (rows>0) {
                         Intent reply = new Intent();
@@ -125,8 +134,8 @@ public class AddKeysActivity extends Activity {
          btnDeleteConversation.setOnClickListener(new OnClickListener() { 
                public void onClick(View v) { 
                   if (null != AddKeysActivity.this.conversation && -1 != AddKeysActivity.this.conversation.getID()) {
-                     int rows = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).
-                                    getDataAccessHelper().deleteConversation(
+                     int rows = ((TFApp)(AddKeysActivity.this.getApplication())).
+                             getDAH().deleteConversation(
                                        AddKeysActivity.this.conversation.getID());
                      if (rows>0) {
                         Intent reply = new Intent();
@@ -153,13 +162,13 @@ public class AddKeysActivity extends Activity {
                      Messagekey rKey = new Messagekey(true);
                      Messagekey sKey = new Messagekey(false);
                      long kID = -1;
-                     kID = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).getDataAccessHelper().addNewKeyToConversation(
+                     kID = ((TFApp)(AddKeysActivity.this.getApplication())).getDAH().addNewKeyToConversation(
                                                                                           AddKeysActivity.this.conversation, rKey);
                      if (-1 == kID) {
                         Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey für Empfang konnte nicht nicht angelegt werden.",
                         Toast.LENGTH_LONG).show();
                      }
-                     kID = ((SecretTalkMessengerApplication)(AddKeysActivity.this.getApplication())).getDataAccessHelper().addNewKeyToConversation(
+                     kID = ((TFApp)(AddKeysActivity.this.getApplication())).getDAH().addNewKeyToConversation(
                                                                                           AddKeysActivity.this.conversation, sKey);
                      if (-1 == kID) {
                         Toast.makeText(AddKeysActivity.this, "Technischer Fehler. Messagekey zum Senden konnte nicht nicht angelegt werden.",
@@ -233,7 +242,7 @@ public class AddKeysActivity extends Activity {
                String newConversationName = data.getStringExtra(RenameActivity.STRINGRESULT_KEY);
                if (null != newConversationName) {
                   conversation.setNick(newConversationName);
-                  if (1==((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().updateConversation(conversation)) {
+                  if (1==((TFApp)(this.getApplication())).getDAH().updateConversation(conversation)) {
                      initConversation();
                      Toast.makeText(this, "Kontaktname geändert.", Toast.LENGTH_LONG).show();
                   } else {

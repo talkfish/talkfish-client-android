@@ -1,6 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.model;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 import android.util.Log;
 
@@ -38,7 +38,7 @@ public class SecretTalkChannelCache {
       if (initValues.length != cachedValues.length) {
          String errormessage = String.format("ERROR in initCachedValues: size does not fit - length of given array is %d, but should be %d!",
                                              initValues.length, cachedValues.length);
-         Log.d(SecretTalkMessengerApplication.LOGKEY, errormessage);
+         Log.d(TFApp.LOGKEY, errormessage);
          throw new IllegalArgumentException(errormessage);
       }
 

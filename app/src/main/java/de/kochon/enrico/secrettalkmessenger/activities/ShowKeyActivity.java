@@ -1,8 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
-import de.kochon.enrico.secrettalkmessenger.model.Conversation;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 import de.kochon.enrico.secrettalkmessenger.views.CharView;
 
@@ -36,7 +35,7 @@ public class ShowKeyActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(MESSAGEKEY_ID_KEY)) {
          long keyID = data.getLongExtra(MESSAGEKEY_ID_KEY, -1);
-         key = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadMessagekey(keyID);
+         key = ((TFApp)(this.getApplication())).getDAH().loadMessagekey(keyID);
 		   CharView codeView = (CharView) findViewById(R.id.keyRepresentationGraphicalView);
          txtSerializedKey = (TextView) findViewById(R.id.textviewSerializedKey);
          if (null != key && 
@@ -76,7 +75,7 @@ public class ShowKeyActivity extends Activity {
          btnDelete.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                if (ShowKeyActivity.this.key != null) {
-                  int affectedRows = ((SecretTalkMessengerApplication)(ShowKeyActivity.this.getApplication())).getDataAccessHelper().deleteMessagekey(ShowKeyActivity.this.key.getID());
+                  int affectedRows = ((TFApp)(ShowKeyActivity.this.getApplication())).getDAH().deleteMessagekey(ShowKeyActivity.this.key.getID());
                   if (1 == affectedRows) {
                      Intent reply = new Intent();
                      Bundle result = new Bundle();

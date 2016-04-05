@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.backend.ConfigHelper;
 import de.kochon.enrico.secrettalkmessenger.service.PeriodicMessageCheck;
 import de.kochon.enrico.secrettalkmessenger.service.KeepAliveCheck;
@@ -40,7 +40,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		
 		setContentView(R.layout.activity_settings);
 		
-      configHelper = ((SecretTalkMessengerApplication)(this.getApplication())).configHelper;
+      configHelper = ((TFApp)(this.getApplication())).configHelper;
          
 		configName = (EditText) findViewById(R.id.editConfigName);
 		ok = (Button) findViewById(R.id.buttonSettingsOk);
@@ -91,11 +91,11 @@ public class SettingsActivity extends Activity implements OnClickListener {
             KeepAliveCheck.setAlarm(this);
             Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             vib.vibrate(new long[] {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500}, -1);
-            SecretTalkMessengerApplication.addToApplicationLog("Backgroundservice activated by user.");
+            TFApp.addToApplicationLog("Backgroundservice activated by user.");
          } else {
             KeepAliveCheck.cancelAlarm(this);
             PeriodicMessageCheck.cancelAlarm(this);
-            SecretTalkMessengerApplication.addToApplicationLog("Backgroundservice stopped by user.");
+            TFApp.addToApplicationLog("Backgroundservice stopped by user.");
          }
 
       
@@ -111,7 +111,7 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		}
 		if (v == downloadLatest) {
          Intent intentGetLatest = new Intent(Intent.ACTION_VIEW, 
-                                             Uri.parse(((SecretTalkMessengerApplication)
+                                             Uri.parse(((TFApp)
                                              (this.getApplication())).DOWNLOADLOCATION));
          startActivityForResult(intentGetLatest, 0);
 		}

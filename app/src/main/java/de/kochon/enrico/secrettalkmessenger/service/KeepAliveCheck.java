@@ -5,26 +5,25 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 
 public class KeepAliveCheck extends BroadcastReceiver {    
-   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 1200;
+   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 1800;
    public final static String KEEPALIVECHECK_KEEPALIVE = "ka_alive";
 
    @Override
    public void onReceive(Context context, Intent intent) {   
-      SecretTalkMessengerApplication.addToApplicationLog("received keepalivecheckalarm");
+      TFApp.addToApplicationLog("received keepalivecheckalarm");
       setAlarm(context);
-      long lag = SecretTalkMessengerApplication.getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
+      long lag = TFApp.getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
 
       if (lag > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
-         SecretTalkMessengerApplication.addToApplicationLog(
-            String.format(
-               "*** KeepAliveCheck registered not working messagecheckalarm (last run before %d ms), resetting it! ***",
-               lag));
+         TFApp.addToApplicationLog(
+                 String.format(
+                         "*** KeepAliveCheck registered not working messagecheckalarm (last run before %d s), resetting it! ***",
+                         lag / 1000));
          PeriodicMessageCheck.setAlarm(context);
       }
    }
@@ -35,7 +34,7 @@ public class KeepAliveCheck extends BroadcastReceiver {
       AlarmManager am= (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
       am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000 * DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS, pi);
 
-      SecretTalkMessengerApplication.setKeepAliveMarker(KEEPALIVECHECK_KEEPALIVE);
+      TFApp.setKeepAliveMarker(KEEPALIVECHECK_KEEPALIVE);
    }
      
    public static void cancelAlarm(Context context) {

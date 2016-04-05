@@ -5,12 +5,12 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 public class SqlOpenHelper extends SQLiteOpenHelper {
 	
 	public static final String DBNAME = "messagedb.sqlite";
-	public static final int VERSION = 5;
+	public static final int VERSION = 6;
 
 	public static final String TABLE_NAME_CONFIG = "config";
 	public static final String CONFIG_COLUMN_ID = "id";
@@ -31,6 +31,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 	public static final String CONVERSATIONS_COLUMN_NICK = "nick";
 	public static final String CONVERSATIONS_COLUMN_NUMBERRECEIVED = "received";
 	public static final String CONVERSATIONS_COLUMN_NUMBERSENT = "sent";
+	public static final String CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE = "lastmessagedate";
 
 	public static final String TABLE_NAME_MESSAGES = "messages";
 	public static final String MESSAGES_COLUMN_ID = "id";
@@ -107,7 +108,8 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
             CONVERSATIONS_COLUMN_IDCHANNEL_SENDING + " integer not null, " +
 				CONVERSATIONS_COLUMN_NICK + " text not null, " +
             CONVERSATIONS_COLUMN_NUMBERRECEIVED  + " integer not null, " +
-            CONVERSATIONS_COLUMN_NUMBERSENT   + " integer not null " +
+            CONVERSATIONS_COLUMN_NUMBERSENT   + " integer not null, " +
+						CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE + " integer not null " +
 		");");
 		db.execSQL("create table " + TABLE_NAME_MESSAGES + "(" +
 				MESSAGES_COLUMN_ID + " integer primary key autoincrement not null, " +
@@ -149,7 +151,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
       // create default channel for directions receiving and sending
       final String DEFAULTENDPOINT = "http://fishnode1.de/prod";
 
-      Log.d(SecretTalkMessengerApplication.LOGKEY, "initializing data, creating default channels");
+      Log.d(TFApp.LOGKEY, "initializing data, creating default channels");
       ContentValues channelValuesDefaultReceive = new ContentValues();
       channelValuesDefaultReceive.put(SqlOpenHelper.CHANNELS_COLUMN_ID, 1);
       channelValuesDefaultReceive.put(SqlOpenHelper.CHANNELS_COLUMN_NAME, "default");
@@ -183,6 +185,10 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+		if ((newVersion > oldVersion) && (oldVersion == 5)) {
+			db.execSQL("alter table " + TABLE_NAME_CONVERSATIONS + " add column " +
+					CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE + " integer not null default 0;");
+		}
 		if ((newVersion > oldVersion) && (oldVersion == 4)) {
          db.execSQL("create table " + TABLE_NAME_UPDATELOCK  + "(" +
                UPDATELOCK_COLUMN_ID  + " integer primary key autoincrement not null, " +
@@ -199,8 +205,8 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 			db.execSQL("drop table " + TABLE_NAME_CONVERSATIONS  + ";");
 			db.execSQL("drop table " + TABLE_NAME_MESSAGEKEYS + ";");
          if (oldVersion == 3) {
-            db.execSQL("drop table " + TABLE_NAME_SECRETTALKCHANNELCACHE_META + ";");
-            db.execSQL("drop table " + TABLE_NAME_SECRETTALKCHANNELCACHE_CONTENT + ";");
+			 db.execSQL("drop table " + TABLE_NAME_SECRETTALKCHANNELCACHE_META + ";");
+			 db.execSQL("drop table " + TABLE_NAME_SECRETTALKCHANNELCACHE_CONTENT + ";");
          }
          createStructure(db);
          initializeData(db);

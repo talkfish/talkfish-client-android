@@ -12,9 +12,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_gravity="left"
+        android:layout_gravity="center_vertical"
+
         android:text="@+id/label"
-        android:textSize="14dp"
+        android:textSize="30dp"
         android:textColor="@color/app_foreground">
     </TextView>
 
@@ -22,7 +23,7 @@
     	android:id="@+id/buttonChatsAddKeys"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:focusable="false"
         android:layout_gravity="right"
         android:onClick="clickAddKeys"

@@ -107,14 +107,14 @@
     <dimen name="abc_panel_menu_list_width">296dp</dimen>
     <dimen name="abc_search_view_preferred_width">320dip</dimen>
     <dimen name="abc_search_view_text_min_width">160dip</dimen>
-    <dimen name="activity_horizontal_margin">8dp</dimen>
-    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="activity_horizontal_margin">4dp</dimen>
+    <dimen name="activity_vertical_margin">4dp</dimen>
     <dimen name="centered_content_width">220dp</dimen>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
-    <dimen name="vertical_spacer">8dp</dimen>
+    <dimen name="vertical_spacer">4dp</dimen>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
@@ -185,6 +185,7 @@
     <string name="messageNewMessagesInConv">Es wurden neue Nachrichten von %s empfangen!</string>
     <string name="messageNoNewMessagesInChan">Leider sind auf Kanal %d momentan keine neuen Nachrichten verfügbar!</string>
     <string name="news">\nNeuigkeiten:\n\n
+        Version 0.0.11 vom 05.04.2015:\n Verbesserung der Chatübersicht durch aktive Sortierung nach Zeitpunkt der letzten Nachricht.\n\n
 Version 0.0.10 vom 30.12.2015:\n Anhebung des Caches um Faktor 10000 zur Vorbereitung des Foto-Austauschs.\n\n
 Version 0.0.9 vom 08.12.2015:\n Begrenzung der Eingabemenge im Chatfenster, optisch ansprechendere Gestaltung des Willkommensbildschirms, Wechsel des App-Icons.\n\n
 Version 0.0.8 vom 13.11.2015:\n Schlüsselaustausch über Bluetooth stark beschleunigt und benutzerfreundlicher gestaltet.\n\n

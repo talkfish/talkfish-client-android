@@ -1,11 +1,9 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
-import de.kochon.enrico.secrettalkmessenger.model.Conversation;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 
 import android.app.ListActivity;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 import android.content.Intent;
@@ -26,7 +23,7 @@ public class ChannelListActivity extends ListActivity {
    private ArrayAdapter<Channel> aa;
 
    private void initValues() {
-      List<Channel> channels = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadAllChannels();
+      List<Channel> channels = ((TFApp)(this.getApplication())).getDAH().loadAllChannels();
       aa = new ArrayAdapter<Channel>(this, R.layout.rowlayout_small, R.id.label, channels);
       setListAdapter(aa);
    }

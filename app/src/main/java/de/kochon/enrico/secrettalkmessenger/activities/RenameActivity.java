@@ -1,8 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
-import de.kochon.enrico.secrettalkmessenger.backend.ConfigHelper;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,9 +10,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import android.net.Uri;
 
 import java.util.ArrayList;
 

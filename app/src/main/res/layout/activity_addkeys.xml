@@ -19,7 +19,8 @@
               android:layout_marginRight="@dimen/activity_horizontal_margin"
               android:orientation="horizontal"
               android:layout_width="fill_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+                android:background="#9fff87">
             
                     <TextView
                         android:layout_width="wrap_content"
@@ -33,9 +34,20 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/app_foreground"
-                        android:inputType="text"/>
+                        android:inputType="text"
+                             />
                 
             </LinearLayout>
+
+        <TextView
+            android:id="@+id/viewConversationDetails"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_foreground"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:inputType="text"/>
 
             <Button
               android:id="@+id/buttonShowConversationPropertiesActivityRenameConversation"

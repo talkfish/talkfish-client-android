@@ -2,45 +2,30 @@ package de.kochon.enrico.secrettalkmessenger.service;
 
 import de.kochon.enrico.secrettalkmessenger.R;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Date;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.NotificationCompat;
-import android.text.format.Time;
 import android.util.Log;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Bundle;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
-import de.kochon.enrico.secrettalkmessenger.activities.ChatActivity;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
+import de.kochon.enrico.secrettalkmessenger.activities.ConversationListActivity;
 import de.kochon.enrico.secrettalkmessenger.model.SecretTalkChannelCache;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
-import de.kochon.enrico.secrettalkmessenger.model.SecretTalkChannelCache;
 import de.kochon.enrico.secrettalkmessenger.model.EncryptedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
-import de.kochon.enrico.secrettalkmessenger.backend.DataAccessHelper;
 import de.kochon.enrico.secrettalkmessenger.backend.NetworkIO;
 import de.kochon.enrico.secrettalkmessenger.backend.ConfigHelper;
 
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CheckNewMessages extends Service {
@@ -81,11 +66,8 @@ public class CheckNewMessages extends Service {
 	
 	private Notification getNotification(Conversation c) {
        String notificationmessage = String.format("Neue Nachricht von %s", c.getNick());
-       Intent goToSecretTalk = new Intent(this, ChatActivity.class);
+       Intent goToSecretTalk = new Intent(this, ConversationListActivity.class);
        goToSecretTalk.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_SINGLE_TOP);
-       Bundle state = new Bundle();
-       state.putLong(ChatActivity.SHOW_CONVERSATION_ID_KEY, c.getID()); // Todo: refactor
-       goToSecretTalk.putExtras(state);
        PendingIntent pending = PendingIntent.getActivity(this, (int) c.getID(), goToSecretTalk,
                 PendingIntent.FLAG_UPDATE_CURRENT );
 		Notification notification = new NotificationCompat.Builder(this)
@@ -108,12 +90,12 @@ public class CheckNewMessages extends Service {
 
    private synchronized boolean setLock(boolean lock) {
       if (true == lock) {
-         if (((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().isDuringUpdate(1000 * MAX_LOCK_SECONDS)) return false;
+         if (((TFApp)(CheckNewMessages.this.getApplication())).getDAH().isDuringUpdate(1000 * MAX_LOCK_SECONDS)) return false;
          iterationCount++;
-         ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().setDuringUpdate(true);
+         ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().setDuringUpdate(true);
       }
       if (false == lock) {
-         ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().setDuringUpdate(false);
+         ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().setDuringUpdate(false);
       }
       return true;
    }
@@ -125,15 +107,14 @@ public class CheckNewMessages extends Service {
             if (setLock(true)) {
                try {
                   long myIter = iterationCount;
-                  SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - service is being executed: successful got the lock, checking ..", myIter));
+                  TFApp.addToApplicationLog(String.format("%d - service is being executed: successful got the lock, checking ..", myIter));
                   String networkState = NetworkIO.getNetworkStatus(CheckNewMessages.this);
-                  String currentmode = ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).configHelper.getBackground();
+                  String currentmode = ((TFApp)(CheckNewMessages.this.getApplication())).configHelper.getBackground();
                   if (  networkState.equals("wifi") && 
                         (currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_WIFI) || currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_MOBILE)) 
                       || networkState.equals("mobile") && currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_MOBILE)) 
                   {
-
-                     List<Conversation> conversations = ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().loadAllConversations();
+                     List<Conversation> conversations = ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().loadAllConversations();
                      HashMap<Channel,SecretTalkChannelCache> channelCacheMap = new HashMap<Channel, SecretTalkChannelCache>();
 
                      for (int index_for_conversations=0; index_for_conversations<conversations.size(); index_for_conversations++) {
@@ -143,40 +124,40 @@ public class CheckNewMessages extends Service {
                            channelCacheMap.put(r, new SecretTalkChannelCache(r.endpoint));
                         }
                      }
-                     int messageCount = 0;
+
                      for (Channel channel: channelCacheMap.keySet()) {
                         int idchannel = channel.id;
                         String endpoint = channel.endpoint;
 
                         String baseurl = endpoint + "/get/";
 
-                        int persistedOffset = ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().getCurrentOffsetForChannel(idchannel);
+                        int persistedOffset = ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().getCurrentOffsetForChannel(idchannel);
                         if (-1 == persistedOffset) persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
-                        SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - getting current offset on server for channel with endpoint %s", myIter, endpoint));
+                        TFApp.addToApplicationLog(String.format("%d - getting current offset on server for channel with endpoint %s", myIter, endpoint));
                         int mc = NetworkIO.getCurrentMessageOffsetOnServer(baseurl+"current.txt");
-                        SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s: %d", myIter, endpoint, mc));
+                        TFApp.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s: %d", myIter, endpoint, mc));
 
                         if (mc != -1 && persistedOffset != mc) { 
                            int messagelimit = mc; // default in case persistedOffset < mc
                            if (persistedOffset > mc) { // server wrap occured
                               messagelimit = mc+SecretTalkChannelCache.CACHE_SIZE;
                            }
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - loading %d files from server", myIter, (messagelimit - persistedOffset)));
+                           TFApp.addToApplicationLog(String.format("%d - loading %d files from server", myIter, (messagelimit - persistedOffset)));
                            for (int i=persistedOffset+1; i<=messagelimit; i++) {
-                              int i_representant = i%SecretTalkChannelCache.CACHE_SIZE;
-                              String targetfile = String.format("%sm_%07d.txt", baseurl, i_representant);
-                              SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - trying to download %s", myIter, targetfile));
+                              int i_mod_cache_size = i%SecretTalkChannelCache.CACHE_SIZE;
+                              String targetfile = String.format("%sm_%07d.txt", baseurl, i_mod_cache_size);
+                              TFApp.addToApplicationLog(String.format("%d - trying to download %s", myIter, targetfile));
                               String currentMessage = NetworkIO.loadFileFromServer(targetfile);
-                              SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - successfully downloaded %s", myIter, targetfile));
+                              TFApp.addToApplicationLog(String.format("%d - successfully downloaded %s", myIter, targetfile));
 
-                              SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - adding file to cache", myIter));
-                              ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().setCacheForCacheMetaIDAndKey(idchannel, i_representant, currentMessage);
+                              TFApp.addToApplicationLog(String.format("%d - adding file to cache", myIter));
+                              ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().setCacheForCacheMetaIDAndKey(idchannel, i_mod_cache_size, currentMessage);
                            }
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - updating current offset for channel %d to %d", myIter, idchannel, mc));
-                           ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().setCurrentOffsetForChannel(idchannel, mc);
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - finished loading server for channel with endpoint %s", myIter, endpoint));
+                           TFApp.addToApplicationLog(String.format("%d - updating current offset for channel %d to %d", myIter, idchannel, mc));
+                           ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().setCurrentOffsetForChannel(idchannel, mc);
+                           TFApp.addToApplicationLog(String.format("%d - finished loading server for channel with endpoint %s", myIter, endpoint));
 
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - processing conversations and cache for channel with endpoint %s", myIter, endpoint));
+                           TFApp.addToApplicationLog(String.format("%d - processing conversations and cache for channel with endpoint %s", myIter, endpoint));
                            for (int index_for_conversations=0; index_for_conversations<conversations.size(); index_for_conversations++) {
                               Conversation c = conversations.get(index_for_conversations);
                               List<Messagekey> keys = c.getReceivingKeys();
@@ -185,7 +166,7 @@ public class CheckNewMessages extends Service {
                               if (r.id == idchannel && channelCacheMap.containsKey(r)) {
                                  SecretTalkChannelCache cache = channelCacheMap.get(r);
                                  if (!cache.isInitialized()) {
-                                    cache.initCache(((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().loadCacheForChannel(r.id, SecretTalkChannelCache.CACHE_SIZE));
+                                    cache.initCache(((TFApp)(CheckNewMessages.this.getApplication())).getDAH().loadCacheForChannel(r.id, SecretTalkChannelCache.CACHE_SIZE));
                                  }
 
                                  for(int i=0;i<SecretTalkChannelCache.CACHE_SIZE;i++) {
@@ -197,11 +178,11 @@ public class CheckNewMessages extends Service {
                                           if (!k.getIsUsed()) {
                                              CountedMessage decrypted = e.decrypt(k);
                                              k.setIsUsed(true); 
-                                             ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().updateKey(k);
+                                             ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().updateKey(k);
                                              CountedMessage added = c.addReceivedMessage(decrypted);
                                              c.setHasNewMessages(true);
-                                             ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().addNewMessage(added);
-                                             ((SecretTalkMessengerApplication)(CheckNewMessages.this.getApplication())).getDataAccessHelper().updateConversation(c);
+                                             ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().addNewMessage(added);
+                                             ((TFApp)(CheckNewMessages.this.getApplication())).getDAH().updateConversation(c);
 
                                              Notification n = getNotification(c);
                                              NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -212,24 +193,24 @@ public class CheckNewMessages extends Service {
                                  }
                               }
                            } 
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - finished processing conversations and cache", myIter));
+                           TFApp.addToApplicationLog(String.format("%d - finished processing conversations and cache", myIter));
 
                         } else {
-                           SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - nothing to download", myIter));
+                           TFApp.addToApplicationLog(String.format("%d - nothing to download", myIter));
                         }
 
                      }
                   } else {
-                     SecretTalkMessengerApplication.addToApplicationLog(String.format("%d - networkstate: %s and backgroundconfig: %s -> skipping ..", myIter, networkState, currentmode));
+                     TFApp.addToApplicationLog(String.format("%d - networkstate: %s and backgroundconfig: %s -> skipping ..", myIter, networkState, currentmode));
                   }
 
                } catch (Exception e) { 
-                  SecretTalkMessengerApplication.logException(e); 
+                  TFApp.logException(e);
                } finally {
                   setLock(false);
                }
             } else {
-			      SecretTalkMessengerApplication.addToApplicationLog("*** service is being executed: lock was set, skipping ..");
+			      TFApp.addToApplicationLog("*** service is being executed: lock was set, skipping ..");
             }
             stopSelf();
 
@@ -238,13 +219,13 @@ public class CheckNewMessages extends Service {
       try {
          t.join();
       } catch (InterruptedException e) {
-         SecretTalkMessengerApplication.logException(e); 
+         TFApp.logException(e);
       }
 	}
 	
 	@Override
 	public int onStartCommand(final Intent intent, int flags, final int startID) {
-		Log.d(SecretTalkMessengerApplication.LOGKEY, "on start");
+		Log.d(TFApp.LOGKEY, "on start");
 		startMeOnce();
 		return START_NOT_STICKY;
 	}

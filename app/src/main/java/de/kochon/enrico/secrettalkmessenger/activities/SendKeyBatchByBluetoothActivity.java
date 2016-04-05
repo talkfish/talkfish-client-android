@@ -2,7 +2,7 @@ package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.Set;
 import java.util.HashMap;
@@ -64,7 +63,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                case MESSAGE_SENT:
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, 
+                  Log.d(TFApp.LOGKEY,
                         "got message_sent");
                   Intent reply = new Intent();
                   Bundle result = new Bundle();
@@ -118,7 +117,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(SHOW_CONVERSATION_ID_KEY)) {
          Long conversationID = data.getLongExtra(SHOW_CONVERSATION_ID_KEY, -1);
-         conversation = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+         conversation = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
          if (  null == conversation ) 
          {
             Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
@@ -140,7 +139,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
       discover.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-               Log.d(SecretTalkMessengerApplication.LOGKEY, "in onClick(" + v + ")");
+               Log.d(TFApp.LOGKEY, "in onClick(" + v + ")");
                // IntentFilter for found devices
                IntentFilter foundFilter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                // Broadcast receiver for any matching filter
@@ -242,7 +241,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                // UUID is the app's UUID string, also used by the server code
                tmp = device.createRfcommSocketToServiceRecord(UUID.fromString(ReceiveKeyByBluetoothActivity.UUID_STRING));
            } catch (IOException e) { 
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
            mmSocket = tmp;
        }
@@ -259,9 +258,9 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                try {
                    mmSocket.close();
                } catch (IOException e) {
-                  SecretTalkMessengerApplication.logException(e);
+                  TFApp.logException(e);
                }
-                  SecretTalkMessengerApplication.logException(connectException);
+                  TFApp.logException(connectException);
                return;
            }
     
@@ -271,7 +270,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                if (out != null) {
                   ArrayList<Messagekey> keys = new ArrayList<Messagekey>();
                   StringBuffer transferstringbuilder = new StringBuffer();
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, "creating keys");
+                  Log.d(TFApp.LOGKEY, "creating keys");
                   for(int i=0; i<BATCH_KEY_GENERATION_COUNT_PER_DIRECTION; i++) {
                      Messagekey rKey = new Messagekey(true);
                      Messagekey sKey = new Messagekey(false);
@@ -283,7 +282,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                      keys.add(sKey);
                   }
 
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, "sending keys over the air");
+                  Log.d(TFApp.LOGKEY, "sending keys over the air");
                   String payload = transferstringbuilder.toString();
 
                   long startnow;
@@ -295,20 +294,20 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                   if (endnow-startnow>0) {
                      transferrate_estimate = 1000*payload.getBytes().length/(1024*(endnow-startnow));
                   }
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("sending %d bytes over air took %d ms, estimated speed %f KBytes/sec.", 
+                  Log.d(TFApp.LOGKEY, String.format("sending %d bytes over air took %d ms, estimated speed %f KBytes/sec.",
                                                                               payload.getBytes().length, (endnow-startnow), transferrate_estimate));
 
                   startnow = android.os.SystemClock.uptimeMillis();
-                  int count = ((SecretTalkMessengerApplication)(SendKeyBatchByBluetoothActivity.this.getApplication())).getDataAccessHelper().
+                  int count = ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).getDAH().
                                                       bulkAddKeysToConversationAndSetExchanged(SendKeyBatchByBluetoothActivity.this.conversation, keys);
 
                   endnow = android.os.SystemClock.uptimeMillis();
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("storing %d keys took %d ms.", 
+                  Log.d(TFApp.LOGKEY, String.format("storing %d keys took %d ms.",
                                                                               count, (endnow-startnow)));
                   mHandler.obtainMessage(MESSAGE_SENT, -1, -1, null).sendToTarget();
                }
            } catch(IOException e) {
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
        }
     
@@ -317,7 +316,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
            try {
                mmSocket.close();
            } catch (IOException e) {
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
        }
    }

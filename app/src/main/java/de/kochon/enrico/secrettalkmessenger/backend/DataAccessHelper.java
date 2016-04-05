@@ -1,6 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.backend;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
@@ -8,15 +8,11 @@ import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
-import java.util.Calendar;
 import java.util.TreeSet;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.text.TextUtils;
 import android.content.ContentValues;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 public class DataAccessHelper {
    
@@ -76,7 +72,7 @@ public class DataAccessHelper {
       Channel needle = null;
       if (!listCursor.isAfterLast()) {
            do {
-              Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loading channel, " 
+              Log.d(TFApp.LOGKEY, String.format("loading channel, "
                            + "searching ... - current id/val: %d/%s",
                            listCursor.getLong(0), listCursor.getString(1) ));
               if (id == listCursor.getLong(0)) {
@@ -121,7 +117,7 @@ public class DataAccessHelper {
                   (listCursor.getInt(5)>0),
                   (listCursor.getInt(6)>0));
             
-            //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loadAllKeysForReceiving: loading key %s for conversation %d",
+            //Log.d(TFApp.LOGKEY, String.format("loadAllKeysForReceiving: loading key %s for conversation %d",
             //                                                           k.toString(), conversationID));
             keys.add(k);
          } while (listCursor.moveToNext());      
@@ -157,7 +153,7 @@ public class DataAccessHelper {
                   (listCursor.getInt(5)>0),
                   (listCursor.getInt(6)>0));
             
-            //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loadAllKeysForSending: loading key %s for conversation %d",
+            //Log.d(TFApp.LOGKEY, String.format("loadAllKeysForSending: loading key %s for conversation %d",
             //                                                           k.toString(), conversationID));
             keys.add(k);
          } while (listCursor.moveToNext());      
@@ -223,7 +219,7 @@ public class DataAccessHelper {
          if (null != conv) {
             allConversations.add(conv);
          } else {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("Could not load Conversation for id %d!", convID)); 
+            Log.d(TFApp.LOGKEY, String.format("Could not load Conversation for id %d!", convID));
          }
       }
       return allConversations;
@@ -233,10 +229,10 @@ public class DataAccessHelper {
    public List<Long> loadAllConversationIDs() {
       SQLiteDatabase database = dbhelper.getReadableDatabase();
         
-        Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONVERSATIONS, 
+        Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONVERSATIONS,
               new String[] { SqlOpenHelper.CONVERSATIONS_COLUMN_ID}, 
               null, null, null, null, 
-              SqlOpenHelper.CONVERSATIONS_COLUMN_ID);
+              SqlOpenHelper.CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE);
         List<Long> entries = new ArrayList<Long>();
 
         listCursor.moveToFirst();
@@ -257,14 +253,15 @@ public class DataAccessHelper {
    public Conversation loadConversation(long id) {
       SQLiteDatabase database = dbhelper.getReadableDatabase();
         
-      Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONVERSATIONS, 
-              new String[] { SqlOpenHelper.CONVERSATIONS_COLUMN_ID, 
-                             SqlOpenHelper.CONVERSATIONS_COLUMN_IDCHANNEL_RECEIVING,
-                             SqlOpenHelper.CONVERSATIONS_COLUMN_IDCHANNEL_SENDING,
-                             SqlOpenHelper.CONVERSATIONS_COLUMN_NICK,
-                             SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERRECEIVED,
-                             SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERSENT }, 
-              null, null, null, null, 
+      Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONVERSATIONS,
+              new String[]{SqlOpenHelper.CONVERSATIONS_COLUMN_ID,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_IDCHANNEL_RECEIVING,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_IDCHANNEL_SENDING,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_NICK,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERRECEIVED,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERSENT,
+                      SqlOpenHelper.CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE},
+              null, null, null, null,
               SqlOpenHelper.CONVERSATIONS_COLUMN_ID);
 
       boolean hasConversationID = false;
@@ -273,11 +270,12 @@ public class DataAccessHelper {
       int idchannel_sending = -1;
       int number_received = -1;
       int number_sent = -1;
+       Date lastmessagetime = new Date();
 
       listCursor.moveToFirst();
       if (!listCursor.isAfterLast()) {
          do {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loading conversation, " 
+            Log.d(TFApp.LOGKEY, String.format("loading conversation, "
                            + "searching ... - current id/val: %d/%s",
                            listCursor.getLong(0), listCursor.getString(3) ));
             if (id == listCursor.getLong(0)) {
@@ -286,6 +284,8 @@ public class DataAccessHelper {
                nick = listCursor.getString(3);
                number_received = listCursor.getInt(4);
                number_sent = listCursor.getInt(5);
+                long lastmessagetimestamp = listCursor.getLong(6);
+                lastmessagetime.setTime(lastmessagetimestamp);
                hasConversationID = true;
             }
          } while (!hasConversationID && listCursor.moveToNext());      
@@ -300,12 +300,12 @@ public class DataAccessHelper {
          if (-1 != idchannel_receiving) {
             receiving = loadChannel(database, idchannel_receiving);
          }
-         if (null == receiving) { Log.d(SecretTalkMessengerApplication.LOGKEY, "could not instantiate receiving channel"); }
+         if (null == receiving) { Log.d(TFApp.LOGKEY, "could not instantiate receiving channel"); }
          Channel sending = null;
          if (-1 != idchannel_sending) {
             sending = loadChannel(database, idchannel_sending);
          }
-         if (null == sending) { Log.d(SecretTalkMessengerApplication.LOGKEY, "could not instantiate sending channel"); }
+         if (null == sending) { Log.d(TFApp.LOGKEY, "could not instantiate sending channel"); }
 
          // load messages belonging to conversation
 		   TreeSet<CountedMessage> treesetMessages = new TreeSet<CountedMessage>();
@@ -320,15 +320,18 @@ public class DataAccessHelper {
             do {
                if (id == listCursor.getLong(0)) {
                   long datestamp = listCursor.getLong(1);
-                  //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loading message - datestamp is %d", datestamp)); 
+                  //Log.d(TFApp.LOGKEY, String.format("loading message - datestamp is %d", datestamp));
                   Date messagetime = new Date();
                   messagetime.setTime(datestamp);
                   boolean isReceived = listCursor.getInt(2)==1;
                   int messagenumber = listCursor.getInt(3);
                   String messagebody = listCursor.getString(4);
                   CountedMessage cm = new CountedMessage(isReceived, messagenumber, -1, messagebody, messagetime);
-                  //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loaded message %s", cm.toString())); 
+                  //Log.d(TFApp.LOGKEY, String.format("loaded message %s", cm.toString()));
                   treesetMessages.add(cm);
+                   if (messagetime.after(lastmessagetime)) {
+                       lastmessagetime = messagetime;
+                   }
                }
             } while (listCursor.moveToNext());      
          }
@@ -338,13 +341,14 @@ public class DataAccessHelper {
          List<Messagekey> keysforSending = loadAllKeysForSending(id);
 
          if (null != sending && null != receiving) {
+             Log.d(TFApp.LOGKEY, String.format("new conv %s with time %d", nick, lastmessagetime.getTime()));
             result = new Conversation(id, nick, number_received, number_sent, 
                                        treesetMessages,
                                        keysforReceiving,
                                        keysforSending,
-                                       receiving, sending);
+                                       receiving, sending, lastmessagetime);
          } else {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "could not instantiate Conversation"); 
+            Log.d(TFApp.LOGKEY, "could not instantiate Conversation");
          }
       }
 
@@ -415,7 +419,7 @@ public class DataAccessHelper {
          id = db.insert(SqlOpenHelper.TABLE_NAME_MESSAGES, null, messageValues);
          message.setID(id);
       } catch (Exception e) {
-         SecretTalkMessengerApplication.logException(e);
+         TFApp.logException(e);
       }
       return id;
    }
@@ -438,7 +442,7 @@ public class DataAccessHelper {
             key.setID(id);
          } 
       } catch (Exception e) {
-         SecretTalkMessengerApplication.logException(e);
+         TFApp.logException(e);
       }
       return id;
    }
@@ -493,7 +497,7 @@ public class DataAccessHelper {
                   db.insert(SqlOpenHelper.TABLE_NAME_MESSAGEKEYS, null, keyValues);
                   count++;
                } catch (Exception e) {
-                  SecretTalkMessengerApplication.logException(e);
+                  TFApp.logException(e);
                }
             }
          }
@@ -507,7 +511,7 @@ public class DataAccessHelper {
 
 
    public int updateKey(Messagekey key) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("updateKey: saving state of isexchanged for key %s", key.toString()));
+      Log.d(TFApp.LOGKEY, String.format("updateKey: saving state of isexchanged for key %s", key.toString()));
       SQLiteDatabase db = dbhelper.getWritableDatabase();
       ContentValues updatableKeyvalues = new ContentValues();
       updatableKeyvalues.put(SqlOpenHelper.MESSAGEKEYS_COLUMN_ISALREADYEXCHANGED, (key.getIsExchanged()?1:0));
@@ -520,7 +524,7 @@ public class DataAccessHelper {
 
 
    public int updateChannel(Channel channel) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("updateChannel: saving endpoint for channel %s", channel.toString()));
+      Log.d(TFApp.LOGKEY, String.format("updateChannel: saving endpoint for channel %s", channel.toString()));
       SQLiteDatabase db = dbhelper.getWritableDatabase();
       ContentValues updatableChannelvalues = new ContentValues();
       updatableChannelvalues.put(SqlOpenHelper.CHANNELS_COLUMN_ENDPOINT, channel.endpoint);
@@ -531,12 +535,13 @@ public class DataAccessHelper {
 
 
    public int updateConversation(Conversation conversation) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("updateConversation called for conversation with id %d", conversation.getID()));
+      Log.d(TFApp.LOGKEY, String.format("updateConversation called for conversation with id %d", conversation.getID()));
       SQLiteDatabase db = dbhelper.getWritableDatabase();
       ContentValues updatableConversationvalues = new ContentValues();
       updatableConversationvalues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NICK, conversation.getNick());
       updatableConversationvalues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERRECEIVED, conversation.getCurrentNumberOfReceivedMessages());
       updatableConversationvalues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERSENT, conversation.getCurrentNumberOfSentMessages());
+       updatableConversationvalues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE, conversation.getLastMessageTime().getTime());
       String whereClause = String.format("%s=%d",SqlOpenHelper.CONVERSATIONS_COLUMN_ID, conversation.getID());
       int affectedRows = db.update(SqlOpenHelper.TABLE_NAME_CONVERSATIONS, updatableConversationvalues, whereClause, null);
       return affectedRows;
@@ -574,11 +579,11 @@ public class DataAccessHelper {
             int cachekey = listCursor.getInt(1);
             String content = listCursor.getString(2);
             if (cachekey>=0 && cachekey<maxSize) {
-               //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("loadCacheForChannel: loading entry %d with content %s",
+               //Log.d(TFApp.LOGKEY, String.format("loadCacheForChannel: loading entry %d with content %s",
                //                                                        cachekey, content));
                cachecontent[cachekey] = content;            
             } else {
-               Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("Warning: cachekey %d out of range, maxsize is %d, omitting value %s!", 
+               Log.d(TFApp.LOGKEY, String.format("Warning: cachekey %d out of range, maxsize is %d, omitting value %s!",
                                                                         cachekey, maxSize, content));
             }
          } while (listCursor.moveToNext());      
@@ -590,7 +595,7 @@ public class DataAccessHelper {
 
 
    public boolean hasCacheEntry(int idchannel, int cachekey) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("hasCacheEntry: checking existence for cache %d and key %d",
+      Log.d(TFApp.LOGKEY, String.format("hasCacheEntry: checking existence for cache %d and key %d",
                                                                   idchannel, cachekey));
       SQLiteDatabase db = dbhelper.getReadableDatabase();
       Cursor listCursor = db.query(SqlOpenHelper.TABLE_NAME_SECRETTALKCHANNELCACHE_CONTENT, 
@@ -610,17 +615,17 @@ public class DataAccessHelper {
          } while (listCursor.moveToNext());      
       }
       if (count>1) {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("WARNING: duplicate entries for cache %d and key %d detected!",
+         Log.d(TFApp.LOGKEY, String.format("WARNING: duplicate entries for cache %d and key %d detected!",
                                                                      idchannel, cachekey));
       }
       boolean result = false;
       if (count>=1) result = true;
       listCursor.close();
       if (result) {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("hasCacheEntry: cache %d and key %d is existing.",
+         Log.d(TFApp.LOGKEY, String.format("hasCacheEntry: cache %d and key %d is existing.",
                                                                      idchannel, cachekey));
       } else {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("hasCacheEntry: cache %d and key %d is not existing.",
+         Log.d(TFApp.LOGKEY, String.format("hasCacheEntry: cache %d and key %d is not existing.",
                                                                      idchannel, cachekey));
       }
       return result;
@@ -631,7 +636,7 @@ public class DataAccessHelper {
     * method updates or creates appropriate cacheentry
     */
    public boolean setCacheForCacheMetaIDAndKey(int idchannel, int cachekey, String newValue) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("setCacheForCacheMetaIDAndKey: setting cacheval for cache %d and key %d to %s",
+      Log.d(TFApp.LOGKEY, String.format("setCacheForCacheMetaIDAndKey: setting cacheval for cache %d and key %d to %s",
                                                                   idchannel, cachekey, newValue));
       boolean isNewEntry = !hasCacheEntry(idchannel, cachekey);
 
@@ -656,12 +661,12 @@ public class DataAccessHelper {
 
 
    public int getCurrentOffsetForChannel(int idchannel) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("getCurrentOffsetForChannel: channel %d", idchannel));
+      Log.d(TFApp.LOGKEY, String.format("getCurrentOffsetForChannel: channel %d", idchannel));
       
       SQLiteDatabase db = dbhelper.getReadableDatabase();
 
       if (!db.isDatabaseIntegrityOk()) {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("ERROR: db integrity check failed!"));
+         Log.d(TFApp.LOGKEY, String.format("ERROR: db integrity check failed!"));
          return -1;
       }
 
@@ -673,11 +678,11 @@ public class DataAccessHelper {
       int currentOffset =  -1;
       if (listCursor != null && listCursor.moveToFirst()) {
          if (listCursor.getCount()!= 1) {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("ERROR: amount of rows is %d", listCursor.getCount()));
+            Log.d(TFApp.LOGKEY, String.format("ERROR: amount of rows is %d", listCursor.getCount()));
             return -1;
          }
          if (listCursor.getColumnCount()!= 1) {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("ERROR: amount of columns is %d", listCursor.getColumnCount()));
+            Log.d(TFApp.LOGKEY, String.format("ERROR: amount of columns is %d", listCursor.getColumnCount()));
             return -1;
          }
          int colind = listCursor.getColumnIndex(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_CURRENTOFFSET);
@@ -685,7 +690,7 @@ public class DataAccessHelper {
 
          listCursor.close();
       }
-      //Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("current offset is %d.", currentOffset));
+      //Log.d(TFApp.LOGKEY, String.format("current offset is %d.", currentOffset));
       return currentOffset;
    }
 

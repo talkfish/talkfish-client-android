@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.Set;
 import java.util.HashMap;
@@ -85,7 +84,7 @@ public class SendSingleKeyByBluetoothActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(ShowKeyActivity.MESSAGEKEY_ID_KEY)) {
          long keyID = data.getLongExtra(ShowKeyActivity.MESSAGEKEY_ID_KEY, -1);
-         key = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadMessagekey(keyID);
+         key = ((TFApp)(this.getApplication())).getDAH().loadMessagekey(keyID);
       }
 
       if (key == null) {
@@ -107,7 +106,7 @@ public class SendSingleKeyByBluetoothActivity extends Activity {
       discover.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-               Log.d(SecretTalkMessengerApplication.LOGKEY, "in onClick(" + v + ")");
+               Log.d(TFApp.LOGKEY, "in onClick(" + v + ")");
                // IntentFilter for found devices
                IntentFilter foundFilter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
                // Broadcast receiver for any matching filter
@@ -209,7 +208,7 @@ public class SendSingleKeyByBluetoothActivity extends Activity {
                // UUID is the app's UUID string, also used by the server code
                tmp = device.createRfcommSocketToServiceRecord(UUID.fromString(ReceiveKeyByBluetoothActivity.UUID_STRING));
            } catch (IOException e) { 
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
            mmSocket = tmp;
        }
@@ -226,24 +225,24 @@ public class SendSingleKeyByBluetoothActivity extends Activity {
                try {
                    mmSocket.close();
                } catch (IOException e) {
-                  SecretTalkMessengerApplication.logException(e);
+                  TFApp.logException(e);
                }
-                  SecretTalkMessengerApplication.logException(connectException);
+                  TFApp.logException(connectException);
                return;
            }
     
            try {
                OutputStream out = mmSocket.getOutputStream();
                if (out != null) {
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, "sending key over the air");
+                  Log.d(TFApp.LOGKEY, "sending key over the air");
                   String payload = keyToBeExchanged.getWebsafeSerialization();
                   out.write(payload.getBytes());
                   key.setIsExchanged(true);
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, "saving keyupdate in db");
-                  ((SecretTalkMessengerApplication)(SendSingleKeyByBluetoothActivity.this.getApplication())).getDataAccessHelper().updateKey(key);
+                  Log.d(TFApp.LOGKEY, "saving keyupdate in db");
+                  ((TFApp)(SendSingleKeyByBluetoothActivity.this.getApplication())).getDAH().updateKey(key);
                }
            } catch(IOException e) {
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
        }
     
@@ -252,7 +251,7 @@ public class SendSingleKeyByBluetoothActivity extends Activity {
            try {
                mmSocket.close();
            } catch (IOException e) {
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
            }
        }
    }

@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public class WelcomeActivity extends Activity {
       TextView textWelcome = (TextView) findViewById(R.id.textViewWelcome);
       if (btnOk != null && textWelcome != null) {
          btnOk.setOnClickListener(new OnClickListener() { public void onClick(View v) { finish(); } });
-         String name = ((SecretTalkMessengerApplication)(this.getApplication())).configHelper.getName();
+         String name = ((TFApp)(this.getApplication())).configHelper.getName();
          textWelcome.setText(textWelcome.getText().toString().replace("$", name));
          Linkify.addLinks(textWelcome, Linkify.ALL);
     }

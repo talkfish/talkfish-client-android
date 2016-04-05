@@ -3,7 +3,6 @@ package de.kochon.enrico.secrettalkmessenger.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +28,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
@@ -59,9 +58,9 @@ public class ChatActivity extends Activity {
       public boolean pushMessageToServer(String url, String message) {
          boolean success = false;
          try {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "pushMessageToServer");
+            Log.d(TFApp.LOGKEY, "pushMessageToServer");
             String sendtarget = String.format("%s?m=%s", url, message);
-			   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("calling %s", sendtarget));
+			   Log.d(TFApp.LOGKEY, String.format("calling %s", sendtarget));
 				URL website = new URL(sendtarget);
 		      URLConnection connection = website.openConnection();
 		      BufferedReader in = new BufferedReader(
@@ -76,7 +75,7 @@ public class ChatActivity extends Activity {
             success = true;
 			} catch (Exception ex) {
             success = false;
-            SecretTalkMessengerApplication.logException(ex);
+            TFApp.logException(ex);
 			}
          return success;
       }
@@ -92,7 +91,7 @@ public class ChatActivity extends Activity {
             
 			} catch (Exception ex) {
             success = false;
-            SecretTalkMessengerApplication.logException(ex);
+            TFApp.logException(ex);
 			}
          return success;
       }
@@ -109,8 +108,8 @@ public class ChatActivity extends Activity {
          if (success) {
              chatMessage.setText("");
              currentMessageToBeSent = conversation.addSentMessage(currentMessageToBeSent);
-             ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().addNewMessage(currentMessageToBeSent);
-             ((SecretTalkMessengerApplication)(ChatActivity.this.getApplication())).getDataAccessHelper().updateConversation(conversation);
+             ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(currentMessageToBeSent);
+             ((TFApp)(ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
 
          } else {
              currentMessageToBeSent = null;
@@ -127,7 +126,7 @@ public class ChatActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(SHOW_CONVERSATION_ID_KEY)) {
          Long conversationID = data.getLongExtra(SHOW_CONVERSATION_ID_KEY, -1);
-         conversation = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+         conversation = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
          receivingChan = conversation.getChannelForReceiving();
          sendingChan = conversation.getChannelForSending();
       }
@@ -214,7 +213,7 @@ public class ChatActivity extends Activity {
 
       scrollDown();
 
-      ((SecretTalkMessengerApplication)(this.getApplication())).checkBackgroundService(this);
+      ((TFApp)(this.getApplication())).checkBackgroundService(this);
 	}
 
 
@@ -230,7 +229,7 @@ public class ChatActivity extends Activity {
 
 
    public void fullReload() {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, "fullReload");
+      Log.d(TFApp.LOGKEY, "fullReload");
       if (receivingChan != null) {
          clearChat();
 
@@ -240,14 +239,14 @@ public class ChatActivity extends Activity {
                if (cm.getIsReceived()) {
                   sb.append(conversation.getNick());
                } else {
-                  sb.append(((SecretTalkMessengerApplication)(this.getApplication())).configHelper.getName());
+                  sb.append(((TFApp)(this.getApplication())).configHelper.getName());
                }
                sb.append(": ");
                sb.append(cm.getMessagebody());
                addChatMessage(sb.toString());
             }
          } else {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "fullReload: error conversation is null!");
+            Log.d(TFApp.LOGKEY, "fullReload: error conversation is null!");
          }
       } else {
          Toast.makeText(this, "FEHLER: Empfangskanal nicht vollständig geladen, Nachrichten können nicht aktualisiert werden.", Toast.LENGTH_LONG).show();
@@ -256,7 +255,7 @@ public class ChatActivity extends Activity {
 
 
    public void clearChat() {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, "clearChat");
+      Log.d(TFApp.LOGKEY, "clearChat");
 		LinearLayout mainChatArea = (LinearLayout)findViewById(R.id.mainChatArea);
       if (mainChatArea != null) {
          mainChatArea.removeAllViews();
@@ -275,7 +274,7 @@ public class ChatActivity extends Activity {
             final byte limitedmessagebytes[] = Arrays.copyOfRange(fullmessagebytes, 0, Messagekey.KEYBODY_LENGTH);
             limitedmessage = new String(limitedmessagebytes, 0, Messagekey.KEYBODY_LENGTH);
          }
-		   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to encrypt and send this message: >%s<", limitedmessage));
+		   Log.d(TFApp.LOGKEY, String.format("trying to encrypt and send this message: >%s<", limitedmessage));
 
          currentMessageToBeSent = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
 
@@ -284,37 +283,37 @@ public class ChatActivity extends Activity {
          if (null != k) {
             EncryptedMessage cryptogram = EncryptedMessage.encrypt(currentMessageToBeSent, k);
             k.setIsUsed(true);
-            ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().updateKey(k);
+            ((TFApp)(this.getApplication())).getDAH().updateKey(k);
 
             SendMessageTask task = new SendMessageTask();
 
             String websafe = cryptogram.getWebsafeSerialization();
-			   Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to send %s", websafe));
+			   Log.d(TFApp.LOGKEY, String.format("trying to send %s", websafe));
             task.execute(sendingChan.endpoint, websafe);
          } else {
              currentMessageToBeSent = null;
              Toast.makeText(this, "Fehler: Kein zulässiger Schlüssel vorhanden!", Toast.LENGTH_LONG).show();
-             Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Could not obtain key!");
+             Log.d(TFApp.LOGKEY, "ERROR: Could not obtain key!");
          }
       } else {
           currentMessageToBeSent = null;
           Toast.makeText(this, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.", Toast.LENGTH_LONG).show();
-          Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
+          Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
           if (sendingChan == null) {
-		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Chan for sending not properly loaded.");
+		      Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded.");
           }
           if (conversation == null) {
-		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Conversation not properly loaded.");
+		      Log.d(TFApp.LOGKEY, "ERROR: Conversation not properly loaded.");
          }
          if (conversation != null && conversation.getSendKeyAmount()==0) {
-		      Log.d(SecretTalkMessengerApplication.LOGKEY, "ERROR: Keys for sending are missing.");
+		      Log.d(TFApp.LOGKEY, "ERROR: Keys for sending are missing.");
          }
       }
    }
 
 	
 	public void addChatMessage(String message) {
-       Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("addChatMessage(%s)", message));
+       Log.d(TFApp.LOGKEY, String.format("addChatMessage(%s)", message));
        TextView newEntry = new TextView(ChatActivity.this);
        newEntry.setTextColor(getResources().getColor(R.color.app_foreground));
        newEntry.setText(String.format("%s", message));

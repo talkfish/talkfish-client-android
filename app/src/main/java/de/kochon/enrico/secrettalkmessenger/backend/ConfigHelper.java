@@ -1,12 +1,12 @@
 package de.kochon.enrico.secrettalkmessenger.backend;
 
 import java.util.ArrayList;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
+
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.text.TextUtils;
 
 public class ConfigHelper {
 
@@ -98,15 +98,15 @@ public class ConfigHelper {
    
    
    public int setConfig(String key, String value) {
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("setting key/val: %s/%s", key, value));
+      Log.d(TFApp.LOGKEY, String.format("setting key/val: %s/%s", key, value));
       
       ContentValues configValues = new ContentValues();
       
       boolean keyAlreadyInsideConfig = hasKey(key);
       if (keyAlreadyInsideConfig) {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, "key already inside.");
+         Log.d(TFApp.LOGKEY, "key already inside.");
       } else {
-         Log.d(SecretTalkMessengerApplication.LOGKEY, "key not yet inside.");
+         Log.d(TFApp.LOGKEY, "key not yet inside.");
       }
       int affectedRows = 0;
       SQLiteDatabase db = dbhelper.getWritableDatabase();
@@ -114,13 +114,13 @@ public class ConfigHelper {
       if (keyAlreadyInsideConfig) {
          configValues.put(SqlOpenHelper.CONFIG_COLUMN_VALUE, value);
          affectedRows = db.update(SqlOpenHelper.TABLE_NAME_CONFIG, configValues, SqlOpenHelper.CONFIG_COLUMN_KEY+"=?", new String[] {key});
-         Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("updated %d rows", affectedRows));
+         Log.d(TFApp.LOGKEY, String.format("updated %d rows", affectedRows));
       } else {
          configValues.put(SqlOpenHelper.CONFIG_COLUMN_KEY, key);
          configValues.put(SqlOpenHelper.CONFIG_COLUMN_VALUE, value);
          if (-1 != db.insert(SqlOpenHelper.TABLE_NAME_CONFIG, null, configValues)) {
             affectedRows = 1;
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "added one row");
+            Log.d(TFApp.LOGKEY, "added one row");
          }
       }
       

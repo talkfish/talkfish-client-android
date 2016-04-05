@@ -1,11 +1,13 @@
 package de.kochon.enrico.secrettalkmessenger.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.TreeSet;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Conversation {
+public class Conversation implements Comparable<Conversation> {
 	
    private long id;
 	private String nick;
@@ -24,6 +26,8 @@ public class Conversation {
 
    private boolean hasNewMessages;
 
+   private Date lastMessageTime;
+
 
    /**
     * minimum constructor
@@ -39,6 +43,7 @@ public class Conversation {
       this.channelForReceiving = channelForReceiving;
       this.channelForSending = channelForSending;
       this.hasNewMessages = false;
+       this.lastMessageTime = new Date();
 	}
 	
 
@@ -50,7 +55,8 @@ public class Conversation {
                        List<Messagekey> keysForReceiving,
                        List<Messagekey> keysForSending,
                        Channel channelForReceiving, 
-                       Channel channelForSending) {
+                       Channel channelForSending,
+                        Date lastMessageTime) {
       this.id = id;
 		this.nick = nick;
 		this.currentNumberOfReceivedMessages = received;
@@ -61,6 +67,7 @@ public class Conversation {
       this.channelForReceiving = channelForReceiving;
       this.channelForSending = channelForSending;
       this.hasNewMessages = false;
+       this.lastMessageTime = lastMessageTime;
 	}
 	
 	public long getID() { return id; }
@@ -85,6 +92,36 @@ public class Conversation {
    public void setHasNewMessages(boolean state) {
       this.hasNewMessages = state;
    }
+
+   public Date getLastMessageTime() { return lastMessageTime; }
+    public void setLastMessageTime(Date timeforUpdateIfNewer) {
+        if (this.lastMessageTime.getTime() < timeforUpdateIfNewer.getTime()) {
+            this.lastMessageTime = timeforUpdateIfNewer;
+        }
+    }
+
+
+    @Override
+    public int compareTo(Conversation another) {
+        int ret = getLastMessageTime().compareTo(another.getLastMessageTime());
+
+        if (0 == ret) {
+            ret = getNick().compareTo(another.getNick());
+        }
+
+        return ret;
+    }
+
+
+    public static Comparator<Conversation> conversationReverseComparator
+            = new Comparator<Conversation>() {
+
+        public int compare(Conversation conv1, Conversation conv2) {
+
+            return conv2.compareTo(conv1);
+        }
+
+    };
 
 
    public boolean addKey(Messagekey key) {
@@ -165,6 +202,7 @@ public class Conversation {
 			if (cm.getLocalmessagenumber() != this.currentNumberOfSentMessages+1) throw new IllegalArgumentException("Internal Messagenumber does not fit!");
 			this.currentNumberOfSentMessages++;
 		}
+        this.setLastMessageTime(cm.getCreated());
 		this.messages.add(cm);
 	}
 
@@ -181,11 +219,12 @@ public class Conversation {
 
 
    public CountedMessage addSentMessage(CountedMessage cm) {
-		this.currentNumberOfSentMessages++;
-      cm.setLocalmessagenumber(this.currentNumberOfSentMessages);
-      cm.setIDConversation(id);
-		this.messages.add(cm);
-      return cm;
+       this.currentNumberOfSentMessages++;
+       cm.setLocalmessagenumber(this.currentNumberOfSentMessages);
+       cm.setIDConversation(id);
+       this.setLastMessageTime(cm.getCreated());
+       this.messages.add(cm);
+       return cm;
    }
 
 
@@ -193,23 +232,26 @@ public class Conversation {
 		return this.addReceivedMessage(messagebody, new Date());
 	}
 
-	
+
+	// TODO: check could this method be refactored to just using the methond addReceivedMessage(cm) ?
 	public CountedMessage addReceivedMessage(String messagebody, Date localtime) {
 		this.currentNumberOfReceivedMessages++;
-      CountedMessage cm = new CountedMessage(true, this.currentNumberOfReceivedMessages, -1, messagebody, localtime);
+        CountedMessage cm = new CountedMessage(true, this.currentNumberOfReceivedMessages, -1, messagebody, localtime);
 		this.messages.add(cm);
-      cm.setIDConversation(id);
-		return cm;
+        cm.setIDConversation(id);
+        this.setLastMessageTime(cm.getCreated());
+        return cm;
 	}
 
 
    public CountedMessage addReceivedMessage(CountedMessage cm) {
 	   if (cm.getLocalmessagenumber() != CountedMessage.NOTADDEDNUMBER) throw new IllegalArgumentException("Message may not be added twice!");
-		this.currentNumberOfReceivedMessages++;
-      cm.setLocalmessagenumber(this.currentNumberOfReceivedMessages);
-      cm.setIDConversation(id);
-      this.messages.add(cm);
-      return cm;
+       this.currentNumberOfReceivedMessages++;
+       cm.setLocalmessagenumber(this.currentNumberOfReceivedMessages);
+       cm.setIDConversation(id);
+       this.messages.add(cm);
+       this.setLastMessageTime(cm.getCreated());
+       return cm;
    }
 	
 	
@@ -235,12 +277,12 @@ public class Conversation {
 		// 	sb.append(m.toString());
 		// 	sb.append("\n");
 		// }
+
       sb.append(this.getNick());
-      sb.append(String.format("%s (Schlüssel zum Senden:%d/zum Empfangen:%d)", 
-            this.hasNewMessages?" Neue Nachrichten!":"",
-            this.countActiveSendKeys(), this.countActiveReceiveKeys())); 
-		
-		return sb.toString();
+      sb.append(String.format(" %s",
+            this.hasNewMessages?" *":""));
+
+        return sb.toString();
 	}
 
 }

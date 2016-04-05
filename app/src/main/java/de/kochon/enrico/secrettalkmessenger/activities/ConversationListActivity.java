@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 import de.kochon.enrico.secrettalkmessenger.model.SecretTalkChannelCache;
@@ -9,35 +9,24 @@ import de.kochon.enrico.secrettalkmessenger.model.EncryptedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
-import de.kochon.enrico.secrettalkmessenger.backend.DataAccessHelper;
-import de.kochon.enrico.secrettalkmessenger.backend.NetworkIO;
 import de.kochon.enrico.secrettalkmessenger.backend.ChannelCacheRefreshable;
 import de.kochon.enrico.secrettalkmessenger.backend.RefreshCacheForChannel;
 
-import de.kochon.enrico.secrettalkmessenger.service.CheckNewMessages;
-
 import android.app.ListActivity;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.util.Log;
 
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,7 +44,10 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
 
 
    protected void initArrayAdapter() {
-      List<Conversation> conversations = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadAllConversations();
+       Log.d(TFApp.LOGKEY, "ConversationListActivity: initArrayAdapter");
+       List<Conversation> conversations = ((TFApp)(this.getApplication())).getDAH().loadAllConversations();
+      Collections.sort(conversations);
+      Collections.reverse(conversations);
       aa = new ArrayAdapter<Conversation>(this, R.layout.rowlayout_big, R.id.label, conversations);
       setListAdapter(aa);
    }
@@ -91,14 +83,14 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
                      Conversation c = aa.getItem(index_for_conversations);
                      Channel r = c.getChannelForReceiving();
                      if (!channelCacheMap.containsKey(r)) {
-                        Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("adding cache for channel %s", r.toString()));
+                        Log.d(TFApp.LOGKEY, String.format("adding cache for channel %s", r.toString()));
                         channelCacheMap.put(r, new SecretTalkChannelCache(r.endpoint));
                      }
                   }
                   for (Channel channel: channelCacheMap.keySet()) {
-                     Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
+                     Log.d(TFApp.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
                      RefreshCacheForChannel task = new RefreshCacheForChannel(channel.id, 
-                                                            ((SecretTalkMessengerApplication)(ConversationListActivity.this.getApplication())).getDataAccessHelper(), 
+                                                            ((TFApp)(ConversationListActivity.this.getApplication())).getDAH(),
                                                             ConversationListActivity.this);
                      task.execute(channel.endpoint);
                   }
@@ -120,10 +112,11 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
          if (r.id == idchannel && channelCacheMap.containsKey(r)) {
             SecretTalkChannelCache cache = channelCacheMap.get(r);
             if (!cache.isInitialized()) {
-               cache.initCache(((SecretTalkMessengerApplication)(ConversationListActivity.this.getApplication())).getDataAccessHelper().
+               cache.initCache(((TFApp)(ConversationListActivity.this.getApplication())).getDAH().
                                                          loadCacheForChannel(r.id, SecretTalkChannelCache.CACHE_SIZE));
             }
 
+             // TODO: the following code is more model or backend logic than ui -> refactor
             for(int i=0;i<SecretTalkChannelCache.CACHE_SIZE;i++) {
                String currentMessage = cache.getValue(i);
                if (EncryptedMessage.isEncryptedMessage(currentMessage)) {
@@ -133,11 +126,12 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
                      if (!k.getIsUsed()) {
                         CountedMessage decrypted = e.decrypt(k);
                         k.setIsUsed(true); 
-                        ((SecretTalkMessengerApplication)(ConversationListActivity.this.getApplication())).getDataAccessHelper().updateKey(k);
+                        ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateKey(k);
                         CountedMessage added = c.addReceivedMessage(decrypted);
                         c.setHasNewMessages(true);
-                        ((SecretTalkMessengerApplication)(ConversationListActivity.this.getApplication())).getDataAccessHelper().addNewMessage(added);
-                        ((SecretTalkMessengerApplication)(ConversationListActivity.this.getApplication())).getDataAccessHelper().updateConversation(c);
+                        ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().addNewMessage(added);
+                        ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateConversation(c);
+                         aa.sort(Conversation.conversationReverseComparator);
                         aa.notifyDataSetChanged();
                         ConversationListActivity.this.getListView().invalidateViews();
                         gotNewInChan = true;
@@ -196,7 +190,7 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
             case Activity.RESULT_OK:
                if (data.hasExtra(CreateNewConversationActivity.NEW_CONVERSATION_ID_KEY)) {
                   Long conversationID = data.getLongExtra(CreateNewConversationActivity.NEW_CONVERSATION_ID_KEY, -1);
-                  Conversation c = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+                  Conversation c = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
                   if (null != c) {
                      Toast.makeText(this, "Neue Unterhaltung mit " + c.getNick() + " angelegt.", Toast.LENGTH_SHORT).show();
                      aa.add(c);

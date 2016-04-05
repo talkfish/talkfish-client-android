@@ -1,6 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.backend;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 import android.util.Log;
 
@@ -40,7 +40,7 @@ public class NetworkIO {
 			
 			StringBuilder loadedServerFile = new StringBuilder();
 	        
-         Log.d(SecretTalkMessengerApplication.LOGKEY, "loadFileFromServer");
+         Log.d(TFApp.LOGKEY, "loadFileFromServer");
          URL website = new URL(urlForFile);
          URLConnection connection = website.openConnection();
          connection.setConnectTimeout(MAX_TIME_OUT);
@@ -62,11 +62,11 @@ public class NetworkIO {
    public static int getCurrentMessageOffsetOnServer(String urlForCurrentOffsetFile) throws SocketTimeoutException, IOException, NumberFormatException {
       int currentcount = -1;
 
-      Log.d(SecretTalkMessengerApplication.LOGKEY, "getCurrentMessageOffsetOnServer");
+      Log.d(TFApp.LOGKEY, "getCurrentMessageOffsetOnServer");
       String countFileContent = NetworkIO.loadFileFromServer(urlForCurrentOffsetFile);
       currentcount = Integer.parseInt(countFileContent.toString().trim(), 10);
 
-      Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("messagefileoffset on server is %d", currentcount));
+      Log.d(TFApp.LOGKEY, String.format("messagefileoffset on server is %d", currentcount));
       return currentcount;
    }
 }

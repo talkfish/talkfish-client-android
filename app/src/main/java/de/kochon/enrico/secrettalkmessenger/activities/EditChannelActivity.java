@@ -1,7 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 
 import android.app.Activity;
@@ -43,8 +43,8 @@ public class EditChannelActivity extends Activity {
                    endpointEdit.getText().toString().trim().length() != 0 &&
                    endpointEdit.getText().toString().trim() != chan.endpoint) {
                    chan.endpoint = endpointEdit.getText().toString().trim();
-                   affectedRows = ((SecretTalkMessengerApplication)(EditChannelActivity.this.getApplication()))
-                     .getDataAccessHelper().updateChannel(chan);
+                   affectedRows = ((TFApp)(EditChannelActivity.this.getApplication()))
+                     .getDAH().updateChannel(chan);
                }
                if (1 == affectedRows) {
                   Intent reply = new Intent();
@@ -64,7 +64,7 @@ public class EditChannelActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(EDIT_CHANNEL_ID_KEY)) {
          int channelID = data.getIntExtra(EDIT_CHANNEL_ID_KEY, -1);
-         chan = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadChannel(channelID);
+         chan = ((TFApp)(this.getApplication())).getDAH().loadChannel(channelID);
          idText = (TextView) findViewById(R.id.viewChannelID);
          nameEdit = (TextView) findViewById(R.id.viewChannelName);
          protocolText = (TextView) findViewById(R.id.viewChannelProtocol);

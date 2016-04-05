@@ -1,7 +1,8 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.R;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -48,10 +49,10 @@ public class MainActivity extends Activity {
          try {
             version = getPackageManager().getPackageInfo("de.kochon.enrico.secrettalkmessenger",0).versionName;
          } catch (NameNotFoundException nnfe) {
-            SecretTalkMessengerApplication.logException(nnfe);
+            TFApp.logException(nnfe);
          }
          versionView.setText(String.format("Version: %s" , version));
       }
-      ((SecretTalkMessengerApplication)(this.getApplication())).checkBackgroundService(this);
+      ((TFApp)(this.getApplication())).checkBackgroundService(this);
    }
 }

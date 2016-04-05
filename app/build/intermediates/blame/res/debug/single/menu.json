@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/home/enrico/StudioProjects/talkfish-client-android/app/src/main/res/menu/main.xml"
+    },
+    {
         "merged": "/home/enno/StudioProjects/talkfish-client-android/app/build/intermediates/res/merged/debug/menu/main.xml",
         "source": "/home/enno/StudioProjects/talkfish-client-android/app/src/main/res/menu/main.xml"
     }

@@ -16,7 +16,7 @@ import android.view.View;
 
 import de.kochon.enrico.secrettalkmessenger.R;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 
@@ -35,7 +35,7 @@ public class CreateNewConversationActivity extends Activity {
    protected boolean initDefaultChannels() {
       boolean foundReceiving = false;
       boolean foundSending = false;
-      final List<Channel> channels = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadAllChannels();
+      final List<Channel> channels = ((TFApp)(this.getApplication())).getDAH().loadAllChannels();
       final ArrayList<String> channelEntries = new ArrayList<String>();
       for(Channel c: channels) { 
          if (c.name.equals("default") && c.protocol.equals("secrettalk") && c.isforreceiving) 
@@ -60,8 +60,8 @@ public class CreateNewConversationActivity extends Activity {
                   // create Conversation
                   String name = convName.getText().toString();
                   Conversation newConversation = new Conversation(name, defaultReceiving, defaultSending);
-                  long rowid = ((SecretTalkMessengerApplication)(CreateNewConversationActivity.this.getApplication()))
-                     .getDataAccessHelper().addNewConversation(newConversation);
+                  long rowid = ((TFApp)(CreateNewConversationActivity.this.getApplication()))
+                     .getDAH().addNewConversation(newConversation);
                   if (-1 != rowid)
                   {
                      // build reply

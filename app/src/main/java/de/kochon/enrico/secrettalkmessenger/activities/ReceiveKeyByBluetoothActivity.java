@@ -1,32 +1,23 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.Set;
 import java.util.UUID;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -66,15 +57,15 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                   long startnow;
                   long endnow;
                   startnow = android.os.SystemClock.uptimeMillis();
-                  int keycount = ((SecretTalkMessengerApplication)(ReceiveKeyByBluetoothActivity.this.getApplication())).
-                           getDataAccessHelper().bulkAddEncodedKeysToConversationAndSetExchanged(ReceiveKeyByBluetoothActivity.this.conversation, keys);
+                  int keycount = ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).
+                          getDAH().bulkAddEncodedKeysToConversationAndSetExchanged(ReceiveKeyByBluetoothActivity.this.conversation, keys);
                   endnow = android.os.SystemClock.uptimeMillis();
                   long totaltime = endnow-startnow;
                   double timeperkey = -1;
                   if (keycount>0) {
                      timeperkey= totaltime/keycount;
                   }
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, 
+                  Log.d(TFApp.LOGKEY,
                         String.format("total processing of %d keys took %d ms, this is %f ms per key", 
                                        keycount, totaltime, timeperkey));
                   Intent reply = new Intent();
@@ -98,7 +89,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
       Intent data = getIntent();
       if (data.hasExtra(SHOW_CONVERSATION_ID_KEY)) {
          Long conversationID = data.getLongExtra(SHOW_CONVERSATION_ID_KEY, -1);
-         conversation = ((SecretTalkMessengerApplication)(this.getApplication())).getDataAccessHelper().loadConversation(conversationID);
+         conversation = ((TFApp)(this.getApplication())).getDAH().loadConversation(conversationID);
          nameText = (TextView) findViewById(R.id.receiveViewConversationName);
          if ( null != conversation && null != nameText) 
          {
@@ -116,9 +107,9 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
       back.setOnClickListener(new OnClickListener() {
          @Override
          public void onClick(View v) {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "onClick in ButtonBack");
+            Log.d(TFApp.LOGKEY, "onClick in ButtonBack");
             if (ReceiveKeyByBluetoothActivity.this.listeningThread != null) {
-               Log.d(SecretTalkMessengerApplication.LOGKEY, "trying to close thread");
+               Log.d(TFApp.LOGKEY, "trying to close thread");
                ReceiveKeyByBluetoothActivity.this.listeningThread.cancel();
             }
             Intent reply = new Intent();
@@ -192,7 +183,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
              // MY_UUID is the app's UUID string, also used by the client code
              tmp = BluetoothAdapter.getDefaultAdapter().listenUsingRfcommWithServiceRecord(SERVICENAME, UUID.fromString(UUID_STRING));
           } catch (IOException e) {
-              SecretTalkMessengerApplication.logException(e);
+              TFApp.logException(e);
           }
           mmServerSocket = tmp;
        }
@@ -200,16 +191,16 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
       public void run() {
          BluetoothSocket socket = null;
          try {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "mmServerSocket.accept()");
+            Log.d(TFApp.LOGKEY, "mmServerSocket.accept()");
             
             socket = mmServerSocket.accept();
 
          } catch (IOException e) {
-            SecretTalkMessengerApplication.logException(e);
+            TFApp.logException(e);
          }
 
          if (socket != null) {
-            Log.d(SecretTalkMessengerApplication.LOGKEY, "got socket for receiving key(s)");
+            Log.d(TFApp.LOGKEY, "got socket for receiving key(s)");
             try {
                mmServerSocket.close();
                InputStream in = socket.getInputStream();
@@ -227,7 +218,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                   do {
                      bytesread = in.read(buffer, current_offset, total_buffersize-current_offset);
                      current_offset += bytesread;
-                     Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("read %d bytes, now at offset %d", bytesread, current_offset));
+                     Log.d(TFApp.LOGKEY, String.format("read %d bytes, now at offset %d", bytesread, current_offset));
                   } while ((bytesread > 0) && (current_offset < total_buffersize));
                   
                   endnow = android.os.SystemClock.uptimeMillis();
@@ -235,14 +226,14 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                   if (endnow-startnow>0) {
                      transferrate_estimate = 1000*total_buffersize/(1024*(endnow-startnow));
                   }
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("receiving %d bytes over air took %d ms, estimated speed %f KBytes/sec.", 
+                  Log.d(TFApp.LOGKEY, String.format("receiving %d bytes over air took %d ms, estimated speed %f KBytes/sec.",
                                                                               total_buffersize, (endnow-startnow), transferrate_estimate));
 
                   mHandler.obtainMessage(MESSAGE_READ, total_buffersize, -1, buffer).sendToTarget();
                }
 
             } catch (IOException e) {
-               SecretTalkMessengerApplication.logException(e);
+               TFApp.logException(e);
             }
          }
        }
@@ -251,10 +242,10 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
        /** Will cancel the listening socket, and cause the thread to finish */
        public void cancel() {
            try {
-               Log.d(SecretTalkMessengerApplication.LOGKEY, "cancel called, closing mmServerSocket");
+               Log.d(TFApp.LOGKEY, "cancel called, closing mmServerSocket");
                mmServerSocket.close();
            } catch (IOException e) {
-              SecretTalkMessengerApplication.logException(e);
+              TFApp.logException(e);
            }
        }
    }

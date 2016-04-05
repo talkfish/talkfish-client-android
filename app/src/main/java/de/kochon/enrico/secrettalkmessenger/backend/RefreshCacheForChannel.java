@@ -1,8 +1,8 @@
 package de.kochon.enrico.secrettalkmessenger.backend;
 
+import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.model.SecretTalkChannelCache;
 
-import de.kochon.enrico.secrettalkmessenger.SecretTalkMessengerApplication;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -42,7 +42,7 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
                for (int i=persistedOffset+1; i<=messagelimit; i++) {
                   int i_representant = i%SecretTalkChannelCache.CACHE_SIZE;
                   String targetfile = String.format("%sm_%07d.txt", baseurl, i_representant);
-                  Log.d(SecretTalkMessengerApplication.LOGKEY, String.format("trying to download %s", targetfile));
+                  Log.d(TFApp.LOGKEY, String.format("trying to download %s", targetfile));
                   String currentMessage = NetworkIO.loadFileFromServer(targetfile);
 
                   dataAccessHelper.setCacheForCacheMetaIDAndKey(idchannel, i_representant, currentMessage);
@@ -53,7 +53,7 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
          }
          
       } catch (Exception ex) {
-         SecretTalkMessengerApplication.logException(ex);
+         TFApp.logException(ex);
          message = ex.toString();
       }
       return message;
