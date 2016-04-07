@@ -12,19 +12,17 @@ import android.widget.TextView;
 import android.text.util.Linkify;
 
 public class WelcomeActivity extends Activity {
-   
-   
+
+
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_welcome);
-      
-      Button btnOk = (Button) findViewById(R.id.buttonWelcomeOk);
+
       TextView textWelcome = (TextView) findViewById(R.id.textViewWelcome);
-      if (btnOk != null && textWelcome != null) {
-         btnOk.setOnClickListener(new OnClickListener() { public void onClick(View v) { finish(); } });
-         String name = ((TFApp)(this.getApplication())).configHelper.getName();
+      if (textWelcome != null) {
+         String name = ((TFApp) (this.getApplication())).configHelper.getName();
          textWelcome.setText(textWelcome.getText().toString().replace("$", name));
          Linkify.addLinks(textWelcome, Linkify.ALL);
-    }
+      }
    }
 }

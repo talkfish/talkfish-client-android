@@ -34,15 +34,6 @@ public class ChannelListActivity extends ListActivity {
 
       setContentView(R.layout.activity_channels);
       initValues();
-      
-      Button btnOK = (Button) findViewById(R.id.buttonChannelsOK);
-      if (btnOK != null) {
-         btnOK.setOnClickListener(new OnClickListener() { 
-               public void onClick(View v) { 
-                  finish();
-               } 
-         });
-      }
        
    }
 
