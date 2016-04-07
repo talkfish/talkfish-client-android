@@ -400,6 +400,7 @@ public class DataAccessHelper {
       conversationValues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NICK , conversation.getNick());
       conversationValues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERRECEIVED, conversation.getCurrentNumberOfReceivedMessages());
       conversationValues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_NUMBERSENT, conversation.getCurrentNumberOfSentMessages());
+       conversationValues.put(SqlOpenHelper.CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE, 0);
       long id = db.insert(SqlOpenHelper.TABLE_NAME_CONVERSATIONS, null, conversationValues);
       conversation.setID(id);
       return id;

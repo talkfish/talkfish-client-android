@@ -72,7 +72,9 @@ public class CreateNewConversationActivity extends Activity {
                      setResult(RESULT_OK, reply);
                      finish();
                   } else {
-                     Toast.makeText(CreateNewConversationActivity.this, "ERROR: could not insert Conversation", Toast.LENGTH_LONG).show();
+                     String message = String.format("Fehler: Die neue Unterhaltung mit <%s> konnte der internen Datenbank nicht hinzugefügt werden.", name);
+                     Toast.makeText(CreateNewConversationActivity.this, message, Toast.LENGTH_LONG).show();
+                     TFApp.addToApplicationLog(message);
                   }
                }
             });

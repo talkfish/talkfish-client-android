@@ -109,7 +109,7 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 				CONVERSATIONS_COLUMN_NICK + " text not null, " +
             CONVERSATIONS_COLUMN_NUMBERRECEIVED  + " integer not null, " +
             CONVERSATIONS_COLUMN_NUMBERSENT   + " integer not null, " +
-						CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE + " integer not null " +
+						CONVERSATIONS_COLUMN_LAST_MESSAGE_DATE + " integer not null default 0" +
 		");");
 		db.execSQL("create table " + TABLE_NAME_MESSAGES + "(" +
 				MESSAGES_COLUMN_ID + " integer primary key autoincrement not null, " +
