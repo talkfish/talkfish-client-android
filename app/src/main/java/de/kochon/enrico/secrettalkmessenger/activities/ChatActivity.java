@@ -24,6 +24,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -47,46 +48,49 @@ public class ChatActivity extends Activity {
     private Conversation conversation;
     private Channel receivingChan;
     private Channel sendingChan;
-    private CountedMessage currentMessageToBeSent;
 
+    private ArrayList<CountedMessage> currentMessageToBeSent;
+    private int currentMessagePartAmount;
+    private int currentMessagePartCounter;
 
    public final static String SHOW_CONVERSATION_ID_KEY = "SHOW_CONVERSATION_ID_KEY";
 
 
    protected class SendMessageTask extends AsyncTask<String, Void, Boolean> {
 
-      public boolean pushMessageToServer(String url, String message) {
-         boolean success = false;
-         try {
-            Log.d(TFApp.LOGKEY, "pushMessageToServer");
-            String sendtarget = String.format("%s?m=%s", url, message);
+       public boolean pushMessageToServer(String url, String message) {
+           boolean success = false;
+           try {
+               Log.d(TFApp.LOGKEY, "pushMessageToServer");
+               String sendtarget = String.format("%s?m=%s", url, message);
 			   Log.d(TFApp.LOGKEY, String.format("calling %s", sendtarget));
-				URL website = new URL(sendtarget);
-		      URLConnection connection = website.openConnection();
-		      BufferedReader in = new BufferedReader(
+               URL website = new URL(sendtarget);
+               URLConnection connection = website.openConnection();
+               BufferedReader in = new BufferedReader(
 		                                new InputStreamReader(
 		                                    connection.getInputStream()));
-		      String inputLine;
-		      while ((inputLine = in.readLine()) != null)  {
+               String inputLine;
+               while ((inputLine = in.readLine()) != null)  {
                // do nothing
-		      }
-		        
-		      in.close();
-            success = true;
-			} catch (Exception ex) {
-            success = false;
-            TFApp.logException(ex);
-			}
+               }
+
+               in.close();
+               success = true;
+
+           } catch (Exception ex) {
+               success = false;
+               TFApp.logException(ex);
+           }
          return success;
       }
 
 
       @Override
-      protected Boolean doInBackground(String... url_message) {
+      protected Boolean doInBackground(String... url_messageweb) {
          boolean success = false;
          try {
-            if ( (url_message != null) && (url_message.length == 2) ) {
-               success = pushMessageToServer(url_message[0], url_message[1]);
+            if ( (url_messageweb != null) && (url_messageweb.length == 2) ) {
+                success = pushMessageToServer(url_messageweb[0], url_messageweb[1]);
             }
             
 			} catch (Exception ex) {
@@ -106,10 +110,15 @@ public class ChatActivity extends Activity {
       @Override
       protected void onPostExecute(Boolean success) {
          if (success) {
-             chatMessage.setText("");
-             currentMessageToBeSent = conversation.addSentMessage(currentMessageToBeSent);
-             ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(currentMessageToBeSent);
-             ((TFApp)(ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
+             currentMessagePartCounter += 1;
+             if (currentMessagePartCounter == currentMessagePartAmount) {
+                 chatMessage.setText("");
+                 for (int i=0; i<currentMessagePartAmount; i++) {
+                    CountedMessage m = conversation.addSentMessage(currentMessageToBeSent.get(i));
+                     ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
+                 }
+                 ((TFApp)(ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
+             }
 
          } else {
              currentMessageToBeSent = null;
@@ -262,54 +271,61 @@ public class ChatActivity extends Activity {
       }
    }
 
+    public void sendUserMessage() {
+        currentMessagePartCounter = 0;
+        currentMessageToBeSent = new ArrayList<CountedMessage>();
+        final int MAX_MULTIMESSAGE_COUNT = 100;
 
-   public void sendUserMessage() {
-      if (sendingChan != null && conversation != null && conversation.getSendKeyAmount()!=0) {
-         SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM./HH:mm");
-         String message = String.format("%s>%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
+        SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM./HH:mm");
+        String dateannotatedmessage = String.format("%s>%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
+        byte fullmessagebytes[] = dateannotatedmessage.getBytes();
+        currentMessagePartAmount = fullmessagebytes.length / Messagekey.KEYBODY_LENGTH + 1;
 
-         byte fullmessagebytes[] = message.getBytes();
-         String limitedmessage = message;
-         if (fullmessagebytes.length > Messagekey.KEYBODY_LENGTH) {
-            final byte limitedmessagebytes[] = Arrays.copyOfRange(fullmessagebytes, 0, Messagekey.KEYBODY_LENGTH);
-            limitedmessage = new String(limitedmessagebytes, 0, Messagekey.KEYBODY_LENGTH);
-         }
-		   Log.d(TFApp.LOGKEY, String.format("trying to encrypt and send this message: >%s<", limitedmessage));
+        if (sendingChan != null && conversation != null
+                && conversation.getSendKeyAmount()>=currentMessagePartAmount
+                && currentMessagePartAmount <= MAX_MULTIMESSAGE_COUNT)
+        {
+            for (int i=0;i<currentMessagePartAmount;i++) {
+                int remainingByteCount = fullmessagebytes.length - i*Messagekey.KEYBODY_LENGTH;
+                int remainingBytesInCurrentMessagePart = Math.min(Messagekey.KEYBODY_LENGTH, remainingByteCount);
+                final byte limitedmessagebytes[] = Arrays.copyOfRange(fullmessagebytes,
+                        i * Messagekey.KEYBODY_LENGTH,
+                        i * Messagekey.KEYBODY_LENGTH + remainingBytesInCurrentMessagePart);
+                String limitedmessage = new String(limitedmessagebytes, 0, remainingBytesInCurrentMessagePart);
+                CountedMessage message = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
+                currentMessageToBeSent.add(message);
+                Messagekey k = conversation.getKeyForSending();
+                if (null != k) {
+                    EncryptedMessage cryptogram = EncryptedMessage.encrypt(message, k);
+                    k.setIsUsed(true);
+                    ((TFApp)(this.getApplication())).getDAH().updateKey(k);
 
-         currentMessageToBeSent = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
+                    SendMessageTask task = new SendMessageTask();
 
-         Messagekey k = conversation.getKeyForSending();
-
-         if (null != k) {
-            EncryptedMessage cryptogram = EncryptedMessage.encrypt(currentMessageToBeSent, k);
-            k.setIsUsed(true);
-            ((TFApp)(this.getApplication())).getDAH().updateKey(k);
-
-            SendMessageTask task = new SendMessageTask();
-
-            String websafe = cryptogram.getWebsafeSerialization();
-			   Log.d(TFApp.LOGKEY, String.format("trying to send %s", websafe));
-            task.execute(sendingChan.endpoint, websafe);
-         } else {
-             currentMessageToBeSent = null;
-             Toast.makeText(this, "Fehler: Kein zulässiger Schlüssel vorhanden!", Toast.LENGTH_LONG).show();
-             Log.d(TFApp.LOGKEY, "ERROR: Could not obtain key!");
-         }
-      } else {
-          currentMessageToBeSent = null;
-          Toast.makeText(this, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.", Toast.LENGTH_LONG).show();
-          Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
-          if (sendingChan == null) {
-		      Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded.");
-          }
-          if (conversation == null) {
-		      Log.d(TFApp.LOGKEY, "ERROR: Conversation not properly loaded.");
-         }
-         if (conversation != null && conversation.getSendKeyAmount()==0) {
-		      Log.d(TFApp.LOGKEY, "ERROR: Keys for sending are missing.");
-         }
-      }
-   }
+                    String websafe = cryptogram.getWebsafeSerialization();
+                    Log.d(TFApp.LOGKEY, String.format("trying to send %s", websafe));
+                    task.execute(sendingChan.endpoint, websafe);
+                } else {
+                    currentMessageToBeSent = null;
+                    Toast.makeText(this, "Fehler: Kein zulässiger Schlüssel vorhanden!", Toast.LENGTH_LONG).show();
+                    Log.d(TFApp.LOGKEY, "ERROR: Could not obtain key!");
+                }
+            }
+        } else {
+            currentMessageToBeSent = null;
+            Toast.makeText(this, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.", Toast.LENGTH_LONG).show();
+            Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded or keys for sending are missing, could not send message.");
+            if (sendingChan == null) {
+                Log.d(TFApp.LOGKEY, "ERROR: Chan for sending not properly loaded.");
+            }
+            if (conversation == null) {
+                Log.d(TFApp.LOGKEY, "ERROR: Conversation not properly loaded.");
+            }
+            if (conversation != null && conversation.getSendKeyAmount()==0) {
+                Log.d(TFApp.LOGKEY, "ERROR: Keys for sending are missing.");
+            }
+        }
+    }
 
 	
 	public void addChatMessage(String message) {

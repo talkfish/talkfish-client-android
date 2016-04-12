@@ -35,7 +35,6 @@
       android:hint="@string/inputmessage_hint"
       android:inputType="text"
       android:imeOptions="actionSend"
-      android:maxLength="50"
       android:layout_alignParentBottom="true" />
 </RelativeLayout>
     
