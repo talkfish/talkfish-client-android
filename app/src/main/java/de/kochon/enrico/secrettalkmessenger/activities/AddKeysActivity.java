@@ -76,18 +76,6 @@ public class AddKeysActivity extends Activity {
          initConversation();
       }
 
-      btnBack = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityBack);
-      if (btnBack != null) {
-         btnBack.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-               // build reply
-               Intent reply = new Intent();
-               Bundle result = new Bundle();
-               setResult(RESULT_OK, reply);
-               finish();
-            }
-         });
-      }
 
       btnRenameConversation = (Button) findViewById(R.id.buttonShowConversationPropertiesActivityRenameConversation);
       if (btnRenameConversation != null) {
