@@ -13,6 +13,7 @@ import android.view.View.OnFocusChangeListener;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -44,6 +45,8 @@ public class ChatActivity extends Activity {
     private EditText chatMessage;
     private TextView conversationNick;
     private ScrollView chatscroll;
+    private Button buttonSend;
+
 	
     private Conversation conversation;
     private Channel receivingChan;
@@ -153,67 +156,78 @@ public class ChatActivity extends Activity {
    // http://stackoverflow.com/questions/2667471/android-scroll-down
    private void scrollDown() {
       new Handler().postDelayed(new Runnable() {
-         @Override
-         public void run() {
-            ScrollView mainChatScrollView = (ScrollView)findViewById(R.id.mainChatScrollView);
-            if (mainChatScrollView != null) {
-               mainChatScrollView.fullScroll(ScrollView.FOCUS_DOWN);
-            }
-         }
-      },1000);
+          @Override
+          public void run() {
+              ScrollView mainChatScrollView = (ScrollView) findViewById(R.id.mainChatScrollView);
+              if (mainChatScrollView != null) {
+                  mainChatScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+              }
+          }
+      }, 1000);
 
    }
 
    private boolean focuslock = false;
 
-   
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
-      requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_chat);
-		
-      chatMessage = (EditText)findViewById(R.id.editNewMessageActivityChat);
-      chatscroll = (ScrollView)findViewById(R.id.mainChatScrollView);
-      conversationNick = (TextView)findViewById(R.id.textViewContactNickActivityChat);
-      if ( (null != chatMessage) && (null != chatscroll)  ) {
-         //chatscroll.setFocusable(true);
-         //chatscroll.setFocusableInTouchMode(true);
-         //chatscroll.requestFocus();
-         chatMessage.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-               if (!focuslock) {
-                  focuslock = true;
-                  if (v==chatMessage) { 
-                     if (hasFocus) {
-                         ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(chatMessage, InputMethodManager.SHOW_FORCED);
-                         scrollDown();
-                         chatMessage.requestFocus();
-                     } else {
-                         ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(chatMessage.getWindowToken(), 0);
-                     }
-                  }
-                  focuslock = false;
-               }
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+
+        setContentView(R.layout.activity_chat);
+
+        chatMessage = (EditText) findViewById(R.id.editNewMessageActivityChat);
+        chatscroll = (ScrollView) findViewById(R.id.mainChatScrollView);
+        conversationNick = (TextView) findViewById(R.id.textViewContactNickActivityChat);
+        if ((null != chatMessage) && (null != chatscroll)) {
+            //chatscroll.setFocusable(true);
+            //chatscroll.setFocusableInTouchMode(true);
+            //chatscroll.requestFocus();
+            chatMessage.setOnFocusChangeListener(new OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!focuslock) {
+                        focuslock = true;
+                        if (v == chatMessage) {
+                            if (hasFocus) {
+                                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(chatMessage, InputMethodManager.SHOW_FORCED);
+                                scrollDown();
+                                chatMessage.requestFocus();
+                            } else {
+                                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(chatMessage.getWindowToken(), 0);
+                            }
+                        }
+                        focuslock = false;
+                    }
+                }
+            });
+
+            chatMessage.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    boolean handled = false;
+                    if (actionId == EditorInfo.IME_ACTION_SEND) {
+                        ChatActivity.this.sendUserMessage();
+                        handled = true;
+                        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(chatMessage.getWindowToken(), 0);
+                    }
+                    return handled;
+                }
+            });
+
+            buttonSend = (Button) findViewById(R.id.sendNewMessageActivityChat);
+            if (null != buttonSend) {
+                buttonSend.setOnClickListener(new View.OnClickListener() {
+                                                  @Override
+                                                  public void onClick(View v) {
+                                                      ChatActivity.this.sendUserMessage();
+                                                  }
+                                              }
+                );
             }
-         });
-
-         chatMessage.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-               boolean handled = false;
-               if (actionId == EditorInfo.IME_ACTION_SEND) {
-                  ChatActivity.this.sendUserMessage();
-                  handled = true;
-                  ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(chatMessage.getWindowToken(), 0);
-               }
-               return handled;
-            }
-         });
-      }
+        }
 
 
       init();
