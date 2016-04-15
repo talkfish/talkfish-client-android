@@ -52,7 +52,7 @@ public class ChatActivity extends Activity {
     private Channel receivingChan;
     private Channel sendingChan;
 
-    private ArrayList<CountedMessage> currentMessageToBeSent;
+    private CountedMessage currentMessageToBeSent;
     private int currentMessagePartAmount;
     private int currentMessagePartCounter;
 
@@ -117,7 +117,7 @@ public class ChatActivity extends Activity {
              if (currentMessagePartCounter == currentMessagePartAmount) {
                  chatMessage.setText("");
                  for (int i=0; i<currentMessagePartAmount; i++) {
-                    CountedMessage m = conversation.addSentMessage(currentMessageToBeSent.get(i));
+                    CountedMessage m = conversation.addSentMessage(currentMessageToBeSent);
                      ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
                  }
                  ((TFApp)(ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
@@ -287,11 +287,11 @@ public class ChatActivity extends Activity {
 
     public void sendUserMessage() {
         currentMessagePartCounter = 0;
-        currentMessageToBeSent = new ArrayList<CountedMessage>();
         final int MAX_MULTIMESSAGE_COUNT = 100;
 
         SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM./HH:mm");
         String dateannotatedmessage = String.format("%s>%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
+        currentMessageToBeSent = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, dateannotatedmessage, new Date());
         byte fullmessagebytes[] = dateannotatedmessage.getBytes();
         currentMessagePartAmount = fullmessagebytes.length / Messagekey.KEYBODY_LENGTH + 1;
 
@@ -305,12 +305,10 @@ public class ChatActivity extends Activity {
                 final byte limitedmessagebytes[] = Arrays.copyOfRange(fullmessagebytes,
                         i * Messagekey.KEYBODY_LENGTH,
                         i * Messagekey.KEYBODY_LENGTH + remainingBytesInCurrentMessagePart);
-                String limitedmessage = new String(limitedmessagebytes, 0, remainingBytesInCurrentMessagePart);
-                CountedMessage message = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, limitedmessage, new Date() );
-                currentMessageToBeSent.add(message);
+                String messagepart = new String(limitedmessagebytes, 0, remainingBytesInCurrentMessagePart);
                 Messagekey k = conversation.getKeyForSending();
                 if (null != k) {
-                    EncryptedMessage cryptogram = EncryptedMessage.encrypt(message, k);
+                    EncryptedMessage cryptogram = EncryptedMessage.encrypt(messagepart, k);
                     k.setIsUsed(true);
                     ((TFApp)(this.getApplication())).getDAH().updateKey(k);
 

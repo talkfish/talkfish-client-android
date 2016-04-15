@@ -49,13 +49,11 @@ public class EncryptedMessage {
 	}
 
 
-   public static EncryptedMessage encrypt(CountedMessage m, Messagekey k) {
-      String vanillabody = m.getMessagebody();
-      byte vanillabodybytes[] = m.getMessagebody().getBytes();
+   public static EncryptedMessage encrypt(String m, Messagekey k) {
+      byte vanillabodybytes[] = m.getBytes();
       if (vanillabodybytes.length > Messagekey.KEYBODY_LENGTH)
          throw new IllegalArgumentException(String.format("Messages huger than %d bytes are not supported, current message has %d bytes!", 
                                                          Messagekey.KEYBODY_LENGTH, vanillabodybytes.length));
-
       byte cryptogram[] = k.getKeybody();
       for (int i=0; i<vanillabodybytes.length; i++) {
          cryptogram[i] = (byte) (cryptogram[i] ^ vanillabodybytes[i]);
