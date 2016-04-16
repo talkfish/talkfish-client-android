@@ -49,8 +49,8 @@ public class EncryptedMessage {
 	}
 
 
-   public static EncryptedMessage encrypt(String m, Messagekey k) {
-      byte vanillabodybytes[] = m.getBytes();
+   public static EncryptedMessage encrypt(StructuredMessageBody m, Messagekey k) {
+      byte vanillabodybytes[] = m.getFullBody();
       if (vanillabodybytes.length > Messagekey.KEYBODY_LENGTH)
          throw new IllegalArgumentException(String.format("Messages huger than %d bytes are not supported, current message has %d bytes!", 
                                                          Messagekey.KEYBODY_LENGTH, vanillabodybytes.length));
@@ -70,7 +70,7 @@ public class EncryptedMessage {
    }
 
 
-   public CountedMessage decrypt(Messagekey k) {
+   public StructuredMessageBody decrypt(Messagekey k) {
       byte vanillabodybytes[] = this.getBody();
       if (vanillabodybytes.length > Messagekey.KEYBODY_LENGTH)
          throw new IllegalArgumentException(String.format("Messages huger than %d bytes are not supported, current message has %d bytes!", 
@@ -80,8 +80,8 @@ public class EncryptedMessage {
       for (int i=0; i<vanillabodybytes.length; i++) {
          cryptogram[i] = (byte) (cryptogram[i] ^ vanillabodybytes[i]);
       }
-      String messagebody = new String(cryptogram, 0, vanillabodybytes.length);
-      return new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messagebody, new Date());
+
+      return new StructuredMessageBody(cryptogram);
    }
 
 

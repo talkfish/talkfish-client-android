@@ -36,6 +36,7 @@ import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.EncryptedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
+import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 
 import android.text.util.Linkify;
 
@@ -290,25 +291,29 @@ public class ChatActivity extends Activity {
         final int MAX_MULTIMESSAGE_COUNT = 100;
 
         SimpleDateFormat daytimeformat = new SimpleDateFormat("dd.MM./HH:mm");
-        String dateannotatedmessage = String.format("%s>%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
+        String dateannotatedmessage = String.format("%s:\n%s", daytimeformat.format(new Date()), ChatActivity.this.chatMessage.getText().toString().trim());
         currentMessageToBeSent = new CountedMessage(false, CountedMessage.NOTADDEDNUMBER, -1, dateannotatedmessage, new Date());
         byte fullmessagebytes[] = dateannotatedmessage.getBytes();
-        currentMessagePartAmount = fullmessagebytes.length / Messagekey.KEYBODY_LENGTH + 1;
+        currentMessagePartAmount = fullmessagebytes.length / StructuredMessageBody.PAYLOAD_LENGTH + 1;
 
         if (sendingChan != null && conversation != null
                 && conversation.getSendKeyAmount()>=currentMessagePartAmount
                 && currentMessagePartAmount <= MAX_MULTIMESSAGE_COUNT)
         {
             for (int i=0;i<currentMessagePartAmount;i++) {
-                int remainingByteCount = fullmessagebytes.length - i*Messagekey.KEYBODY_LENGTH;
-                int remainingBytesInCurrentMessagePart = Math.min(Messagekey.KEYBODY_LENGTH, remainingByteCount);
+                int remainingByteCount = fullmessagebytes.length - i*StructuredMessageBody.PAYLOAD_LENGTH;
+                int remainingBytesInCurrentMessagePart = Math.min(StructuredMessageBody.PAYLOAD_LENGTH, remainingByteCount);
                 final byte limitedmessagebytes[] = Arrays.copyOfRange(fullmessagebytes,
-                        i * Messagekey.KEYBODY_LENGTH,
-                        i * Messagekey.KEYBODY_LENGTH + remainingBytesInCurrentMessagePart);
+                        i * StructuredMessageBody.PAYLOAD_LENGTH,
+                        i * StructuredMessageBody.PAYLOAD_LENGTH + remainingBytesInCurrentMessagePart);
                 String messagepart = new String(limitedmessagebytes, 0, remainingBytesInCurrentMessagePart);
+                StructuredMessageBody structuredPart = new StructuredMessageBody(messagepart,
+                        i, currentMessagePartAmount,
+                        conversation.getCurrentNumberOfSentMessages()+1);
+                        // TODO: not robust enough if sending of a huge message partially fails, the next try will reuse the same number -> garbage will be received
                 Messagekey k = conversation.getKeyForSending();
                 if (null != k) {
-                    EncryptedMessage cryptogram = EncryptedMessage.encrypt(messagepart, k);
+                    EncryptedMessage cryptogram = EncryptedMessage.encrypt(structuredPart, k);
                     k.setIsUsed(true);
                     ((TFApp)(this.getApplication())).getDAH().updateKey(k);
 
