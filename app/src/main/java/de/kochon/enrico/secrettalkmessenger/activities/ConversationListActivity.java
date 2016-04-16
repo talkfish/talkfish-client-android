@@ -127,24 +127,29 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
                   Messagekey k = e.findMatchingKey(keys);
                   if (k!=null) { 
                      if (!k.getIsUsed()) {
-                         StructuredMessageBody rawMessagePart = e.decrypt(k);
-                        messageBuilder.append(rawMessagePart.getPayload());
-                        k.setIsUsed(true); 
-                        ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateKey(k);
-                        if (rawMessagePart.getTotal() == rawMessagePart.getCurrentPart()+1) {
-                           CountedMessage currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
-                           messageBuilder = new StringBuffer();
-                           CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
-                           c.setHasNewMessages(true);
-                           ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().addNewMessage(added);
-                           ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateConversation(c);
-                           aa.sort(Conversation.conversationReverseComparator);
-                           aa.notifyDataSetChanged();
-                           ConversationListActivity.this.getListView().invalidateViews();
-                           gotNewInChan = true;
-                           gotNewInConv = true;
+                        try {
+                           StructuredMessageBody rawMessagePart = e.decrypt(k);
+                           messageBuilder.append(rawMessagePart.getPayload());
+                           if (rawMessagePart.getTotal() == rawMessagePart.getCurrentPart()+1) {
+                              CountedMessage currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
+                              messageBuilder = new StringBuffer();
+                              CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
+                              c.setHasNewMessages(true);
+                              ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().addNewMessage(added);
+                              ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateConversation(c);
+                              aa.sort(Conversation.conversationReverseComparator);
+                              aa.notifyDataSetChanged();
+                              ConversationListActivity.this.getListView().invalidateViews();
+                              gotNewInChan = true;
+                              gotNewInConv = true;
+                           }
+                        } catch (IllegalArgumentException iae) {
+                           TFApp.logException(iae);
+                           TFApp.addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
+                        } finally {
+                           k.setIsUsed(true);
+                           ((TFApp)(ConversationListActivity.this.getApplication())).getDAH().updateKey(k);
                         }
-
                      }
                   }
                }

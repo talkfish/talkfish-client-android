@@ -181,24 +181,29 @@ public class CheckNewMessages extends Service {
                                                     Messagekey k = e.findMatchingKey(keys);
                                                     if (k != null) {
                                                         if (!k.getIsUsed()) {
-                                                            StructuredMessageBody rawMessagePart = e.decrypt(k);
-                                                            messageBuilder.append(rawMessagePart.getPayload());
+                                                            try {
+                                                                StructuredMessageBody rawMessagePart = e.decrypt(k);
+                                                                messageBuilder.append(rawMessagePart.getPayload());
 
-                                                            k.setIsUsed(true);
-                                                            ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateKey(k);
+                                                                if (rawMessagePart.getTotal() == rawMessagePart.getCurrentPart()+1) {
+                                                                    CountedMessage currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
+                                                                    messageBuilder = new StringBuffer();
+                                                                    CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
+                                                                    c.setHasNewMessages(true);
+                                                                    ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().addNewMessage(added);
+                                                                    ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateConversation(c);
 
-                                                            if (rawMessagePart.getTotal() == rawMessagePart.getCurrentPart()+1) {
-                                                                CountedMessage currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
-                                                                messageBuilder = new StringBuffer();
-                                                                CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
-                                                                c.setHasNewMessages(true);
-                                                                ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().addNewMessage(added);
-                                                                ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateConversation(c);
+                                                                    Notification n = getNotification(c);
+                                                                    NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                                                                    notificationManager.notify(NOTIFICATION_ID + ((int) c.getID()), n);
 
-                                                                Notification n = getNotification(c);
-                                                                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                                                                notificationManager.notify(NOTIFICATION_ID + ((int) c.getID()), n);
-
+                                                                }
+                                                            } catch (IllegalArgumentException iae) {
+                                                                TFApp.logException(iae);
+                                                                TFApp.addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
+                                                            } finally {
+                                                                k.setIsUsed(true);
+                                                                ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateKey(k);
                                                             }
                                                         }
                                                     }
