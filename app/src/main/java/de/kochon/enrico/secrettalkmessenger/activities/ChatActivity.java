@@ -117,10 +117,8 @@ public class ChatActivity extends Activity {
              currentMessagePartCounter += 1;
              if (currentMessagePartCounter == currentMessagePartAmount) {
                  chatMessage.setText("");
-                 for (int i=0; i<currentMessagePartAmount; i++) {
-                    CountedMessage m = conversation.addSentMessage(currentMessageToBeSent);
-                     ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
-                 }
+                 CountedMessage m = conversation.addSentMessage(currentMessageToBeSent);
+                 ((TFApp)(ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
                  ((TFApp)(ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
              }
 
