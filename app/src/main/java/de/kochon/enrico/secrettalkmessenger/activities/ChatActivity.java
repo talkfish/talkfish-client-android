@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -344,14 +345,17 @@ public class ChatActivity extends Activity {
 
 	
 	public void addChatMessage(String message) {
-       Log.d(TFApp.LOGKEY, String.format("addChatMessage(%s)", message));
-       TextView newEntry = new TextView(ChatActivity.this);
-       newEntry.setTextColor(getResources().getColor(R.color.app_foreground));
-       newEntry.setText(String.format("%s", message));
-       Linkify.addLinks(newEntry, Linkify.WEB_URLS);
-       LinearLayout mainChatArea = (LinearLayout)findViewById(R.id.mainChatArea);
-       if (mainChatArea != null) {
-          mainChatArea.addView(newEntry);
-       }
+        Log.d(TFApp.LOGKEY, String.format("addChatMessage(%s)", message));
+        TextView newEntry = new TextView(ChatActivity.this);
+        newEntry.setTextColor(getResources().getColor(R.color.app_foreground));
+        newEntry.setText(String.format("%s", message));
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(4,32,4,32);
+        newEntry.setLayoutParams(params);
+        Linkify.addLinks(newEntry, Linkify.WEB_URLS);
+        LinearLayout mainChatArea = (LinearLayout)findViewById(R.id.mainChatArea);
+        if (mainChatArea != null) {
+           mainChatArea.addView(newEntry);
+        }
 	}
 }
