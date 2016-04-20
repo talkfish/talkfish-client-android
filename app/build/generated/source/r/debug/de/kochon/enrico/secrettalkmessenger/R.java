@@ -819,12 +819,14 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int die_gedanken_sind_frei=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
-        public static final int internet_group_chat=0x7f020059;
-        public static final int logo_draft_secret_talk_zapfino=0x7f02005a;
-        public static final int mergui_archipelago=0x7f02005b;
-        public static final int talkfish_alpha=0x7f02005c;
+        public static final int bubbleborder_moi=0x7f020057;
+        public static final int bubbleborder_other=0x7f020058;
+        public static final int die_gedanken_sind_frei=0x7f020059;
+        public static final int ic_launcher=0x7f02005a;
+        public static final int internet_group_chat=0x7f02005b;
+        public static final int logo_draft_secret_talk_zapfino=0x7f02005c;
+        public static final int mergui_archipelago=0x7f02005d;
+        public static final int talkfish_alpha=0x7f02005e;
     }
     public static final class id {
         public static final int action_bar=0x7f0b001c;

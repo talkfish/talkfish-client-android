@@ -7,9 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -26,7 +28,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -266,7 +267,7 @@ public class ChatActivity extends Activity {
                }
                sb.append(": ");
                sb.append(cm.getMessagebody());
-               addChatMessage(sb.toString());
+               addChatMessage(sb.toString(), !cm.getIsReceived());
             }
          } else {
             Log.d(TFApp.LOGKEY, "fullReload: error conversation is null!");
@@ -344,14 +345,21 @@ public class ChatActivity extends Activity {
     }
 
 	
-	public void addChatMessage(String message) {
+	public void addChatMessage(String message, boolean isMoi) {
         Log.d(TFApp.LOGKEY, String.format("addChatMessage(%s)", message));
         TextView newEntry = new TextView(ChatActivity.this);
         newEntry.setTextColor(getResources().getColor(R.color.app_foreground));
         newEntry.setText(String.format("%s", message));
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(4,32,4,32);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(16, 16, 16, 16);
+        params.gravity = Gravity.CENTER_HORIZONTAL;
         newEntry.setLayoutParams(params);
+
+        if (isMoi) {
+            newEntry.setBackground(getResources().getDrawable(R.drawable.bubbleborder_moi));
+        } else {
+            newEntry.setBackground(getResources().getDrawable(R.drawable.bubbleborder_other));
+        }
         Linkify.addLinks(newEntry, Linkify.WEB_URLS);
         LinearLayout mainChatArea = (LinearLayout)findViewById(R.id.mainChatArea);
         if (mainChatArea != null) {
