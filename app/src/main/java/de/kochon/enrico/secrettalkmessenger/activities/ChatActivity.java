@@ -351,15 +351,17 @@ public class ChatActivity extends Activity {
         newEntry.setTextColor(getResources().getColor(R.color.app_foreground));
         newEntry.setText(String.format("%s", message));
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        params.setMargins(16, 16, 16, 16);
-        params.gravity = Gravity.CENTER_HORIZONTAL;
-        newEntry.setLayoutParams(params);
 
         if (isMoi) {
             newEntry.setBackground(getResources().getDrawable(R.drawable.bubbleborder_moi));
+            params.setMargins(16, 16, 64, 16);
+            params.gravity = Gravity.LEFT;
         } else {
             newEntry.setBackground(getResources().getDrawable(R.drawable.bubbleborder_other));
+            params.setMargins(64, 16, 16, 16);
+            params.gravity = Gravity.RIGHT;
         }
+        newEntry.setLayoutParams(params);
         Linkify.addLinks(newEntry, Linkify.WEB_URLS);
         LinearLayout mainChatArea = (LinearLayout)findViewById(R.id.mainChatArea);
         if (mainChatArea != null) {
