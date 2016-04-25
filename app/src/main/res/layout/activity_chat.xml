@@ -47,6 +47,13 @@
              android:imeOptions="actionSend"
              />
          <Button
+             android:id="@+id/takePhotoActivityChat"
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:text="o"
+             />
+         <Button
              android:id="@+id/sendNewMessageActivityChat"
              android:layout_height="wrap_content"
              android:layout_width="wrap_content"

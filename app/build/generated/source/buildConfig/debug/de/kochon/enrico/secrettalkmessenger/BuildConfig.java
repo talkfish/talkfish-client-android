@@ -8,6 +8,6 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "de.kochon.enrico.secrettalkmessenger";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "";
-  public static final int VERSION_CODE = 15;
-  public static final String VERSION_NAME = "0.0.15";
+  public static final int VERSION_CODE = 16;
+  public static final String VERSION_NAME = "0.0.16";
 }

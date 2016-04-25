@@ -11,14 +11,14 @@ public class CountedMessage implements Comparable<CountedMessage> {
 	// the usual messagesize should be far below this border
 	public final int MAXLENGTH = 20480; 
 	
-	private long id;
-	private long idconversation;
-	private int localmessagenumber;
-	private int transmittedmessagenumber;
+	protected long id;
+	protected long idconversation;
+	protected int localmessagenumber;
+	protected int transmittedmessagenumber;
 
-	private final Date created;
-	private final boolean isReceived; // direction of sending: false = message was sent to contact
-	private final String messagebody;
+	protected final Date created;
+	protected final boolean isReceived; // direction of sending: false = message was sent to contact
+	protected final String messagebody;
 	
 	public CountedMessage(boolean isReceived, int localmessagenumber, int transmittedmessagenumber, String messagebody, Date localtime) {
 		if (messagebody == null) throw new IllegalArgumentException("Messagebody has to be not null!");

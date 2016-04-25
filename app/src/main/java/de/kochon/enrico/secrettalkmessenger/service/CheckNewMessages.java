@@ -15,6 +15,7 @@ import android.os.Bundle;
 
 import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.activities.ConversationListActivity;
+import de.kochon.enrico.secrettalkmessenger.model.CountedImageMessage;
 import de.kochon.enrico.secrettalkmessenger.model.SecretTalkChannelCache;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
@@ -26,6 +27,7 @@ import de.kochon.enrico.secrettalkmessenger.backend.NetworkIO;
 import de.kochon.enrico.secrettalkmessenger.backend.ConfigHelper;
 import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -167,6 +169,7 @@ public class CheckNewMessages extends Service {
                                         List<Messagekey> keys = c.getReceivingKeys();
                                         Channel r = c.getChannelForReceiving();
                                         StringBuffer messageBuilder = new StringBuffer();
+                                        ByteArrayOutputStream imageBuilder = new ByteArrayOutputStream();
 
                                         if (r.id == idchannel && channelCacheMap.containsKey(r)) {
                                             SecretTalkChannelCache cache = channelCacheMap.get(r);
@@ -183,10 +186,20 @@ public class CheckNewMessages extends Service {
                                                         if (!k.getIsUsed()) {
                                                             try {
                                                                 StructuredMessageBody rawMessagePart = e.decrypt(k);
-                                                                messageBuilder.append(rawMessagePart.getPayload());
+                                                                if (rawMessagePart.isImage()) {
+                                                                    imageBuilder.write(rawMessagePart.getRawPayload());
+                                                                } else {
+                                                                    messageBuilder.append(rawMessagePart.getPayload());
+                                                                }
 
                                                                 if (rawMessagePart.getTotal() == rawMessagePart.getCurrentPart()+1) {
-                                                                    CountedMessage currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
+                                                                    CountedMessage currentMessageToRetrieve = null;
+                                                                    if (rawMessagePart.isImage()) {
+                                                                        currentMessageToRetrieve = new CountedImageMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, imageBuilder.toByteArray(), new Date());
+                                                                    } else {
+                                                                        currentMessageToRetrieve = new CountedMessage(k.getIsForReceiving(), CountedMessage.NOTADDEDNUMBER, 1, messageBuilder.toString(), new Date());
+                                                                    }
+                                                                    imageBuilder = new ByteArrayOutputStream();
                                                                     messageBuilder = new StringBuffer();
                                                                     CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
                                                                     c.setHasNewMessages(true);
