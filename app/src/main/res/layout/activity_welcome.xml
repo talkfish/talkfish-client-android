@@ -25,16 +25,6 @@
            android:textStyle="italic"
            android:text="@string/welcome" />
 
-       <TextView
-           android:id="@+id/textViewNews"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_gravity="left"
-         android:layout_marginTop="@dimen/vertical_spacer"
-           android:textColor="@color/app_foreground"
-           android:typeface="serif"
-           android:textStyle="italic"
-           android:text="@string/news" />
 
    </LinearLayout>
 </ScrollView>

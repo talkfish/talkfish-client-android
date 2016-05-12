@@ -840,7 +840,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f0b0001;
         public static final int action_menu_presenter=0x7f0b0002;
         public static final int action_mode_close_button=0x7f0b0024;
-        public static final int action_settings=0x7f0b0084;
+        public static final int action_settings=0x7f0b0083;
         public static final int activityRenameButtonOk=0x7f0b0064;
         public static final int activityRenameEditNewName=0x7f0b0063;
         public static final int activityRenameTextOldName=0x7f0b0062;
@@ -859,7 +859,7 @@ containing a value of this type.
         public static final int beginning=0x7f0b000f;
         public static final int buttonChats=0x7f0b005a;
         public static final int buttonChatsAdd=0x7f0b004d;
-        public static final int buttonChatsAddKeys=0x7f0b0083;
+        public static final int buttonChatsAddKeys=0x7f0b0082;
         public static final int buttonChatsRefresh=0x7f0b004e;
         public static final int buttonCreateNewConversationActivityOk=0x7f0b0051;
         public static final int buttonEditChannelOk=0x7f0b0056;
@@ -902,7 +902,7 @@ containing a value of this type.
         public static final int image=0x7f0b0027;
         public static final int imageViewLogo=0x7f0b0058;
         public static final int keyRepresentationGraphicalView=0x7f0b007b;
-        public static final int label=0x7f0b0082;
+        public static final int label=0x7f0b0081;
         public static final int labelDiscovered=0x7f0b006e;
         public static final int labelPaired=0x7f0b006c;
         public static final int layoutNewMessageActivityChat=0x7f0b0046;
@@ -915,7 +915,7 @@ containing a value of this type.
         public static final int never=0x7f0b0016;
         public static final int none=0x7f0b0012;
         public static final int normal=0x7f0b0007;
-        public static final int output=0x7f0b0081;
+        public static final int output=0x7f0b0080;
         public static final int pairedBtDevices=0x7f0b006d;
         public static final int progress_circular=0x7f0b0004;
         public static final int progress_horizontal=0x7f0b0005;
@@ -947,7 +947,6 @@ containing a value of this type.
         public static final int textConfigSettingsAlarmOnOff=0x7f0b0075;
         public static final int textNewConversationName=0x7f0b004f;
         public static final int textViewContactNickActivityChat=0x7f0b0047;
-        public static final int textViewNews=0x7f0b0080;
         public static final int textViewVersion=0x7f0b005c;
         public static final int textViewWelcome=0x7f0b007f;
         public static final int textviewSerializedKey=0x7f0b007a;
@@ -1080,20 +1079,19 @@ containing a value of this type.
         public static final int logocontent=0x7f05003d;
         public static final int messageNewMessagesInConv=0x7f05003e;
         public static final int messageNoNewMessagesInChan=0x7f05003f;
-        public static final int news=0x7f050040;
-        public static final int none_paired=0x7f050041;
-        public static final int select_device=0x7f050042;
-        public static final int textChannelEndpoint=0x7f050043;
-        public static final int textChannelID=0x7f050044;
-        public static final int textChannelName=0x7f050045;
-        public static final int textChannelProtocol=0x7f050046;
-        public static final int textChannelReceive=0x7f050047;
-        public static final int textChannelSend=0x7f050048;
-        public static final int textConfigName=0x7f050049;
-        public static final int textConversationName=0x7f05004a;
-        public static final int textNewConversationName=0x7f05004b;
-        public static final int title_activity_capture_photo=0x7f05004c;
-        public static final int welcome=0x7f05004d;
+        public static final int none_paired=0x7f050040;
+        public static final int select_device=0x7f050041;
+        public static final int textChannelEndpoint=0x7f050042;
+        public static final int textChannelID=0x7f050043;
+        public static final int textChannelName=0x7f050044;
+        public static final int textChannelProtocol=0x7f050045;
+        public static final int textChannelReceive=0x7f050046;
+        public static final int textChannelSend=0x7f050047;
+        public static final int textConfigName=0x7f050048;
+        public static final int textConversationName=0x7f050049;
+        public static final int textNewConversationName=0x7f05004a;
+        public static final int title_activity_capture_photo=0x7f05004b;
+        public static final int welcome=0x7f05004c;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
@@ -2204,7 +2202,7 @@ containing a value of this type.
          */
         public static final int[] MenuView = {
             0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
-            0x0101012f, 0x01010130, 0x01010131, 0x01010435
+            0x0101012f, 0x01010130, 0x01010131, 0x010103ea
         };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#headerBackground}

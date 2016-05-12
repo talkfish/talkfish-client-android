@@ -492,11 +492,11 @@ public class ChatActivity extends Activity {
     protected void setLayout(View v, boolean isMoi) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         if (isMoi) {
-            v.setBackground(getResources().getDrawable(R.drawable.bubbleborder_moi));
+            v.setBackgroundColor(0x70aaaaee);
             params.setMargins(16, 16, 64, 16);
             params.gravity = Gravity.LEFT;
         } else {
-            v.setBackground(getResources().getDrawable(R.drawable.bubbleborder_other));
+            v.setBackgroundColor(0x70aaeeaa);
             params.setMargins(64, 16, 16, 16);
             params.gravity = Gravity.RIGHT;
         }
@@ -533,8 +533,8 @@ public class ChatActivity extends Activity {
 
         ImageView imageBitmapView = new ImageView(ChatActivity.this);
         imageBitmapView.setImageBitmap(imageBitmap);
-        imageBitmapView.setScaleX(1.5f);
-        imageBitmapView.setScaleY(1.5f);
+        imageBitmapView.setScaleX(1.0f);
+        imageBitmapView.setScaleY(1.0f);
         setLayout(imageBitmapView, !cim.getIsReceived());
 
         addToChat(imageBitmapView);

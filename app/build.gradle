@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 15
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "de.kochon.enrico.secrettalkmessenger"
-        minSdkVersion 16
+        minSdkVersion 15
         targetSdkVersion 19
 
         testApplicationId "de.kochon.enrico.secrettalkmessenger.tests"

@@ -23,14 +23,12 @@
     <string name="activityCaptionWelcome">Willkommen</string>
     <string name="logocontent">Logo: TalkFish by enno and friends</string>
     <string name="welcome">Herzlich willkommen $!\n\nDies ist der TalkFish Messenger.
-    Ihr Name ist $, dies kann jederzeit in den Einstellungen geändert werden, muss es aber nicht :-) 
+    Ihr lokaler Anzeigename ist $, dies kann in den Einstellungen geändert werden.
     TalkFish achtet in ganz besonderem Maße auf Ihre Privatsphäre. Deshalb wird kein Zugriff auf Ihre Telefonkontakte gefordert.
     Jede Unterhaltung ist von Ihrem Adressbuch unabhängig. TalkFish wird niemals Ihre
-    Standortdaten oder jedwede Geräteidentifikation erfassen.
-    Auch ganz allgemein folgt TalkFish dem Prinzip der Datensparsamkeit. Ihr eingestellter Name, also $, wird niemals übertragen. Alle Informationen
-    werden mit Sinn und Verstand eingesetzt und es wird grundsätzlich vermieden, zuviele Informationen zu verarbeiten. 
-    Das Kommunikationsprotokoll ist Metadatenfrei. Kontextinformationen, beispielsweise Datum und Uhrzeit, sind als Teil der Nachricht komplett verschlüsselt.
-    Nähere Informationen im Web unter https://de.wikipedia.org/wiki/Die_Gedanken_sind_frei\n 
+    Standortdaten oder  Geräteidentifikation erfassen.
+    Ganz allgemein folgt TalkFish dem Prinzip der Datensparsamkeit. Kontextinformationen, beispielsweise Datum und Uhrzeit, sind als Teil der Nachricht komplett verschlüsselt.
+    Die Inspiration für diese App lieferte https://de.wikipedia.org/wiki/Die_Gedanken_sind_frei\n
     \n
     Als Programmsymbol wird internet-group-chat.png des Tango-Projekts verwendet, siehe http://tango.freedesktop.org/Tango_Icon_Library\n
         Als Hintergrundbild für den Chat wird eine Satellitenaufnahme des Mergui Archipels gemäß dieser Bestimmung verwendet:
@@ -39,18 +37,10 @@
         Public Domain gemäß dieser Bestimmung:
         This work is in the public domain in the United States because it was published (or registered with the U.S. Copyright Office) before January 1, 1923.
     Die komplette App steht unter der GPL v3, der genaue Lizenztext kann hier abgerufen werden: https://www.gnu.org/licenses/gpl.html\n
-    \n
-        Falls weitere Fragen offen sind, besuchen Sie bitte die Website http://www.talkfish.de oder schreiben Sie mir eine kurze E-Mail an enrico@talkfish.de\n\n
+    \n Die Quellen befinden sich hier: https://github.com/talkfish/talkfish-client-android \n
+        Für alle Neuigkeiten oder falls weitere Fragen offen sind, besuchen Sie bitte die Website http://www.talkfish.de oder schreiben Sie mir eine kurze E-Mail an enrico@talkfish.de\n\n
     Viel Spaß mit dem TalkFish Messenger!</string>
 
-    <string name="news">\nNeuigkeiten:\n\n
-        Version 0.0.11 vom 05.04.2015:\n Verbesserung der Chatübersicht durch aktive Sortierung nach Zeitpunkt der letzten Nachricht.\n\n
-Version 0.0.10 vom 30.12.2015:\n Anhebung des Caches um Faktor 10000 zur Vorbereitung des Foto-Austauschs.\n\n
-Version 0.0.9 vom 08.12.2015:\n Begrenzung der Eingabemenge im Chatfenster, optisch ansprechendere Gestaltung des Willkommensbildschirms, Wechsel des App-Icons.\n\n
-Version 0.0.8 vom 13.11.2015:\n Schlüsselaustausch über Bluetooth stark beschleunigt und benutzerfreundlicher gestaltet.\n\n
-Version 0.0.7 vom 12.11.2015:\n Der Hintergrunddienst zum automatischen Nachrichtenabruf ist nun wesentlich stabiler, so dass keine Nachrichten verpasst werden.\n\n
-Version 0.0.6 vom 11.11.2015:\n Die Nachrichten einer Unterhaltung können nun entfernt werden. Dies spart Speicherplatz und beschleunigt die App.
-    </string>
 
     <string name="activityCaptionChats">Unterhaltungen</string>
     <string name="btncaptionChatsAdd">Beginne neue Unterhaltung</string>

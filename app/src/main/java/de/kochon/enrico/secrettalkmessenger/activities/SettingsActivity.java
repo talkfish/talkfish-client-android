@@ -89,16 +89,12 @@ public class SettingsActivity extends Activity implements OnClickListener {
          if (serviceShouldRun) {
             PeriodicMessageCheck.setAlarm(this);
             KeepAliveCheck.setAlarm(this);
-            Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-            vib.vibrate(new long[] {0,500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500}, -1);
             TFApp.addToApplicationLog("Backgroundservice activated by user.");
          } else {
             KeepAliveCheck.cancelAlarm(this);
             PeriodicMessageCheck.cancelAlarm(this);
             TFApp.addToApplicationLog("Backgroundservice stopped by user.");
          }
-
-      
       }
    }
 
