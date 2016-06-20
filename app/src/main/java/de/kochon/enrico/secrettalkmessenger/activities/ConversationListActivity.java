@@ -2,6 +2,7 @@ package de.kochon.enrico.secrettalkmessenger.activities;
 
 import de.kochon.enrico.secrettalkmessenger.R;
 import de.kochon.enrico.secrettalkmessenger.TFApp;
+import de.kochon.enrico.secrettalkmessenger.backend.NetworkIO;
 import de.kochon.enrico.secrettalkmessenger.model.Conversation;
 import de.kochon.enrico.secrettalkmessenger.model.Channel;
 import de.kochon.enrico.secrettalkmessenger.model.CountedImageMessage;
@@ -80,23 +81,29 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
             btnRefresh.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
 
-                    Toast.makeText(ConversationListActivity.this, "Aktualisiere alle Unterhaltungen ...", Toast.LENGTH_SHORT).show();
-                    channelCacheMap = new HashMap<Channel, SecretTalkChannelCache>();
+                    String networkState = NetworkIO.getNetworkStatus(ConversationListActivity.this);
 
-                    for (int index_for_conversations = 0; index_for_conversations < aa.getCount(); index_for_conversations++) {
-                        Conversation c = aa.getItem(index_for_conversations);
-                        Channel r = c.getChannelForReceiving();
-                        if (!channelCacheMap.containsKey(r)) {
-                            Log.d(TFApp.LOGKEY, String.format("adding cache for channel %s", r.toString()));
-                            channelCacheMap.put(r, new SecretTalkChannelCache(r.endpoint));
+                    if (networkState.equals("wifi") || networkState.equals("mobile")) {
+                        Toast.makeText(ConversationListActivity.this, "Aktualisiere alle Unterhaltungen ...", Toast.LENGTH_SHORT).show();
+                        channelCacheMap = new HashMap<Channel, SecretTalkChannelCache>();
+
+                        for (int index_for_conversations = 0; index_for_conversations < aa.getCount(); index_for_conversations++) {
+                            Conversation c = aa.getItem(index_for_conversations);
+                            Channel r = c.getChannelForReceiving();
+                            if (!channelCacheMap.containsKey(r)) {
+                                Log.d(TFApp.LOGKEY, String.format("adding cache for channel %s", r.toString()));
+                                channelCacheMap.put(r, new SecretTalkChannelCache(r.endpoint));
+                            }
                         }
-                    }
-                    for (Channel channel : channelCacheMap.keySet()) {
-                        Log.d(TFApp.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
-                        RefreshCacheForChannel task = new RefreshCacheForChannel(channel.id,
-                                ((TFApp) (ConversationListActivity.this.getApplication())).getDAH(),
-                                ConversationListActivity.this);
-                        task.execute(channel.endpoint);
+                        for (Channel channel : channelCacheMap.keySet()) {
+                            Log.d(TFApp.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
+                            RefreshCacheForChannel task = new RefreshCacheForChannel(channel.id,
+                                    ((TFApp) (ConversationListActivity.this.getApplication())).getDAH(),
+                                    ConversationListActivity.this);
+                            task.execute(channel.endpoint);
+                        }
+                    } else {
+                        Toast.makeText(ConversationListActivity.this, "Keine Datenverbindung vorhanden, keine Aktualisierung möglich.", Toast.LENGTH_LONG).show();
                     }
                 }
             });
