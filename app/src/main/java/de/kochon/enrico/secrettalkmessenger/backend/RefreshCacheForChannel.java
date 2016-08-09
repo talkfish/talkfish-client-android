@@ -32,7 +32,10 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
 
             int persistedOffset = dataAccessHelper.getCurrentOffsetForChannel(idchannel);
             if (-1 == persistedOffset) persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
-            int mc = NetworkIO.getCurrentMessageOffsetOnServer(baseurl+"current.txt");
+            String currentTarget = baseurl+"current.txt?r="+NetworkIO.getRandomSuffixForAvoidingCachedRefreshs();
+            int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
+            TFApp.addToApplicationLog(String.format("by useraction, got current offset on server for channel with endpoint %s : %d", currentTarget, mc));
+
 
             if (mc != -1 && persistedOffset != mc) {
                int messagelimit = mc; // default in case persistedOffset < mc

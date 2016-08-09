@@ -32,6 +32,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import java.util.Random;
+
+
 public class CheckNewMessages extends Service {
 
     public boolean stopThreads = false;
@@ -43,6 +46,7 @@ public class CheckNewMessages extends Service {
     public Long newMessageCount = 0L;
 
     private Thread t;
+
 
 
     // DOCS at http://developer.android.com/reference/android/app/Service.html
@@ -139,9 +143,9 @@ public class CheckNewMessages extends Service {
                                 int persistedOffset = ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().getCurrentOffsetForChannel(idchannel);
                                 if (-1 == persistedOffset)
                                     persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
-                                TFApp.addToApplicationLog(String.format("%d - getting current offset on server for channel with endpoint %s", myIter, endpoint));
-                                int mc = NetworkIO.getCurrentMessageOffsetOnServer(baseurl + "current.txt");
-                                TFApp.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s: %d", myIter, endpoint, mc));
+                                String currentTarget = baseurl + "current.txt?r="+NetworkIO.getRandomSuffixForAvoidingCachedRefreshs();
+                                int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
+                                TFApp.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s : %d", myIter, currentTarget, mc));
 
                                 if (mc != -1 && persistedOffset != mc) {
                                     int messagelimit = mc; // default in case persistedOffset < mc

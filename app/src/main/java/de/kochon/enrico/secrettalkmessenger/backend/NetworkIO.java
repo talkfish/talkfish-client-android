@@ -1,6 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.backend;
 
 import de.kochon.enrico.secrettalkmessenger.TFApp;
+import de.kochon.enrico.secrettalkmessenger.tools.ByteToStringEncoding;
 
 import android.util.Log;
 
@@ -14,13 +15,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.SocketTimeoutException;
+import java.util.Random;
 
 public class NetworkIO {
 
    public final static int MAX_TIME_OUT = 5000;
 
 
-   // http://stackoverflow.com/questions/17148371/check-whether-mobile-is-using-wifi-or-data-3g
+
+
+
+    // http://stackoverflow.com/questions/17148371/check-whether-mobile-is-using-wifi-or-data-3g
    public static String getNetworkStatus(Context contextobject) {
       final ConnectivityManager connMgr = (ConnectivityManager)
       contextobject.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -35,6 +40,12 @@ public class NetworkIO {
       }
    }
 
+    public static String getRandomSuffixForAvoidingCachedRefreshs() {
+        Random r = new Random();
+        byte[] buffer = new byte[10];
+        r.nextBytes(buffer);
+        return ByteToStringEncoding.encodeToSmallLetters(buffer);
+    }
 
    public static String loadFileFromServer(String urlForFile) throws SocketTimeoutException, IOException, NumberFormatException {
 			

@@ -3,6 +3,8 @@ package de.kochon.enrico.secrettalkmessenger.model;
 import java.util.Date;
 import java.util.List;
 
+import de.kochon.enrico.secrettalkmessenger.tools.ByteToStringEncoding;
+
 /** transient helper for creation of transport level security
  *  not necessary to persist in database
  */
@@ -35,8 +37,8 @@ public class EncryptedMessage {
 		if (websafeSerialization.length() != VERSION_0_ENCODED_ENCRYPTEDMESSAGELENGTH) throw new IllegalArgumentException("Size of serialized encrypted message does not fit!");
       if (websafeSerialization.charAt(0) != 'c') throw new IllegalArgumentException("Error: header mismatch!");
       if (websafeSerialization.charAt(1) != '0') throw new IllegalArgumentException("Error: key version mismatch!");
-      header = Messagekey.unencodeFromSmallLetters(websafeSerialization.substring(2,34));
-      body = Messagekey.unencodeFromSmallLetters(websafeSerialization.substring(35,163));
+      header = ByteToStringEncoding.unencodeFromSmallLetters(websafeSerialization.substring(2, 34));
+      body = ByteToStringEncoding.unencodeFromSmallLetters(websafeSerialization.substring(35,163));
    }
 
 
@@ -104,9 +106,9 @@ public class EncryptedMessage {
    public String getWebsafeSerialization() {
 		StringBuffer sb = new StringBuffer();
       sb.append("c0");
-      sb.append(Messagekey.encodeToSmallLetters(header));
+      sb.append(ByteToStringEncoding.encodeToSmallLetters(header));
       sb.append("z");
-      sb.append(Messagekey.encodeToSmallLetters(body));
+      sb.append(ByteToStringEncoding.encodeToSmallLetters(body));
       String serializedEncryptedMessage = sb.toString();
 		if (serializedEncryptedMessage.length() != VERSION_0_ENCODED_ENCRYPTEDMESSAGELENGTH) throw new IllegalArgumentException("Size of serialized encrypted message does not fit!");
       return serializedEncryptedMessage;
