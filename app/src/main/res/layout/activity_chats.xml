@@ -6,27 +6,56 @@
          android:layout_height="match_parent"
          android:paddingLeft="8dp"
          android:paddingRight="8dp">
-    <Button
-    	android:id="@+id/buttonChatsAdd"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_marginTop="@dimen/vertical_spacer"
-    	android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    	android:layout_marginRight="@dimen/activity_horizontal_margin"
-    	android:text="@string/btncaptionChatsAdd" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:background="@color/app_background"
+        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp">
 
-    <Button
-    	android:id="@+id/buttonChatsRefresh"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_marginTop="@dimen/vertical_spacer"
-    	android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    	android:layout_marginRight="@dimen/activity_horizontal_margin"
-    	android:text="@string/btncaptionChatsRefresh" />
+        <ImageButton
+            android:id="@+id/buttonAddConversation"
+            android:background="@drawable/add_drawable"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="0dp"
+            />
+        <ImageButton
+        android:id="@+id/buttonRefreshConversations"
+        android:background="@drawable/refresh_drawable"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/vertical_spacer"
+        android:layout_marginLeft="20dp"
+        />
+        <ImageButton
+            android:id="@+id/buttonEditConfiguration"
+            android:background="@drawable/config_drawable"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="20dp"
+            />
+        <ImageButton
+            android:id="@+id/buttonQuestion"
+            android:background="@drawable/question_drawable"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+
 
      <ListView android:id="@android:id/list"
                android:layout_width="match_parent"
                android:layout_height="match_parent"
+         android:layout_marginTop="20dp"
                android:background="@color/app_background"
                android:color="@color/app_foreground"
                android:layout_weight="1"

@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Button;
@@ -66,7 +67,7 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
 
         initArrayAdapter();
 
-        Button btnCreate = (Button) findViewById(R.id.buttonChatsAdd);
+        ImageButton btnCreate = (ImageButton) findViewById(R.id.buttonAddConversation);
         if (btnCreate != null) {
             btnCreate.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
@@ -76,7 +77,27 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
             });
         }
 
-        Button btnRefresh = (Button) findViewById(R.id.buttonChatsRefresh);
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.buttonEditConfiguration);
+        if (null != btnSettings) {
+            btnSettings.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    Intent intentSettings = new Intent(ConversationListActivity.this, SettingsActivity.class);
+                    startActivityForResult(intentSettings, 0);
+                }
+            });
+        }
+
+        ImageButton btnQuestions = (ImageButton) findViewById(R.id.buttonQuestion);
+        if (null != btnQuestions) {
+            btnQuestions.setOnClickListener(new OnClickListener() {
+                public void onClick(View v) {
+                    Intent intentWelcome = new Intent(ConversationListActivity.this, WelcomeActivity.class);
+                    startActivityForResult(intentWelcome, 0);
+                }
+            });
+        }
+
+        ImageButton btnRefresh = (ImageButton) findViewById(R.id.buttonRefreshConversations);
         if (btnRefresh != null) {
             btnRefresh.setOnClickListener(new OnClickListener() {
                 public void onClick(View v) {
@@ -108,6 +129,8 @@ public class ConversationListActivity extends ListActivity implements ChannelCac
                 }
             });
         }
+
+        ((TFApp)(this.getApplication())).checkBackgroundService(this);
     }
 
 

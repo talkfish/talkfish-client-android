@@ -8,18 +8,17 @@ import de.kochon.enrico.secrettalkmessenger.service.KeepAliveCheck;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.net.Uri;
-
-import android.os.Vibrator;
 
 
 public class SettingsActivity extends Activity implements OnClickListener {
@@ -66,6 +65,16 @@ public class SettingsActivity extends Activity implements OnClickListener {
       if (background_off != null && currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_OFF)) {
          background_off.setChecked(true);
       }
+       TextView versionView = (TextView) findViewById(R.id.textVersionsinfo);
+       if (null != versionView) {
+          String version = "unknown";
+          try {
+             version = getPackageManager().getPackageInfo("de.kochon.enrico.secrettalkmessenger",0).versionName;
+          } catch (PackageManager.NameNotFoundException nnfe) {
+             TFApp.logException(nnfe);
+          }
+          versionView.setText(String.format("Aktuell installierte Version: %s", version));
+       }
 	}
 
 

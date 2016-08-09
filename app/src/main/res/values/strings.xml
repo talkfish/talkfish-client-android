@@ -31,6 +31,7 @@
     Die Inspiration für diese App lieferte https://de.wikipedia.org/wiki/Die_Gedanken_sind_frei\n
     \n
     Als Programmsymbol wird internet-group-chat.png des Tango-Projekts verwendet, siehe http://tango.freedesktop.org/Tango_Icon_Library\n
+        Die weiteren Symbole entstammen https://openclipart.org.\n
         Als Hintergrundbild für den Chat wird eine Satellitenaufnahme des Mergui Archipels gemäß dieser Bestimmung verwendet:
         By NASA Goddard Space Flight Center (Flickr: Mergui Archipelago) [CC BY 2.0 (http://creativecommons.org/licenses/by/2.0)], via Wikimedia Commons
         Bei einer leeren Chatübersicht wird der Liedtext zu "Die Gedanken sind frei" angezeigt. Dieses Bild ist gemeinfrei und ebenfalls in den Vereinigten Staaten von Amerika
@@ -43,8 +44,6 @@
 
 
     <string name="activityCaptionChats">Unterhaltungen</string>
-    <string name="btncaptionChatsAdd">Beginne neue Unterhaltung</string>
-    <string name="btncaptionChatsRefresh">Auf Aktualisierungen prüfen</string>
     <string name="btncaptionChatsDetails">Detail</string>
     <string name="btncaptionChatsAddKeys">...</string>
     <string name="btncaptionChatsReceive">#</string>
@@ -64,7 +63,7 @@
     <string name="activityCaptionSettings">Einstellungen</string>
     <string name="textConfigName">Name:</string>
     <string name="btncaptionChannels">Kanäle</string>
-    <string name="btncaptionDownloadLatest">Neueste Version herunterladen</string>
+    <string name="btncaptionDownloadLatest">APK von talkfish.de herunterladen</string>
     <string name="captionSettingsAlarmOnOff">Aktualisierung im Hintergrund:</string>
     <string name="captionSettingsBackgroundMobile">immer</string>
     <string name="captionSettingsBackgroundWifi">nur im WLAN</string>
