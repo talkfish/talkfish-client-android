@@ -10,6 +10,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,7 +27,7 @@ import android.widget.Toast;
 import android.net.Uri;
 
 
-public class SettingsActivity extends Activity implements OnClickListener {
+public class SettingsActivity extends AppCompatActivity implements OnClickListener {
 	
 	private ConfigHelper configHelper;
 	private EditText configName;
@@ -32,14 +38,43 @@ public class SettingsActivity extends Activity implements OnClickListener {
    private RadioButton background_mobile;
    private RadioButton background_wifi;
    private RadioButton background_off;
-	
-	
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+      super.onCreateOptionsMenu(menu);
+
+      MenuInflater inflater = getMenuInflater();
+      inflater.inflate(R.menu.settingsmenu, menu);
+
+      return true;
+   }
+
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
+      switch (item.getItemId()) {
+         case (android.R.id.home):
+            finish();
+            return true;
+         case (R.id.action_about):
+            Intent intentWelcome = new Intent(SettingsActivity.this, WelcomeActivity.class);
+            startActivityForResult(intentWelcome, 0);
+            return true;
+         default:
+            return super.onOptionsItemSelected(item);
+      }
+   }
+
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_settings);
-		
-      configHelper = ((TFApp)(this.getApplication())).configHelper;
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_settings);
+       setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        configHelper = ((TFApp)(this.getApplication())).configHelper;
          
 		configName = (EditText) findViewById(R.id.editConfigName);
 		ok = (Button) findViewById(R.id.buttonSettingsOk);

@@ -13,8 +13,12 @@
     <string name="btncaptionBack">Zurück</string>
     <string name="btncaptionDelete">Löschen</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="action_switch_cam">Kamera wechseln</string>
+    <string name="action_about">Info</string>
+    <string name="action_newchat">Neuer Chat</string>
+    <string name="action_reload">Neu laden</string>
+    <string name="action_takephoto">Foto</string>
 
     <string name="camera_alert">camera alert</string>
 
@@ -45,10 +49,9 @@
 
     <string name="activityCaptionChats">Unterhaltungen</string>
     <string name="btncaptionChatsDetails">Detail</string>
-    <string name="btncaptionChatsAddKeys">...</string>
     <string name="btncaptionChatsReceive">#</string>
 
-    <string name="activityCaptionCreateNewConversation">Erstelle neue Unterhaltung</string>
+    <string name="activityCaptionCreateNewConversation">Neue Unterhaltung</string>
     <string name="textNewConversationName">Kontakt:</string>
 
     <string name="textConversationName">Unterhaltung:</string>
@@ -72,7 +75,7 @@
     <string name="activityCaptionChannels">Kanäle</string>
     <string name="btncaptionChannelsOK">Zurück</string>
 
-    <string name="activityCaptionAddKeys">Erzeuge und Übertrage neue Schlüssel</string>
+    <string name="activityCaptionAddKeys">Schlüsseltausch</string>
     <string name="activityCaptionKeys">Übersicht</string>
     <string name="btncaptionKeysAddAndSend">Schlüssel\nsenden</string>
     <string name="btncaptionKeysReceive">Schlüssel\nempfangen</string>

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import android.os.Environment;
+import android.os.StrictMode;
 
 
 
@@ -44,6 +45,22 @@ public class TFApp extends Application {
         applicationContext = getApplicationContext();
         configHelper = new ConfigHelper(databaseHelper);
         dataAccessHelper = new DataAccessHelper(databaseHelper);
+
+       if (BuildConfig.DEBUG) {
+          StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                  .detectDiskReads()
+                  .detectDiskWrites()
+                  .detectNetwork()   // or .detectAll() for all detectable problems
+                  .penaltyLog()
+                  .build());
+          StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                  .detectLeakedSqlLiteObjects()
+                  .detectLeakedClosableObjects()
+                  .penaltyLog()
+                  .penaltyDeath()
+                  .build());
+       }
+
     }
 
     @Override

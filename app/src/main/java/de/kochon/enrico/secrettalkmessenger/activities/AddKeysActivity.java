@@ -7,6 +7,12 @@ import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
-public class AddKeysActivity extends Activity {
+public class AddKeysActivity extends AppCompatActivity {
 
     protected Button btnRenameConversation;
     protected Button btnDeleteMessages;
@@ -35,6 +41,8 @@ public class AddKeysActivity extends Activity {
     public final static String SHOW_CONVERSATION_ID_KEY = "SHOW_CONVERSATION_ID_KEY";
 
     public final static int REQUESTCODE_CHANGE_CONVERSATION_NAME = 1;
+
+    public final static int RESULT_CONVERSATION_DELETED = 23;
 
 
     protected void initConversation() {
@@ -63,9 +71,41 @@ public class AddKeysActivity extends Activity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settingsmenu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case (android.R.id.home):
+                finish();
+                return true;
+            case (R.id.action_about):
+                Intent intentWelcome = new Intent(AddKeysActivity.this, WelcomeActivity.class);
+                startActivityForResult(intentWelcome, 0);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addkeys);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_addKeys);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent data = getIntent();
         if (data.hasExtra(SHOW_CONVERSATION_ID_KEY)) {
@@ -132,7 +172,7 @@ public class AddKeysActivity extends Activity {
                         if (rows > 0) {
                             Intent reply = new Intent();
                             Bundle result = new Bundle();
-                            setResult(RESULT_OK, reply);
+                            setResult(RESULT_CONVERSATION_DELETED, reply);
                             finish();
                         } else {
                             Toast.makeText(AddKeysActivity.this,

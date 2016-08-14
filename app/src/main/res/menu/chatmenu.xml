@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.kochon.enrico.secrettalkmessenger.ChatActivity" >
+
+    <item
+        android:id="@+id/action_takephoto"
+        android:orderInCategory="100"
+        android:icon="@drawable/camera_selector"
+        android:title="@string/action_takephoto"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="200"
+        android:icon="@drawable/config_selector"
+        android:title="@string/action_settings"
+        app:showAsAction="always"/>
+
+</menu>

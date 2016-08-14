@@ -1,5 +1,7 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +13,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
@@ -22,6 +28,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -53,14 +60,11 @@ import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 import android.text.util.Linkify;
 
 
-public class ChatActivity extends Activity {
+public class ChatActivity extends AppCompatActivity {
 
     private EditText chatMessage;
-    private TextView conversationNick;
     private ScrollView chatscroll;
-    private Button buttonSend;
-    private Button buttonTakePhoto;
-
+    private ImageButton buttonSend;
 
     private Conversation conversation;
     private Channel receivingChan;
@@ -185,13 +189,17 @@ public class ChatActivity extends Activity {
             receivingChan = conversation.getChannelForReceiving();
             sendingChan = conversation.getChannelForSending();
         }
-        if (null != conversationNick) {
-            conversationNick.setText(String.format("Unterhaltung mit %s", conversation.getNick()));
+        ActionBar actionBar = getSupportActionBar();
+        if (null != actionBar) {
+            actionBar.setTitle(String.format("Chat mit %s", conversation.getNick()));
         }
         if (null != chatMessage) {
             if (!conversation.hasAtLeastOneKeyForSending()) {
                 chatMessage.setText("Schlüssel fehlen!");
                 chatMessage.setEnabled(false);
+            } else {
+                chatMessage.setText("");
+                chatMessage.setEnabled(true);
             }
         }
     }
@@ -214,6 +222,17 @@ public class ChatActivity extends Activity {
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.chatmenu, menu);
+
+        return true;
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -221,9 +240,14 @@ public class ChatActivity extends Activity {
 
         setContentView(R.layout.activity_chat);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         chatMessage = (EditText) findViewById(R.id.editNewMessageActivityChat);
         chatscroll = (ScrollView) findViewById(R.id.mainChatScrollView);
-        conversationNick = (TextView) findViewById(R.id.textViewContactNickActivityChat);
 
         if ((null != chatMessage) && (null != chatscroll)) {
             //chatscroll.setFocusable(true);
@@ -261,7 +285,7 @@ public class ChatActivity extends Activity {
                 }
             });
 
-            buttonSend = (Button) findViewById(R.id.sendNewMessageActivityChat);
+            buttonSend = (ImageButton) findViewById(R.id.sendNewMessageActivityChat);
             if (null != buttonSend) {
                 buttonSend.setOnClickListener(new View.OnClickListener() {
                                                   @Override
@@ -272,27 +296,7 @@ public class ChatActivity extends Activity {
                                               }
                 );
             }
-            buttonTakePhoto = (Button) findViewById(R.id.takePhotoActivityChat);
-            if (null != buttonTakePhoto) {
-                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-                    buttonTakePhoto.setEnabled(false);
-                }
-                buttonTakePhoto.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Intent takePictureIntent = new Intent(ChatActivity.this, CapturePhotoActivity.class);
-                        //startActivityForResult(takePictureIntent, 0);
-
-                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, INTENT_REQUEST_IMAGE_CAPTURE);
-                        }
-
-                    }
-                });
-            }
         }
-
 
         init();
 
@@ -302,6 +306,44 @@ public class ChatActivity extends Activity {
 
         ((TFApp) (this.getApplication())).checkBackgroundService(this);
     }
+
+    private void takePhoto() {
+        if (getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, INTENT_REQUEST_IMAGE_CAPTURE);
+            }
+        }
+    }
+
+    private void goToSettings() {
+        if (null != conversation) {
+            Intent intentShowConversationProperties = new Intent(ChatActivity.this, AddKeysActivity.class);
+            Bundle state = new Bundle();
+            state.putLong(AddKeysActivity.SHOW_CONVERSATION_ID_KEY, conversation.getID());
+            intentShowConversationProperties.putExtras(state);
+            startActivityForResult(intentShowConversationProperties, ConversationListActivity.REQUEST_CODE_EDIT_OR_DELETE_CONVERSATION);
+        }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case (android.R.id.home):
+                finish();
+                return true;
+            case (R.id.action_takephoto):
+                takePhoto();
+                return true;
+            case (R.id.action_settings):
+                goToSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private ImageView mImageView;
     private Bitmap imageBitmap;
@@ -328,6 +370,17 @@ public class ChatActivity extends Activity {
                 resultBitmap = null;
             }
         }
+        if (requestCode == ConversationListActivity.REQUEST_CODE_EDIT_OR_DELETE_CONVERSATION &&
+                resultCode == AddKeysActivity.RESULT_CONVERSATION_DELETED) {
+            Intent reply = new Intent();
+            setResult(RESULT_OK, reply);
+            finish();
+        }
+        if (requestCode == ConversationListActivity.REQUEST_CODE_EDIT_OR_DELETE_CONVERSATION &&
+                resultCode == RESULT_OK) {
+            init();
+        }
+
     }
 
 
