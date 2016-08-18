@@ -19,6 +19,10 @@ public class ConfigHelper {
    public static final String CONFIG_KEY_BACKGROUND_OPTION_WIFI = "WIFI";
    public static final String CONFIG_KEY_BACKGROUND_OPTION_OFF = "OFF";
    public static final String CONFIG_KEY_BACKGROUND_DEFAULT = CONFIG_KEY_BACKGROUND_OPTION_OFF;
+
+    public static final String CONFIG_KEY_FIRSTRUN = "firstrun";
+    public static final String CONFIG_KEY_FIRSTRUN_DONE = "done";
+    public static final String CONFIG_KEY_FIRSTRUN_DEFAULT = "notyet";
    
    private SqlOpenHelper dbhelper;
    
@@ -74,10 +78,10 @@ public class ConfigHelper {
    private String getValueForKey(String key, String defaultValue) {
       SQLiteDatabase database = dbhelper.getReadableDatabase();
         
-        Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONFIG, 
-              new String[] { SqlOpenHelper.CONFIG_COLUMN_KEY, SqlOpenHelper.CONFIG_COLUMN_VALUE }, 
-              null, null, null, null, 
-              SqlOpenHelper.CONFIG_COLUMN_KEY);
+        Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_CONFIG,
+                new String[]{SqlOpenHelper.CONFIG_COLUMN_KEY, SqlOpenHelper.CONFIG_COLUMN_VALUE},
+                null, null, null, null,
+                SqlOpenHelper.CONFIG_COLUMN_KEY);
         String value = defaultValue;
         boolean hasKey = false;
         listCursor.moveToFirst();
@@ -155,5 +159,14 @@ public class ConfigHelper {
    public void setBackgroundOff() {
       setConfig(CONFIG_KEY_BACKGROUND, CONFIG_KEY_BACKGROUND_OPTION_OFF);
    }
+
+    public boolean isFirstRun() {
+        return CONFIG_KEY_FIRSTRUN_DEFAULT.equals(getValueForKey(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DEFAULT));
+    }
+
+    public void setFirstRunDone() {
+        setConfig(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DONE);
+    }
+
    
 }

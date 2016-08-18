@@ -147,6 +147,13 @@ public class CheckNewMessages extends Service {
                                 int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
                                 TFApp.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s : %d", myIter, currentTarget, mc));
 
+                                if ( ((TFApp) (CheckNewMessages.this.getApplication())).configHelper.isFirstRun()) {
+                                    TFApp.addToApplicationLog(String.format("%d - first run, skipping old entries", myIter));
+                                    ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().setCurrentOffsetForChannel(idchannel, mc);
+                                    persistedOffset = mc;
+                                    ((TFApp) (CheckNewMessages.this.getApplication())).configHelper.setFirstRunDone();
+                                }
+
                                 if (mc != -1 && persistedOffset != mc) {
                                     int messagelimit = mc; // default in case persistedOffset < mc
                                     if (persistedOffset > mc) { // server wrap occured

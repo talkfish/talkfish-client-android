@@ -31,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -133,7 +134,8 @@ public class ChatActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            ChatActivity.this.setProgressBarIndeterminateVisibility(true);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            progressBar.setVisibility(View.VISIBLE);
         }
 
 
@@ -153,7 +155,8 @@ public class ChatActivity extends AppCompatActivity {
                 Toast.makeText(ChatActivity.this, "Die Nachricht konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
             }
             ChatActivity.this.fullReload();
-            ChatActivity.this.setProgressBarIndeterminateVisibility(false);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            progressBar.setVisibility(View.INVISIBLE);
             ChatActivity.this.scrollDown();
             chatscroll.requestFocus(); // close softkeyboard
         }
@@ -175,7 +178,8 @@ public class ChatActivity extends AppCompatActivity {
                 Toast.makeText(ChatActivity.this, "Das Photo konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
             }
             ChatActivity.this.fullReload();
-            ChatActivity.this.setProgressBarIndeterminateVisibility(false);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            progressBar.setVisibility(View.INVISIBLE);
             ChatActivity.this.scrollDown();
             chatscroll.requestFocus(); // close softkeyboard
         }
@@ -191,7 +195,7 @@ public class ChatActivity extends AppCompatActivity {
         }
         ActionBar actionBar = getSupportActionBar();
         if (null != actionBar) {
-            actionBar.setTitle(String.format("Chat mit %s", conversation.getNick()));
+            actionBar.setTitle(String.format("%s", conversation.getNick()));
         }
         if (null != chatMessage) {
             if (!conversation.hasAtLeastOneKeyForSending()) {

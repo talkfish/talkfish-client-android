@@ -12,13 +12,15 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
 
    private int idchannel;
    private DataAccessHelper dataAccessHelper;
+   private ConfigHelper configHelper;
    private ChannelCacheRefreshable refreshable;
 
 
-   public RefreshCacheForChannel(int idchannel, DataAccessHelper dataAccessHelper, ChannelCacheRefreshable refreshable) {
+   public RefreshCacheForChannel(int idchannel, DataAccessHelper dataAccessHelper, ConfigHelper configHelper, ChannelCacheRefreshable refreshable) {
       super();
       this.idchannel = idchannel;
       this.dataAccessHelper = dataAccessHelper;
+      this.configHelper = configHelper;
       this.refreshable = refreshable;
    }
 
@@ -36,6 +38,12 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
             int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
             TFApp.addToApplicationLog(String.format("by useraction, got current offset on server for channel with endpoint %s : %d", currentTarget, mc));
 
+            if ( configHelper.isFirstRun()) {
+               TFApp.addToApplicationLog(String.format("first run, skipping old entries"));
+               dataAccessHelper.setCurrentOffsetForChannel(idchannel, mc);
+               persistedOffset = mc;
+               configHelper.setFirstRunDone();
+            }
 
             if (mc != -1 && persistedOffset != mc) {
                int messagelimit = mc; // default in case persistedOffset < mc

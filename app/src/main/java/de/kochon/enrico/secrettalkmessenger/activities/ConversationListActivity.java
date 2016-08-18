@@ -39,6 +39,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.util.Log;
 
@@ -164,6 +165,7 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                 Log.d(TFApp.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
                 RefreshCacheForChannel task = new RefreshCacheForChannel(channel.id,
                         ((TFApp) (ConversationListActivity.this.getApplication())).getDAH(),
+                        ((TFApp) (ConversationListActivity.this.getApplication())).configHelper,
                         ConversationListActivity.this);
                 task.execute(channel.endpoint);
             }
@@ -214,11 +216,10 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                         Long conversationID = data.getLongExtra(CreateNewConversationActivity.NEW_CONVERSATION_ID_KEY, -1);
                         Conversation c = ((TFApp) (this.getApplication())).getDAH().loadConversation(conversationID);
                         if (null != c) {
-                            Toast.makeText(this, "Neue Unterhaltung mit " + c.getNick() + " angelegt.", Toast.LENGTH_SHORT).show();
+                            Toaster.show(this, "Neue Unterhaltung mit " + c.getNick() + " angelegt.");
                             add(c);
                         } else {
-                            Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
-                                    Toast.LENGTH_SHORT).show();
+                            Toaster.show(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID));
                         }
                     }
                     break;
@@ -231,11 +232,14 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
 
 
     public void indicateRefresh() {
-        this.setProgressBarIndeterminateVisibility(true);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     public void stopRefreshIndication() {
-        this.setProgressBarIndeterminateVisibility(false);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+        progressBar.setVisibility(View.INVISIBLE);
+
     }
 
 
