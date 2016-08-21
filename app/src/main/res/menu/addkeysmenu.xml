@@ -1,5 +1,4 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="de.kochon.enrico.secrettalkmessenger.activities.AddKeysActivity" >
 
@@ -8,6 +7,6 @@
         android:orderInCategory="100"
         android:icon="@drawable/question_selector"
         android:title="@string/action_about"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 
 </menu>

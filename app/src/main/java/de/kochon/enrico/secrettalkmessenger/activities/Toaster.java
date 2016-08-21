@@ -1,8 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
 import android.app.Activity;
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,7 @@ import de.kochon.enrico.secrettalkmessenger.R;
  * Created by enrico on 14.08.16.
  */
 public class Toaster {
-    public static void show(AppCompatActivity activity, String message) {
+    public static void show(Activity activity, String message) {
         LayoutInflater inflater = activity.getLayoutInflater();
         View layout = inflater.inflate(R.layout.custom_toast,
                 (ViewGroup) activity.findViewById(R.id.custom_toast_container));

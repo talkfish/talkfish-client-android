@@ -240,8 +240,8 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
            try {
                // UUID is the app's UUID string, also used by the server code
                tmp = device.createRfcommSocketToServiceRecord(UUID.fromString(ReceiveKeyByBluetoothActivity.UUID_STRING));
-           } catch (IOException e) { 
-               TFApp.logException(e);
+           } catch (IOException e) {
+              ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).logException(e);
            }
            mmSocket = tmp;
        }
@@ -258,9 +258,9 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                try {
                    mmSocket.close();
                } catch (IOException e) {
-                  TFApp.logException(e);
+                  ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).logException(e);
                }
-                  TFApp.logException(connectException);
+              ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).logException(connectException);
                return;
            }
     
@@ -307,7 +307,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
                   mHandler.obtainMessage(MESSAGE_SENT, -1, -1, null).sendToTarget();
                }
            } catch(IOException e) {
-               TFApp.logException(e);
+              ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).logException(e);
            }
        }
     
@@ -316,7 +316,7 @@ public class SendKeyBatchByBluetoothActivity extends Activity {
            try {
                mmSocket.close();
            } catch (IOException e) {
-               TFApp.logException(e);
+              ((TFApp)(SendKeyBatchByBluetoothActivity.this.getApplication())).logException(e);
            }
        }
    }

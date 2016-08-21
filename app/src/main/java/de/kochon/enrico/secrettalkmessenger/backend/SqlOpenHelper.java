@@ -11,7 +11,7 @@ import de.kochon.enrico.secrettalkmessenger.TFApp;
 public class SqlOpenHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "messagedb.sqlite";
-    public static final int VERSION = 7;
+    public static final int VERSION = 8;
 
     public static final String TABLE_NAME_CONFIG = "config";
     public static final String CONFIG_COLUMN_ID = "id";
@@ -68,6 +68,12 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME_UPDATELOCK = "updatelock";
     public static final String UPDATELOCK_COLUMN_ID = "id";
     public static final String UPDATELOCK_COLUMN_LASTLOCKTIME = "lastlocktime";
+
+    public static final String TABLE_NAME_LOG = "log";
+    public static final String LOG_COLUMN_ID = "id";
+    public static final String LOG_COLUMN_TIMEINSERTED = "timeinserted";
+    public static final String LOG_COLUMN_LOGLEVEL = "loglevel";
+    public static final String LOG_COLUMN_MESSAGE = "message";
 
     private boolean lockedDB;
 
@@ -149,6 +155,12 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
                 UPDATELOCK_COLUMN_ID + " integer primary key autoincrement not null, " +
                 UPDATELOCK_COLUMN_LASTLOCKTIME + " integer not null" +
                 ");");
+        db.execSQL("create table " + TABLE_NAME_LOG + "(" +
+                LOG_COLUMN_ID + " integer primary key autoincrement not null, " +
+                LOG_COLUMN_TIMEINSERTED + " integer not null," +
+                LOG_COLUMN_LOGLEVEL + " integer not null," +
+                LOG_COLUMN_MESSAGE + " string not null" +
+                ");");
     }
 
 
@@ -190,6 +202,14 @@ public class SqlOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        if ((newVersion > oldVersion) && oldVersion == 7) {
+            db.execSQL("create table " + TABLE_NAME_LOG + "(" +
+                    LOG_COLUMN_ID + " integer primary key autoincrement not null, " +
+                    LOG_COLUMN_TIMEINSERTED + " integer not null," +
+                    LOG_COLUMN_LOGLEVEL + " integer not null," +
+                    LOG_COLUMN_MESSAGE + " string not null" +
+                    ");");
+        }
         if ((newVersion > oldVersion) && (oldVersion == 6)) {
             db.execSQL("alter table " + TABLE_NAME_MESSAGES + " add column " +
                     MESSAGES_COLUMN_ISIMAGE + " integer not null default 0;");

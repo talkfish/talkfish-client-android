@@ -15,14 +15,14 @@ public class PeriodicMessageCheck extends BroadcastReceiver {
 
 
    @Override
-   public void onReceive(Context context, Intent intent) {   
-      TFApp.addToApplicationLog("received messagecheckalarm");
+   public void onReceive(Context context, Intent intent) {
+      ((TFApp) context.getApplicationContext()).addToApplicationLog("received messagecheckalarm");
       setAlarm(context);
 
-      long lag = TFApp.getLagToLastKeepAliveMarkerInMillis(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE);
+      long lag = ((TFApp) context.getApplicationContext()).getLagToLastKeepAliveMarkerInMillis(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE);
 
       if (lag > 2*KeepAliveCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000 ) {
-         TFApp.addToApplicationLog(
+         ((TFApp) context.getApplicationContext()).addToApplicationLog(
                  String.format("*** PeriodicMessageCheck registered not working keepalivecheckalarm (last run before %d s), resetting it! ***",
                          lag / 1000));
          KeepAliveCheck.setAlarm(context);
@@ -38,7 +38,7 @@ public class PeriodicMessageCheck extends BroadcastReceiver {
       AlarmManager am= (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
       am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000 * DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS, pi);
 
-      TFApp.setKeepAliveMarker(PERIODICMESSAGECHECK_KEEPALIVE);
+      ((TFApp) context.getApplicationContext()).setKeepAliveMarker(PERIODICMESSAGECHECK_KEEPALIVE);
    }
      
    public static void cancelAlarm(Context context) {

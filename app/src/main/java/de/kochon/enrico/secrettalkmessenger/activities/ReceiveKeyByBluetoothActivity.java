@@ -58,7 +58,9 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                   long endnow;
                   startnow = android.os.SystemClock.uptimeMillis();
                   int keycount = ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).
-                          getDAH().bulkAddEncodedKeysToConversationAndSetExchanged(ReceiveKeyByBluetoothActivity.this.conversation, keys);
+                          getDAH().bulkAddEncodedKeysToConversationAndSetExchanged(
+                          ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())),
+                          ReceiveKeyByBluetoothActivity.this.conversation, keys);
                   endnow = android.os.SystemClock.uptimeMillis();
                   long totaltime = endnow-startnow;
                   double timeperkey = -1;
@@ -183,7 +185,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
              // MY_UUID is the app's UUID string, also used by the client code
              tmp = BluetoothAdapter.getDefaultAdapter().listenUsingRfcommWithServiceRecord(SERVICENAME, UUID.fromString(UUID_STRING));
           } catch (IOException e) {
-              TFApp.logException(e);
+             ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).logException(e);
           }
           mmServerSocket = tmp;
        }
@@ -196,7 +198,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
             socket = mmServerSocket.accept();
 
          } catch (IOException e) {
-            TFApp.logException(e);
+            ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).logException(e);
          }
 
          if (socket != null) {
@@ -233,7 +235,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                }
 
             } catch (IOException e) {
-               TFApp.logException(e);
+               ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).logException(e);
             }
          }
        }
@@ -245,7 +247,7 @@ public class ReceiveKeyByBluetoothActivity extends Activity {
                Log.d(TFApp.LOGKEY, "cancel called, closing mmServerSocket");
                mmServerSocket.close();
            } catch (IOException e) {
-              TFApp.logException(e);
+              ((TFApp)(ReceiveKeyByBluetoothActivity.this.getApplication())).logException(e);
            }
        }
    }

@@ -4,7 +4,7 @@ android {
     buildToolsVersion "23.0.2"
     defaultConfig {
         applicationId "de.kochon.enrico.secrettalkmessenger"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 23
 
         testApplicationId "de.kochon.enrico.secrettalkmessenger.tests"
@@ -19,8 +19,5 @@ android {
     productFlavors {
     }
 }
-dependencies {
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:support-v4:23.2.1'
-}
+
 

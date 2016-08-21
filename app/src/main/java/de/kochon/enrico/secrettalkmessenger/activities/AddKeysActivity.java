@@ -7,9 +7,8 @@ import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.app.ActionBar;
+import android.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
-public class AddKeysActivity extends AppCompatActivity {
+public class AddKeysActivity extends Activity {
 
     protected Button btnRenameConversation;
     protected Button btnDeleteMessages;
@@ -102,9 +101,9 @@ public class AddKeysActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addkeys);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_addKeys);
-        setSupportActionBar(myToolbar);
+        setActionBar(myToolbar);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent data = getIntent();
@@ -245,7 +244,7 @@ public class AddKeysActivity extends AppCompatActivity {
                         conversation.setNick(newConversationName);
                         if (1 == ((TFApp) (this.getApplication())).getDAH().updateConversation(conversation)) {
                             initConversation();
-                            Toast.makeText(this, "Kontaktname geändert.", Toast.LENGTH_LONG).show();
+                            Toaster.show(this, "Kontaktname geändert.");
                         } else {
                             Toast.makeText(this, "Fehler beim Speichern der Änderung.", Toast.LENGTH_LONG).show();
                         }

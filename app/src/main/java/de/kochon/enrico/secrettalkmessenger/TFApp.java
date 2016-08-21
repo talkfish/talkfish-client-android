@@ -35,8 +35,6 @@ public class TFApp extends Application {
 
     public static final String LOGKEY = "talkfish";
     public static final String DOWNLOADLOCATION = "http://www.talkfish.de/download/talkfish.apk";
-    public static final String APPLICATIONLOGPATH = "talkfish/";
-
 
     @Override
     public void onCreate() {
@@ -74,7 +72,7 @@ public class TFApp extends Application {
       return dataAccessHelper;
    }
 
-   public static void logException(Exception e) {
+   public void logException(Exception e) {
       StringBuilder exception = new StringBuilder();
       exception.append(String.format("WARNING: exception of type %s occured!\n", e.getClass().getCanonicalName()));
       exception.append(e.getMessage()+"\n");
@@ -83,116 +81,77 @@ public class TFApp extends Application {
       e.printStackTrace(pw);
       exception.append(sw.toString()); // stack trace as a string
       Log.d(LOGKEY, exception.toString());
-      addToApplicationLog(exception.toString());
+      addToApplicationLog(exception.toString(),10);
    }
 
 
-   public static String ensureLogDir() {
-      String dirname = String.format("%s/%s", Environment.getExternalStorageDirectory().getPath(), APPLICATIONLOGPATH);
-      File directory = new File(dirname); 
-      if (!directory.exists()) {
-         try { directory.mkdir(); } 
-         catch (SecurityException e) { Log.d(LOGKEY, e.toString()); }
+   public void addToApplicationLog(String message) {
+      addToApplicationLog(message,0);
+   }
+
+   public void addToApplicationLog(String message, int loglevel) {
+      getDAH().appendLogMessage(message, loglevel);
+   }
+
+
+   public void setKeepAliveMarker(String tag) {
+      DateFormat df = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
+      java.util.Date d = new java.util.Date();
+      String timeInfo = String.format("%s:%d",df.format(d), d.getTime());
+      configHelper.setKeepAlive(timeInfo);
+
+   }
+
+
+   public long getLagToLastKeepAliveMarkerInMillis(String tag) {
+      String timeInfo = "";
+      if (tag.equals(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE)) {
+         timeInfo = configHelper.getKeepAlive();
       }
-      return dirname;
-   }
-
-
-   public static void addToApplicationLog(String message) {
-      String dirname = ensureLogDir();
-      DateFormat filedateformat = new SimpleDateFormat("yyyy_MM_dd");
-      String filename = String.format("%s%s.log", dirname, filedateformat.format(new java.util.Date()));
-      File file = new File(filename); 
-      if (!file.exists()) {
-         try { file.createNewFile(); } 
-         catch (IOException e) { Log.d(LOGKEY, e.toString()); }
+      if (tag.equals(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE)) {
+         timeInfo = configHelper.getPeriodicMessageCheck();
       }
-      try {
-         BufferedWriter buffer = new BufferedWriter(new FileWriter(file, true)); 
-         DateFormat df = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
-         String lineToWrite = String.format("%s: %s",df.format(new java.util.Date()), message);
-         buffer.append(lineToWrite);
-         buffer.newLine();
-         buffer.close();
 
-			Log.d(TFApp.LOGKEY, "appending to AppLog: " + message);
-      } catch (IOException e) { Log.d(LOGKEY, e.toString()); } 
-   }
-
-
-   public static void setKeepAliveMarker(String tag) {
-      String dirname = ensureLogDir();
-      String filename = String.format("%s%s.log", dirname, tag);
-      File file = new File(filename); 
-      if (!file.exists()) {
-         try { file.createNewFile(); } 
-         catch (IOException e) { Log.d(LOGKEY, e.toString()); }
-      }
-      try {
-         BufferedWriter buffer = new BufferedWriter(new FileWriter(file, false)); 
-         DateFormat df = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
-         java.util.Date d = new java.util.Date();
-         String lineToWrite = String.format("%s:%d",df.format(d), d.getTime());
-         buffer.append(lineToWrite);
-         buffer.close();
-      } catch (IOException e) { Log.d(LOGKEY, e.toString()); } 
-   }
-
-
-   public static long getLagToLastKeepAliveMarkerInMillis(String tag) {
-      String dirname = ensureLogDir();
-      String filename = String.format("%s%s.log", dirname, tag);
-      File file = new File(filename); 
-      if (!file.exists()) {
-         Log.d(TFApp.LOGKEY, "getLagToLastKeepAliveMarkerInMillis: file does not exist");
+      if (timeInfo == null || timeInfo.trim().equals("")) {
+         Log.d(TFApp.LOGKEY, "getLagToLastKeepAliveMarkerInMillis: timeinfo does not exist");
          return -1;
       }
-      try {
-         BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(file))); 
-         String lastKeepAlive = buffer.readLine();
-         buffer.close();
-         buffer = null;
-         String[] splitResult = lastKeepAlive.split(":");
-         if (splitResult.length == 2) {
-            try {
-               long last = new Long(splitResult[1]);
-               java.util.Date d = new java.util.Date();
-               long now = d.getTime();
-               return now - last;
-
-            } catch (NumberFormatException nfe) {
-               Log.d(TFApp.LOGKEY, String.format("getLagToLastKeepAliveMarkerInMillis: number format exception, while converting %s", splitResult[1]));
-               return -1;
-            }
-         } else {
-            Log.d(TFApp.LOGKEY, String.format("getLagToLastKeepAliveMarkerInMillis: could not obtain millis when splitting <%s>", lastKeepAlive));
+      String[] splitResult = timeInfo.split(":");
+      if (splitResult.length == 2) {
+         try {
+            long last = new Long(splitResult[1]);
+            java.util.Date d = new java.util.Date();
+            long now = d.getTime();
+            return now - last;
+         } catch (NumberFormatException nfe) {
+            Log.d(TFApp.LOGKEY, String.format("getLagToLastKeepAliveMarkerInMillis: number format exception, while converting %s", splitResult[1]));
             return -1;
          }
-      } catch (IOException e) { 
-         Log.d(LOGKEY, e.toString()); 
+      } else {
+         Log.d(TFApp.LOGKEY, String.format("getLagToLastKeepAliveMarkerInMillis: could not obtain millis when splitting <%s>", timeInfo));
          return -1;
-      } 
+      }
    }
 
 
-   public static void checkBackgroundService(Activity activity) {
-      String currentmode = ((TFApp)(activity.getApplication())).configHelper.getBackground();
+   public void checkBackgroundService(Activity activity) {
+      String currentmode = configHelper.getBackground();
       if (currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_WIFI) || currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_MOBILE)) {
-         long lag_KeepAlive = TFApp.getLagToLastKeepAliveMarkerInMillis(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE);
+         long lag_KeepAlive = getLagToLastKeepAliveMarkerInMillis(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE);
 
          if (lag_KeepAlive > 2*KeepAliveCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000 ) {
-            TFApp.addToApplicationLog(
+            addToApplicationLog(
                     String.format("*** ChatActivity registered not working keepalivecheckalarm (last run before %d ms), resetting it! ***",
-                            lag_KeepAlive));
+                            lag_KeepAlive), 5);
             KeepAliveCheck.setAlarm(activity);
          }
-         long lag_PeriodicMessageCheck = TFApp.getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
+         long lag_PeriodicMessageCheck = getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
 
          if (lag_PeriodicMessageCheck  > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
-            TFApp.addToApplicationLog(
+            addToApplicationLog(
                     String.format(
                             "*** ChatActivity registered not working messagecheckalarm (last run before %d ms), resetting it! ***",
-                            lag_PeriodicMessageCheck));
+                            lag_PeriodicMessageCheck), 5);
             PeriodicMessageCheck.setAlarm(activity);
          }
       }

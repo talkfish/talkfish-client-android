@@ -20,9 +20,12 @@ public class ConfigHelper {
    public static final String CONFIG_KEY_BACKGROUND_OPTION_OFF = "OFF";
    public static final String CONFIG_KEY_BACKGROUND_DEFAULT = CONFIG_KEY_BACKGROUND_OPTION_OFF;
 
-    public static final String CONFIG_KEY_FIRSTRUN = "firstrun";
-    public static final String CONFIG_KEY_FIRSTRUN_DONE = "done";
-    public static final String CONFIG_KEY_FIRSTRUN_DEFAULT = "notyet";
+   public static final String CONFIG_KEY_FIRSTRUN = "firstrun";
+   public static final String CONFIG_KEY_FIRSTRUN_DONE = "done";
+   public static final String CONFIG_KEY_FIRSTRUN_DEFAULT = "notyet";
+
+   public static final String CONFIG_KEY_KEEP_ALIVE = "keepalive";
+   public static final String CONFIG_KEY_PERIODIC_MESSAGE_CHECK = "periodicmessagecheck";
    
    private SqlOpenHelper dbhelper;
    
@@ -160,13 +163,29 @@ public class ConfigHelper {
       setConfig(CONFIG_KEY_BACKGROUND, CONFIG_KEY_BACKGROUND_OPTION_OFF);
    }
 
-    public boolean isFirstRun() {
-        return CONFIG_KEY_FIRSTRUN_DEFAULT.equals(getValueForKey(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DEFAULT));
-    }
+   public boolean isFirstRun() {
+      return CONFIG_KEY_FIRSTRUN_DEFAULT.equals(getValueForKey(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DEFAULT));
+   }
 
-    public void setFirstRunDone() {
-        setConfig(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DONE);
-    }
+   public void setFirstRunDone() {
+      setConfig(CONFIG_KEY_FIRSTRUN, CONFIG_KEY_FIRSTRUN_DONE);
+   }
+
+   public String getKeepAlive() {
+      return getValueForKey(CONFIG_KEY_KEEP_ALIVE, "");
+   }
+
+   public void setKeepAlive(String timeInfo) {
+      setConfig(CONFIG_KEY_KEEP_ALIVE, timeInfo);
+   }
+
+   public String getPeriodicMessageCheck() {
+      return getValueForKey(CONFIG_KEY_PERIODIC_MESSAGE_CHECK, "");
+   }
+
+   public void setPeriodicMessageCheck(String timeInfo) {
+      setConfig(CONFIG_KEY_PERIODIC_MESSAGE_CHECK, timeInfo);
+   }
 
    
 }

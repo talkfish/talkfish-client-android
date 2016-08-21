@@ -14,13 +14,13 @@ public class KeepAliveCheck extends BroadcastReceiver {
    public final static String KEEPALIVECHECK_KEEPALIVE = "ka_alive";
 
    @Override
-   public void onReceive(Context context, Intent intent) {   
-      TFApp.addToApplicationLog("received keepalivecheckalarm");
+   public void onReceive(Context context, Intent intent) {
+      ((TFApp) context.getApplicationContext()).addToApplicationLog("received keepalivecheckalarm");
       setAlarm(context);
-      long lag = TFApp.getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
+      long lag = ((TFApp) context.getApplicationContext()).getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
 
       if (lag > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
-         TFApp.addToApplicationLog(
+         ((TFApp) context.getApplicationContext()).addToApplicationLog(
                  String.format(
                          "*** KeepAliveCheck registered not working messagecheckalarm (last run before %d s), resetting it! ***",
                          lag / 1000));
@@ -34,7 +34,7 @@ public class KeepAliveCheck extends BroadcastReceiver {
       AlarmManager am= (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
       am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000 * DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS, pi);
 
-      TFApp.setKeepAliveMarker(KEEPALIVECHECK_KEEPALIVE);
+      ((TFApp) context.getApplicationContext()).setKeepAliveMarker(KEEPALIVECHECK_KEEPALIVE);
    }
      
    public static void cancelAlarm(Context context) {

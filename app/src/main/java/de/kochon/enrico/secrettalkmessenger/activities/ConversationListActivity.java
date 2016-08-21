@@ -15,33 +15,23 @@ import de.kochon.enrico.secrettalkmessenger.backend.ChannelCacheRefreshable;
 import de.kochon.enrico.secrettalkmessenger.backend.RefreshCacheForChannel;
 import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 
-import android.app.ActionBar;
 import android.app.Application;
-import android.app.ListActivity;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.ListFragment;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.Toolbar;
 import android.util.Log;
+import android.app.ListFragment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -52,7 +42,7 @@ import java.util.List;
 
 
 
-public class ConversationListActivity extends AppCompatActivity implements ChannelCacheRefreshable, Clickable {
+public class ConversationListActivity extends Activity implements ChannelCacheRefreshable, Clickable {
 
     public final static int REQUEST_CODE_NEW_CONVERSATION = 1;
     public final static int REQUEST_CODE_EDIT_OR_DELETE_CONVERSATION = 2;
@@ -107,17 +97,16 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
 
 
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+       super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_chats);
+       setContentView(R.layout.activity_chats);
+       FragmentManager fm = getFragmentManager();
+       fragment = (MyListFragment) fm.findFragmentById(R.id.listFragment);
 
-        FragmentManager fm = getSupportFragmentManager();
-        fragment = (MyListFragment) fm.findFragmentById(R.id.listFragment);
+       initArrayAdapter();
 
-        initArrayAdapter();
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_all_chats);
-        setSupportActionBar(myToolbar);
+       Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_all_chats);
+       setActionBar(myToolbar);
 
 
         ((TFApp)(this.getApplication())).checkBackgroundService(this);
@@ -163,7 +152,9 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
             }
             for (Channel channel : channelCacheMap.keySet()) {
                 Log.d(TFApp.LOGKEY, String.format("starting async task for loading from server for channel %s", channel.toString()));
-                RefreshCacheForChannel task = new RefreshCacheForChannel(channel.id,
+                RefreshCacheForChannel task = new RefreshCacheForChannel(
+                        ((TFApp) (ConversationListActivity.this.getApplication())),
+                        channel.id,
                         ((TFApp) (ConversationListActivity.this.getApplication())).getDAH(),
                         ((TFApp) (ConversationListActivity.this.getApplication())).configHelper,
                         ConversationListActivity.this);
@@ -288,7 +279,7 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                                             messageBuilder = new StringBuffer();
                                             CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
                                             c.setHasNewMessages(true);
-                                            ((TFApp) (ConversationListActivity.this.getApplication())).getDAH().addNewMessage(added);
+                                            ((TFApp) (ConversationListActivity.this.getApplication())).getDAH().addNewMessage(((TFApp) (ConversationListActivity.this.getApplication())), added);
                                             ((TFApp) (ConversationListActivity.this.getApplication())).getDAH().updateConversation(c);
                                             refreshSorting();
                                             fragment.getListView().invalidateViews();
@@ -296,8 +287,8 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                                             gotNewInConv = true;
                                         }
                                     } catch (IllegalArgumentException iae) {
-                                        TFApp.logException(iae);
-                                        TFApp.addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
+                                       ((TFApp) (ConversationListActivity.this.getApplication())).logException(iae);
+                                       ((TFApp) (ConversationListActivity.this.getApplication())).addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
                                     } finally {
                                         k.setIsUsed(true);
                                         ((TFApp) (ConversationListActivity.this.getApplication())).getDAH().updateKey(k);
@@ -306,7 +297,7 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                             }
                         }
                     } catch (IOException ioe) {
-                        TFApp.logException(ioe);
+                       ((TFApp) (ConversationListActivity.this.getApplication())).logException(ioe);
                     }
                 }
                 if (gotNewInConv) {
@@ -333,7 +324,7 @@ public class ConversationListActivity extends AppCompatActivity implements Chann
                 clickReceiver = (Clickable) context;
             } else {
                 throw new ClassCastException(context.toString()
-                        + " must implemenet Clickable");
+                        + " must implement Clickable");
             }
         }
 

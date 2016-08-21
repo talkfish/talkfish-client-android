@@ -74,7 +74,7 @@ public class CreateNewConversationActivity extends Activity {
                   } else {
                      String message = String.format("Fehler: Die neue Unterhaltung mit <%s> konnte der internen Datenbank nicht hinzugefügt werden.", name);
                      Toast.makeText(CreateNewConversationActivity.this, message, Toast.LENGTH_LONG).show();
-                     TFApp.addToApplicationLog(message);
+                     ((TFApp) (CreateNewConversationActivity.this.getApplication())).addToApplicationLog(message);
                   }
                }
             });

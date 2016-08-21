@@ -9,4 +9,6 @@
 
     <dimen name="centered_content_width">220dp</dimen>
 
+    <dimen name="smalltext">8dp</dimen>
+
 </resources>

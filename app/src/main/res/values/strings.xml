@@ -105,4 +105,7 @@
     <string name="activityRenameCaptionOldName">Bisherige Bezeichnung:</string>
     <string name="activityRenameCaptionNewName">Neue Bezeichnung:</string>
     <string name="title_activity_capture_photo">CapturePhotoActivity</string>
+
+    <string name="activityCaptionLogView">Anwendungsprotokoll</string>
+    <string name="btnCaptionLog">Anwendungsprotokoll anzeigen</string>
 </resources>

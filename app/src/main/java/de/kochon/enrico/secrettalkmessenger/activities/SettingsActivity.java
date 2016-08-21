@@ -6,13 +6,11 @@ import de.kochon.enrico.secrettalkmessenger.backend.ConfigHelper;
 import de.kochon.enrico.secrettalkmessenger.service.PeriodicMessageCheck;
 import de.kochon.enrico.secrettalkmessenger.service.KeepAliveCheck;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,15 +23,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import android.net.Uri;
+import android.widget.Toolbar;
 
 
-public class SettingsActivity extends AppCompatActivity implements OnClickListener {
+public class SettingsActivity extends Activity implements OnClickListener {
 	
 	private ConfigHelper configHelper;
 	private EditText configName;
 	private Button ok;
 	private Button downloadLatest;
 	private Button channels;
+   private Button log;
 
    private RadioButton background_mobile;
    private RadioButton background_wifi;
@@ -69,12 +69,17 @@ public class SettingsActivity extends AppCompatActivity implements OnClickListen
 		
 		setContentView(R.layout.activity_settings);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_settings);
-       setSupportActionBar(myToolbar);
+       setActionBar(myToolbar);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        configHelper = ((TFApp)(this.getApplication())).configHelper;
+      log = (Button) findViewById(R.id.buttonSettingsLog);
+      if ( log != null) {
+         log.setOnClickListener(this);
+      }
+
+      configHelper = ((TFApp)(this.getApplication())).configHelper;
          
 		configName = (EditText) findViewById(R.id.editConfigName);
 		ok = (Button) findViewById(R.id.buttonSettingsOk);
@@ -106,7 +111,7 @@ public class SettingsActivity extends AppCompatActivity implements OnClickListen
           try {
              version = getPackageManager().getPackageInfo("de.kochon.enrico.secrettalkmessenger",0).versionName;
           } catch (PackageManager.NameNotFoundException nnfe) {
-             TFApp.logException(nnfe);
+             ((TFApp) (SettingsActivity.this.getApplication())).logException(nnfe);
           }
           versionView.setText(String.format("Aktuell installierte Version: %s", version));
        }
@@ -133,11 +138,11 @@ public class SettingsActivity extends AppCompatActivity implements OnClickListen
          if (serviceShouldRun) {
             PeriodicMessageCheck.setAlarm(this);
             KeepAliveCheck.setAlarm(this);
-            TFApp.addToApplicationLog("Backgroundservice activated by user.");
+            ((TFApp) (SettingsActivity.this.getApplication())).addToApplicationLog("Backgroundservice activated by user.");
          } else {
             KeepAliveCheck.cancelAlarm(this);
             PeriodicMessageCheck.cancelAlarm(this);
-            TFApp.addToApplicationLog("Backgroundservice stopped by user.");
+            ((TFApp) (SettingsActivity.this.getApplication())).addToApplicationLog("Backgroundservice stopped by user.");
          }
       }
    }
@@ -155,6 +160,10 @@ public class SettingsActivity extends AppCompatActivity implements OnClickListen
                                              (this.getApplication())).DOWNLOADLOCATION));
          startActivityForResult(intentGetLatest, 0);
 		}
+      if (v == log) {
+         Intent intentShowLog = new Intent(SettingsActivity.this, LogViewActivity.class);
+         startActivityForResult(intentShowLog, 0);
+      }
 		if (v == ok) {
 		   Intent reply = new Intent();
 			String newName = configName.getText().toString();

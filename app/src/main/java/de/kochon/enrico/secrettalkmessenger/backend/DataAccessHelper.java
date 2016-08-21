@@ -7,10 +7,12 @@ import de.kochon.enrico.secrettalkmessenger.model.CountedImageMessage;
 import de.kochon.enrico.secrettalkmessenger.model.CountedMessage;
 import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.TreeSet;
+import java.text.DateFormat;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -425,7 +427,7 @@ public class DataAccessHelper {
     }
 
 
-    public long addNewMessage(CountedMessage message) {
+    public long addNewMessage(TFApp app, CountedMessage message) {
         long id = -1;
         try {
             SQLiteDatabase db = dbhelper.getWritableDatabase();
@@ -444,13 +446,13 @@ public class DataAccessHelper {
             id = db.insert(SqlOpenHelper.TABLE_NAME_MESSAGES, null, messageValues);
             message.setID(id);
         } catch (Exception e) {
-            TFApp.logException(e);
+            app.logException(e);
         }
         return id;
     }
 
 
-    public long addNewKeyToConversation(Conversation conversation, Messagekey key) {
+    public long addNewKeyToConversation(TFApp app, Conversation conversation, Messagekey key) {
         long id = -1;
         try {
             if (conversation.addKey(key)) {
@@ -467,7 +469,7 @@ public class DataAccessHelper {
                 key.setID(id);
             }
         } catch (Exception e) {
-            TFApp.logException(e);
+            app.logException(e);
         }
         return id;
     }
@@ -500,7 +502,7 @@ public class DataAccessHelper {
     }
 
 
-    public int bulkAddEncodedKeysToConversationAndSetExchanged(Conversation conversation, String[] keys) {
+    public int bulkAddEncodedKeysToConversationAndSetExchanged(TFApp app, Conversation conversation, String[] keys) {
         int count = 0;
         long conv_id = conversation.getID();
         SQLiteDatabase db = dbhelper.getWritableDatabase();
@@ -522,7 +524,7 @@ public class DataAccessHelper {
                         db.insert(SqlOpenHelper.TABLE_NAME_MESSAGEKEYS, null, keyValues);
                         count++;
                     } catch (Exception e) {
-                        TFApp.logException(e);
+                         app.logException(e);
                     }
                 }
             }
@@ -765,5 +767,47 @@ public class DataAccessHelper {
         int result = db.update(SqlOpenHelper.TABLE_NAME_UPDATELOCK, updatelockValues, null, null);
         return (result > 0);
     }
+
+
+    public long appendLogMessage(String message, int loglevel) {
+        long id = -1;
+        try {
+            SQLiteDatabase db = dbhelper.getWritableDatabase();
+            ContentValues logValues = new ContentValues();
+            logValues.put(SqlOpenHelper.LOG_COLUMN_LOGLEVEL, loglevel);
+            logValues.put(SqlOpenHelper.LOG_COLUMN_MESSAGE, message);
+            logValues.put(SqlOpenHelper.LOG_COLUMN_TIMEINSERTED, new java.util.Date().getTime());
+            id = db.insert(SqlOpenHelper.TABLE_NAME_LOG, null, logValues);
+        } catch (Exception e) { }
+        return id;
+    }
+
+   public String getFullLog() {
+      StringBuilder sb = new StringBuilder();
+      SQLiteDatabase database = dbhelper.getReadableDatabase();
+
+      Cursor listCursor = database.query(SqlOpenHelper.TABLE_NAME_LOG,
+              new String[]{SqlOpenHelper.LOG_COLUMN_TIMEINSERTED, SqlOpenHelper.LOG_COLUMN_LOGLEVEL, SqlOpenHelper.LOG_COLUMN_MESSAGE},
+              null, null, null, null,
+              SqlOpenHelper.LOG_COLUMN_ID);
+
+      DateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+      listCursor.moveToFirst();
+      if (!listCursor.isAfterLast()) {
+         do {
+            Date inserted = new Date();
+            inserted.setTime(listCursor.getLong(0));
+            sb.append(df.format(inserted));
+            sb.append(" [");
+            sb.append(String.format("%d", listCursor.getInt(1)));
+            sb.append("] ");
+            sb.append(listCursor.getString(2));
+            sb.append("\n");
+         } while (listCursor.moveToNext());
+      }
+      listCursor.close();
+
+      return sb.toString();
+   }
 
 }

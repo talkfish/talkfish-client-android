@@ -8,20 +8,20 @@
         android:orderInCategory="100"
         android:icon="@drawable/add_selector"
         android:title="@string/action_settings"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 
     <item
         android:id="@+id/action_reload"
         android:orderInCategory="200"
         android:icon="@drawable/refresh_selector"
         android:title="@string/action_settings"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="300"
         android:icon="@drawable/config_selector"
         android:title="@string/action_settings"
-        app:showAsAction="always"/>
+        android:showAsAction="always"/>
 
 </menu>

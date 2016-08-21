@@ -7,11 +7,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.os.Binder;
 import android.os.IBinder;
-import android.os.Bundle;
 
 import de.kochon.enrico.secrettalkmessenger.TFApp;
 import de.kochon.enrico.secrettalkmessenger.activities.ConversationListActivity;
@@ -79,7 +77,7 @@ public class CheckNewMessages extends Service {
         goToSecretTalk.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent pending = PendingIntent.getActivity(this, (int) c.getID(), goToSecretTalk,
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        Notification notification = new NotificationCompat.Builder(this)
+        Notification notification = new Notification.Builder(this)
                 .setContentIntent(pending)
                 .setContentText(notificationmessage)
                 .setTicker(notificationmessage)
@@ -117,7 +115,7 @@ public class CheckNewMessages extends Service {
                 if (setLock(true)) {
                     try {
                         long myIter = iterationCount;
-                        TFApp.addToApplicationLog(String.format("%d - service is being executed: successful got the lock, checking ..", myIter));
+                       ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - service is being executed: successful got the lock, checking ..", myIter));
                         String networkState = NetworkIO.getNetworkStatus(CheckNewMessages.this);
                         String currentmode = ((TFApp) (CheckNewMessages.this.getApplication())).configHelper.getBackground();
                         if (networkState.equals("wifi") &&
@@ -145,10 +143,10 @@ public class CheckNewMessages extends Service {
                                     persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
                                 String currentTarget = baseurl + "current.txt?r="+NetworkIO.getRandomSuffixForAvoidingCachedRefreshs();
                                 int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
-                                TFApp.addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s : %d", myIter, currentTarget, mc));
+                               ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s : %d", myIter, currentTarget, mc));
 
                                 if ( ((TFApp) (CheckNewMessages.this.getApplication())).configHelper.isFirstRun()) {
-                                    TFApp.addToApplicationLog(String.format("%d - first run, skipping old entries", myIter));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - first run, skipping old entries", myIter));
                                     ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().setCurrentOffsetForChannel(idchannel, mc);
                                     persistedOffset = mc;
                                     ((TFApp) (CheckNewMessages.this.getApplication())).configHelper.setFirstRunDone();
@@ -159,22 +157,22 @@ public class CheckNewMessages extends Service {
                                     if (persistedOffset > mc) { // server wrap occured
                                         messagelimit = mc + SecretTalkChannelCache.CACHE_SIZE;
                                     }
-                                    TFApp.addToApplicationLog(String.format("%d - loading %d files from server", myIter, (messagelimit - persistedOffset)));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - loading %d files from server", myIter, (messagelimit - persistedOffset)));
                                     for (int i = persistedOffset + 1; i <= messagelimit; i++) {
                                         int i_mod_cache_size = i % SecretTalkChannelCache.CACHE_SIZE;
                                         String targetfile = String.format("%sm_%07d.txt", baseurl, i_mod_cache_size);
-                                        TFApp.addToApplicationLog(String.format("%d - trying to download %s", myIter, targetfile));
+                                       ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - trying to download %s", myIter, targetfile));
                                         String currentMessage = NetworkIO.loadFileFromServer(targetfile);
-                                        TFApp.addToApplicationLog(String.format("%d - successfully downloaded %s", myIter, targetfile));
+                                       ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - successfully downloaded %s", myIter, targetfile));
 
-                                        TFApp.addToApplicationLog(String.format("%d - adding file to cache", myIter));
+                                       ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - adding file to cache", myIter));
                                         ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().setCacheForCacheMetaIDAndKey(idchannel, i_mod_cache_size, currentMessage);
                                     }
-                                    TFApp.addToApplicationLog(String.format("%d - updating current offset for channel %d to %d", myIter, idchannel, mc));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - updating current offset for channel %d to %d", myIter, idchannel, mc));
                                     ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().setCurrentOffsetForChannel(idchannel, mc);
-                                    TFApp.addToApplicationLog(String.format("%d - finished loading server for channel with endpoint %s", myIter, endpoint));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - finished loading server for channel with endpoint %s", myIter, endpoint));
 
-                                    TFApp.addToApplicationLog(String.format("%d - processing conversations and cache for channel with endpoint %s", myIter, endpoint));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - processing conversations and cache for channel with endpoint %s", myIter, endpoint));
                                     for (int index_for_conversations = 0; index_for_conversations < conversations.size(); index_for_conversations++) {
                                         Conversation c = conversations.get(index_for_conversations);
                                         List<Messagekey> keys = c.getReceivingKeys();
@@ -214,7 +212,7 @@ public class CheckNewMessages extends Service {
                                                                     messageBuilder = new StringBuffer();
                                                                     CountedMessage added = c.addReceivedMessage(currentMessageToRetrieve);
                                                                     c.setHasNewMessages(true);
-                                                                    ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().addNewMessage(added);
+                                                                    ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().addNewMessage(((TFApp) (CheckNewMessages.this.getApplication())), added);
                                                                     ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateConversation(c);
 
                                                                     Notification n = getNotification(c);
@@ -223,8 +221,8 @@ public class CheckNewMessages extends Service {
 
                                                                 }
                                                             } catch (IllegalArgumentException iae) {
-                                                                TFApp.logException(iae);
-                                                                TFApp.addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
+                                                               ((TFApp) (CheckNewMessages.this.getApplication())).logException(iae);
+                                                               ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("probably old messageformat observered in communication with %s", c.getNick()));
                                                             } finally {
                                                                 k.setIsUsed(true);
                                                                 ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().updateKey(k);
@@ -235,24 +233,24 @@ public class CheckNewMessages extends Service {
                                             }
                                         }
                                     }
-                                    TFApp.addToApplicationLog(String.format("%d - finished processing conversations and cache", myIter));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - finished processing conversations and cache", myIter));
 
                                 } else {
-                                    TFApp.addToApplicationLog(String.format("%d - nothing to download", myIter));
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - nothing to download", myIter));
                                 }
 
                             }
                         } else {
-                            TFApp.addToApplicationLog(String.format("%d - networkstate: %s and backgroundconfig: %s -> skipping ..", myIter, networkState, currentmode));
+                           ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - networkstate: %s and backgroundconfig: %s -> skipping ..", myIter, networkState, currentmode));
                         }
 
                     } catch (Exception e) {
-                        TFApp.logException(e);
+                       ((TFApp) (CheckNewMessages.this.getApplication())).logException(e);
                     } finally {
                         setLock(false);
                     }
                 } else {
-                    TFApp.addToApplicationLog("*** service is being executed: lock was set, skipping ..");
+                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog("*** service is being executed: lock was set, skipping ..");
                 }
                 stopSelf();
 
@@ -262,7 +260,7 @@ public class CheckNewMessages extends Service {
         try {
             t.join();
         } catch (InterruptedException e) {
-            TFApp.logException(e);
+           ((TFApp) (CheckNewMessages.this.getApplication())).logException(e);
         }
     }
 

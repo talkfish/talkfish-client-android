@@ -14,14 +14,16 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
    private DataAccessHelper dataAccessHelper;
    private ConfigHelper configHelper;
    private ChannelCacheRefreshable refreshable;
+   private TFApp app;
 
-
-   public RefreshCacheForChannel(int idchannel, DataAccessHelper dataAccessHelper, ConfigHelper configHelper, ChannelCacheRefreshable refreshable) {
+   public RefreshCacheForChannel(TFApp app, int idchannel, DataAccessHelper dataAccessHelper, ConfigHelper configHelper, ChannelCacheRefreshable refreshable) {
       super();
+      this.app = app;
       this.idchannel = idchannel;
       this.dataAccessHelper = dataAccessHelper;
       this.configHelper = configHelper;
       this.refreshable = refreshable;
+
    }
 
 
@@ -36,10 +38,10 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
             if (-1 == persistedOffset) persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
             String currentTarget = baseurl+"current.txt?r="+NetworkIO.getRandomSuffixForAvoidingCachedRefreshs();
             int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
-            TFApp.addToApplicationLog(String.format("by useraction, got current offset on server for channel with endpoint %s : %d", currentTarget, mc));
+            app.addToApplicationLog(String.format("by useraction, got current offset on server for channel with endpoint %s : %d", currentTarget, mc));
 
             if ( configHelper.isFirstRun()) {
-               TFApp.addToApplicationLog(String.format("first run, skipping old entries"));
+               app.addToApplicationLog(String.format("first run, skipping old entries"));
                dataAccessHelper.setCurrentOffsetForChannel(idchannel, mc);
                persistedOffset = mc;
                configHelper.setFirstRunDone();
@@ -64,7 +66,7 @@ public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
          }
          
       } catch (Exception ex) {
-         TFApp.logException(ex);
+         app.logException(ex);
          message = ex.toString();
       }
       return message;

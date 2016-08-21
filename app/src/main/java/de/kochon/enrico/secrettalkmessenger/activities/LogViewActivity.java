@@ -1,17 +1,17 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
-import de.kochon.enrico.secrettalkmessenger.R;
-import de.kochon.enrico.secrettalkmessenger.TFApp;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.text.util.Linkify;
 import android.widget.Toolbar;
 
-public class WelcomeActivity extends Activity {
+import de.kochon.enrico.secrettalkmessenger.R;
+import de.kochon.enrico.secrettalkmessenger.TFApp;
+
+public class LogViewActivity extends Activity {
 
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
@@ -26,18 +26,17 @@ public class WelcomeActivity extends Activity {
 
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_welcome);
-      Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_about);
+      setContentView(R.layout.activity_logviewer);
+      Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_logviewer);
       setActionBar(myToolbar);
 
       ActionBar actionBar = getActionBar();
       actionBar.setDisplayHomeAsUpEnabled(true);
 
-      TextView textWelcome = (TextView) findViewById(R.id.textViewWelcome);
+      TextView textWelcome = (TextView) findViewById(R.id.textViewLogContent);
       if (textWelcome != null) {
-         String name = ((TFApp) (this.getApplication())).configHelper.getName();
-         textWelcome.setText(textWelcome.getText().toString().replace("$", name));
-         Linkify.addLinks(textWelcome, Linkify.ALL);
+         String logContent = ((TFApp) (this.getApplication())).getDAH().getFullLog();
+         textWelcome.setText(logContent);
       }
    }
 }

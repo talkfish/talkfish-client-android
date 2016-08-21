@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+    <Toolbar
+        android:id="@+id/my_toolbar_for_logviewer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"/>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        tools:context="de.kochon.enrico.secrettalkmessenger.activities.MainActivity"
+        android:background="@color/app_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewLogContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/vertical_spacer"
+                android:textColor="@color/app_foreground"
+                android:typeface="monospace"
+                android:textStyle="normal"
+                android:text=""
+                android:textSize="@dimen/smalltext"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

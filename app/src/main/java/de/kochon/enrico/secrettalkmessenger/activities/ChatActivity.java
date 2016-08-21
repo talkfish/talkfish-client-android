@@ -1,7 +1,6 @@
 package de.kochon.enrico.secrettalkmessenger.activities;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.v7.widget.Toolbar;
+import android.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -61,7 +60,7 @@ import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 import android.text.util.Linkify;
 
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends Activity {
 
     private EditText chatMessage;
     private ScrollView chatscroll;
@@ -110,7 +109,7 @@ public class ChatActivity extends AppCompatActivity {
 
             } catch (Exception ex) {
                 success = false;
-                TFApp.logException(ex);
+               ((TFApp) (ChatActivity.this.getApplication())).logException(ex);
             }
             return success;
         }
@@ -126,7 +125,7 @@ public class ChatActivity extends AppCompatActivity {
 
             } catch (Exception ex) {
                 success = false;
-                TFApp.logException(ex);
+               ((TFApp) (ChatActivity.this.getApplication())).logException(ex);
             }
             return success;
         }
@@ -146,7 +145,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (currentTextMessagePartCounter == currentTextMessagePartAmount) {
                     chatMessage.setText("");
                     CountedMessage m = conversation.addSentMessage(currentTextMessageToBeSent);
-                    ((TFApp) (ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
+                    ((TFApp) (ChatActivity.this.getApplication())).getDAH().addNewMessage(((TFApp) (ChatActivity.this.getApplication())), m);
                     ((TFApp) (ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
                 }
 
@@ -169,7 +168,7 @@ public class ChatActivity extends AppCompatActivity {
                 currentImageMessagePartCounter += 1;
                 if (currentImageMessagePartCounter == currentImageMessagePartAmount) {
                     CountedMessage m = conversation.addSentMessage(currentImageMessageToBeSent);
-                    ((TFApp) (ChatActivity.this.getApplication())).getDAH().addNewMessage(m);
+                    ((TFApp) (ChatActivity.this.getApplication())).getDAH().addNewMessage(((TFApp) (ChatActivity.this.getApplication())), m);
                     ((TFApp) (ChatActivity.this.getApplication())).getDAH().updateConversation(conversation);
                 }
 
@@ -193,7 +192,7 @@ public class ChatActivity extends AppCompatActivity {
             receivingChan = conversation.getChannelForReceiving();
             sendingChan = conversation.getChannelForSending();
         }
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         if (null != actionBar) {
             actionBar.setTitle(String.format("%s", conversation.getNick()));
         }
@@ -245,9 +244,9 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        setActionBar(myToolbar);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         chatMessage = (EditText) findViewById(R.id.editNewMessageActivityChat);
