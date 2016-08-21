@@ -56,11 +56,19 @@
     
         <EditText
         android:id="@+id/editConfigName"
+        android:layout_weight="1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/app_foreground"
         android:text=""
         android:inputType="text"/>
+        <Button
+            android:id="@+id/buttonSettingsOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/btncaptionOK" />
         
         </LinearLayout>
 
@@ -99,11 +107,6 @@
         android:layout_height="wrap_content"
         android:text="@string/captionSettingsBackgroundWifi"
         android:onClick="onRadiogroupBackgroundClicked"/>
-    <RadioButton android:id="@+id/background_off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/captionSettingsBackgroundOff"
-        android:onClick="onRadiogroupBackgroundClicked"/>
 </RadioGroup>
 
         <Button
@@ -115,14 +118,7 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:text="@string/btnCaptionLog" />
 
-    <Button
-    	android:id="@+id/buttonSettingsOk"
-    	android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:layout_marginTop="@dimen/vertical_spacer"
-    	android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    	android:layout_marginRight="@dimen/activity_horizontal_margin"
-    	android:text="@string/btncaptionOK" />
+
         
     </LinearLayout>
 

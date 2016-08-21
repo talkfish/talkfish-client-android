@@ -770,6 +770,7 @@ public class DataAccessHelper {
 
 
     public long appendLogMessage(String message, int loglevel) {
+       deleteOldLogEntries();
         long id = -1;
         try {
             SQLiteDatabase db = dbhelper.getWritableDatabase();
@@ -808,6 +809,17 @@ public class DataAccessHelper {
       listCursor.close();
 
       return sb.toString();
+   }
+
+   // keep only one day as log information
+   public int deleteOldLogEntries() {
+      SQLiteDatabase db = dbhelper.getWritableDatabase();
+      String whereString = SqlOpenHelper.LOG_COLUMN_TIMEINSERTED + "<?";
+      Date oldestLogTime = new Date(System.currentTimeMillis()-24*60*60*1000);
+      String[] whereArgs = new String[]{String.format("%d", oldestLogTime.getTime())};
+
+      int affectedRows = db.delete(SqlOpenHelper.TABLE_NAME_LOG, whereString, whereArgs);
+      return affectedRows;
    }
 
 }

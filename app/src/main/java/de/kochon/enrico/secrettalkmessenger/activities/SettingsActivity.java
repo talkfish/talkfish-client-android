@@ -37,7 +37,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
 
    private RadioButton background_mobile;
    private RadioButton background_wifi;
-   private RadioButton background_off;
 
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
@@ -101,10 +100,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
       if (background_wifi != null && currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_WIFI)) {
          background_wifi.setChecked(true);
       }
-      background_off = (RadioButton) findViewById(R.id.background_off);
-      if (background_off != null && currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_OFF)) {
-         background_off.setChecked(true);
-      }
        TextView versionView = (TextView) findViewById(R.id.textVersionsinfo);
        if (null != versionView) {
           String version = "unknown";
@@ -130,10 +125,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
             configHelper.setBackgroundWifi();
             serviceShouldRun = true;
 			   Toast.makeText(this, "Der Hintergrunddienst wurde nur für WLAN aktiviert!", Toast.LENGTH_LONG).show();
-         }
-         if (rb.getId() == R.id.background_off) {
-            configHelper.setBackgroundOff();
-			   Toast.makeText(this, "Der Hintergrunddienst wurde deaktiviert!", Toast.LENGTH_LONG).show();
          }
          if (serviceShouldRun) {
             PeriodicMessageCheck.setAlarm(this);
@@ -165,15 +156,11 @@ public class SettingsActivity extends Activity implements OnClickListener {
          startActivityForResult(intentShowLog, 0);
       }
 		if (v == ok) {
-		   Intent reply = new Intent();
 			String newName = configName.getText().toString();
 			if (!configHelper.getName().equals(newName)) {
 				configHelper.setName(newName);
 				Toast.makeText(this, "Speichere Namen: " + newName, Toast.LENGTH_LONG).show();
 			}
-			 
-			setResult(RESULT_OK, reply);
-		   finish();
 		}
 	}
 	

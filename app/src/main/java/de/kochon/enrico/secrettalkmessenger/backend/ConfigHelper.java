@@ -17,8 +17,7 @@ public class ConfigHelper {
    public static final String CONFIG_KEY_BACKGROUND = "background";
    public static final String CONFIG_KEY_BACKGROUND_OPTION_MOBILE = "3G+WIFI";
    public static final String CONFIG_KEY_BACKGROUND_OPTION_WIFI = "WIFI";
-   public static final String CONFIG_KEY_BACKGROUND_OPTION_OFF = "OFF";
-   public static final String CONFIG_KEY_BACKGROUND_DEFAULT = CONFIG_KEY_BACKGROUND_OPTION_OFF;
+   public static final String CONFIG_KEY_BACKGROUND_DEFAULT = CONFIG_KEY_BACKGROUND_OPTION_WIFI;
 
    public static final String CONFIG_KEY_FIRSTRUN = "firstrun";
    public static final String CONFIG_KEY_FIRSTRUN_DONE = "done";
@@ -157,10 +156,6 @@ public class ConfigHelper {
 
    public void setBackgroundWifi() {
       setConfig(CONFIG_KEY_BACKGROUND, CONFIG_KEY_BACKGROUND_OPTION_WIFI);
-   }
-
-   public void setBackgroundOff() {
-      setConfig(CONFIG_KEY_BACKGROUND, CONFIG_KEY_BACKGROUND_OPTION_OFF);
    }
 
    public boolean isFirstRun() {

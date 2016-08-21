@@ -98,8 +98,12 @@ public class TFApp extends Application {
       DateFormat df = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
       java.util.Date d = new java.util.Date();
       String timeInfo = String.format("%s:%d",df.format(d), d.getTime());
-      configHelper.setKeepAlive(timeInfo);
-
+      if (tag.equals(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE)) {
+         configHelper.setKeepAlive(timeInfo);
+      }
+      if (tag.equals(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE)) {
+         configHelper.setPeriodicMessageCheck(timeInfo);
+      }
    }
 
 
@@ -139,7 +143,7 @@ public class TFApp extends Application {
       if (currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_WIFI) || currentmode.equals(ConfigHelper.CONFIG_KEY_BACKGROUND_OPTION_MOBILE)) {
          long lag_KeepAlive = getLagToLastKeepAliveMarkerInMillis(KeepAliveCheck.KEEPALIVECHECK_KEEPALIVE);
 
-         if (lag_KeepAlive > 2*KeepAliveCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000 ) {
+         if (-1 == lag_KeepAlive || lag_KeepAlive > 2*KeepAliveCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000 ) {
             addToApplicationLog(
                     String.format("*** ChatActivity registered not working keepalivecheckalarm (last run before %d ms), resetting it! ***",
                             lag_KeepAlive), 5);
@@ -147,7 +151,7 @@ public class TFApp extends Application {
          }
          long lag_PeriodicMessageCheck = getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
 
-         if (lag_PeriodicMessageCheck  > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
+         if (-1 == lag_PeriodicMessageCheck || lag_PeriodicMessageCheck > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
             addToApplicationLog(
                     String.format(
                             "*** ChatActivity registered not working messagecheckalarm (last run before %d ms), resetting it! ***",

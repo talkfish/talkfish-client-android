@@ -10,7 +10,7 @@ import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 
 public class PeriodicMessageCheck extends BroadcastReceiver {    
-   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 119;
+   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 59;
    public final static String PERIODICMESSAGECHECK_KEEPALIVE = "pm_alive";
 
 

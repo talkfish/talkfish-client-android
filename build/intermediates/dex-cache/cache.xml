@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="abea1f98a1226e6a1b8026a698aea34f3da886d1">
-        <dex dex="/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_e1a3ceeaf18266b76070a66a2f9ea94b87d38323/classes.dex" />
-    </item>
-    <item
-        jar="/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="f4e2baba12f115be11468fdee793ab2c5152d192">
-        <dex dex="/home/enrico/StudioProjects/talkfish-client-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_79b89cf3776a63b55ca7927b71f2a757a3c0957d/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />
