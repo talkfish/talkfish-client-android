@@ -15,11 +15,13 @@ import de.kochon.enrico.secrettalkmessenger.backend.ChannelCacheRefreshable;
 import de.kochon.enrico.secrettalkmessenger.backend.RefreshCacheForChannel;
 import de.kochon.enrico.secrettalkmessenger.model.StructuredMessageBody;
 
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -317,23 +319,41 @@ public class ConversationListActivity extends Activity implements ChannelCacheRe
 
         private Clickable clickReceiver;
 
-        @Override
-        public void onAttach(Context context) {
-            super.onAttach(context);
-            if (context instanceof Clickable) {
-                clickReceiver = (Clickable) context;
-            } else {
-                throw new ClassCastException(context.toString()
-                        + " must implement Clickable");
-            }
-        }
 
+       // https://code.google.com/p/android/issues/detail?id=183358
+       @TargetApi(23)
+       @Override
+       public void onAttach(Context context) {
+          super.onAttach(context);
+          onAttachToContext(context);
+       }
+
+       @SuppressWarnings("deprecation")
+       @Override
+       public void onAttach(Activity activity) {
+          super.onAttach(activity);
+          if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+             onAttachToContext(activity);
+          }
+       }
+
+       protected void onAttachToContext(Context context) {
+          //do what you want / cast fragment listener
+          try {
+             clickReceiver = (Clickable) context;
+          } catch (ClassCastException e) {
+             throw new ClassCastException(context.toString()
+                     + " must implement Clickable");
+          }
+       }
 
         public void onListItemClick(ListView listView, View view, int position, long id) {
             super.onListItemClick(listView, view, position, id);
 
-            clickReceiver.click(position);
-            listView.invalidateViews();
+           if (clickReceiver != null) {
+              clickReceiver.click(position);
+           }
+           listView.invalidateViews();
         }
     }
 }
