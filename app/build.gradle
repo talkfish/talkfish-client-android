@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId "de.kochon.enrico.secrettalkmessenger"
         minSdkVersion 16
-        targetSdkVersion 19
+        targetSdkVersion 23
 
         testApplicationId "de.kochon.enrico.secrettalkmessenger.tests"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
