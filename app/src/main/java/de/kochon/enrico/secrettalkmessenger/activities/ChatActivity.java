@@ -12,7 +12,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -242,9 +241,6 @@ public class ChatActivity extends Activity {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         setContentView(R.layout.activity_chat);
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setActionBar(myToolbar);
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -550,11 +546,11 @@ public class ChatActivity extends Activity {
         if (isMoi) {
             v.setBackgroundColor(0x70aaaaee);
             params.setMargins(16, 16, 64, 16);
-            params.gravity = Gravity.LEFT;
+            params.gravity = Gravity.RIGHT;
         } else {
             v.setBackgroundColor(0x70aaeeaa);
             params.setMargins(64, 16, 16, 16);
-            params.gravity = Gravity.RIGHT;
+            params.gravity = Gravity.LEFT;
         }
 
         v.setLayoutParams(params);

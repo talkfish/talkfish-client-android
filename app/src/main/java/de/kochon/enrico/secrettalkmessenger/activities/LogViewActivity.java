@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import de.kochon.enrico.secrettalkmessenger.R;
 import de.kochon.enrico.secrettalkmessenger.TFApp;
@@ -27,8 +26,6 @@ public class LogViewActivity extends Activity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_logviewer);
-      Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_logviewer);
-      setActionBar(myToolbar);
 
       ActionBar actionBar = getActionBar();
       actionBar.setDisplayHomeAsUpEnabled(true);

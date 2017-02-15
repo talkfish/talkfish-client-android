@@ -8,7 +8,6 @@ import de.kochon.enrico.secrettalkmessenger.model.Messagekey;
 import android.app.Activity;
 import android.os.Bundle;
 import android.app.ActionBar;
-import android.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -100,8 +99,8 @@ public class AddKeysActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addkeys);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_addKeys);
-        setActionBar(myToolbar);
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_addKeys);
+        //setActionBar(myToolbar);
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

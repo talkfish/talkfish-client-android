@@ -8,11 +8,6 @@
        android:layout_above="@+id/layoutNewMessageActivityChat"
        android:orientation="vertical" >
 
-       <Toolbar
-           android:id="@+id/my_toolbar"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:elevation="4dp">
        <ProgressBar
            android:id="@+id/progress_spinner"
            android:layout_width="wrap_content"
@@ -20,7 +15,7 @@
            android:layout_gravity="right"
            android:indeterminate="true"
            android:visibility="gone" />
-   </Toolbar>
+
 
        <ScrollView
            android:id="@+id/mainChatScrollView"

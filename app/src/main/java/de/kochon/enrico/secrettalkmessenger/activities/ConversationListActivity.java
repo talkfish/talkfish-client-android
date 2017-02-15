@@ -31,7 +31,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import android.widget.Toolbar;
 import android.util.Log;
 import android.app.ListFragment;
 
@@ -106,9 +105,6 @@ public class ConversationListActivity extends Activity implements ChannelCacheRe
        fragment = (MyListFragment) fm.findFragmentById(R.id.listFragment);
 
        initArrayAdapter();
-
-       Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_all_chats);
-       setActionBar(myToolbar);
 
 
         ((TFApp)(this.getApplication())).checkBackgroundService(this);

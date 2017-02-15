@@ -6,11 +6,7 @@
               android:layout_height="match_parent"
               android:paddingLeft="8dp"
               android:paddingRight="8dp">
-    <Toolbar
-        android:id="@+id/my_toolbar_for_all_chats"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp">
+
     <ProgressBar
         android:id="@+id/progress_spinner"
         android:layout_width="wrap_content"
@@ -18,7 +14,7 @@
         android:layout_gravity="right"
         android:indeterminate="true"
         android:visibility="gone" />
-    </Toolbar>
+
 
   <fragment
         android:id="@+id/listFragment"

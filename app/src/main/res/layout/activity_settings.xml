@@ -2,12 +2,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <Toolbar
-        android:id="@+id/my_toolbar_for_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        />
 
 <ScrollView
     android:id="@+id/scrollViewSettings"

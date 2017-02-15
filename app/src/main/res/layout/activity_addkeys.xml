@@ -3,11 +3,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <Toolbar
-        android:id="@+id/my_toolbar_for_addKeys"
-        android:layout_width="match_parent"
-        android:elevation="4dp"
-        android:layout_height="wrap_content"/>
+
 
 <ScrollView
     xmlns:tools="http://schemas.android.com/tools"

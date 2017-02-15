@@ -23,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import android.net.Uri;
-import android.widget.Toolbar;
 
 
 public class SettingsActivity extends Activity implements OnClickListener {
@@ -67,8 +66,6 @@ public class SettingsActivity extends Activity implements OnClickListener {
       super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_settings);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_settings);
-       setActionBar(myToolbar);
 
         ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

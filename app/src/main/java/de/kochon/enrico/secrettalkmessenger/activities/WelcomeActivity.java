@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.text.util.Linkify;
-import android.widget.Toolbar;
 
 public class WelcomeActivity extends Activity {
 
@@ -27,8 +26,6 @@ public class WelcomeActivity extends Activity {
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_welcome);
-      Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar_for_about);
-      setActionBar(myToolbar);
 
       ActionBar actionBar = getActionBar();
       actionBar.setDisplayHomeAsUpEnabled(true);
