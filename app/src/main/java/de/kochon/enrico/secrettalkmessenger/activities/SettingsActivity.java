@@ -63,30 +63,30 @@ public class SettingsActivity extends Activity implements OnClickListener {
    }
 
    protected void onCreate(Bundle savedInstanceState) {
-      super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.activity_settings);
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_settings);
 
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+       ActionBar actionBar = getActionBar();
+       if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
 
-      log = (Button) findViewById(R.id.buttonSettingsLog);
-      if ( log != null) {
-         log.setOnClickListener(this);
-      }
 
-      configHelper = ((TFApp)(this.getApplication())).configHelper;
+       log = (Button) findViewById(R.id.buttonSettingsLog);
+       if ( log != null) {
+          log.setOnClickListener(this);
+       }
+
+       configHelper = ((TFApp)(this.getApplication())).configHelper;
          
-		configName = (EditText) findViewById(R.id.editConfigName);
-		ok = (Button) findViewById(R.id.buttonSettingsOk);
-      if (configName != null && ok != null) {
-         configName.setText(configHelper.getName());
-         ok.setOnClickListener(this);
-      }
-      channels = (Button) findViewById(R.id.buttonSettingsChannels);
-      if (channels != null) { channels.setOnClickListener(this); }
-      downloadLatest = (Button) findViewById(R.id.buttonSettingsDownloadLatest);
-      if (downloadLatest  != null) { downloadLatest.setOnClickListener(this); }
+       configName = (EditText) findViewById(R.id.editConfigName);
+       ok = (Button) findViewById(R.id.buttonSettingsOk);
+       if (configName != null && ok != null) {
+          configName.setText(configHelper.getName());
+          ok.setOnClickListener(this);
+       }
+       channels = (Button) findViewById(R.id.buttonSettingsChannels);
+       if (channels != null) { channels.setOnClickListener(this); }
+       downloadLatest = (Button) findViewById(R.id.buttonSettingsDownloadLatest);
+       if (downloadLatest  != null) { downloadLatest.setOnClickListener(this); }
 
       String currentmode = configHelper.getBackground();
       background_mobile = (RadioButton) findViewById(R.id.background_mobile_data);
