@@ -108,4 +108,6 @@
 
     <string name="activityCaptionLogView">Anwendungsprotokoll</string>
     <string name="btnCaptionLog">Anwendungsprotokoll anzeigen</string>
+
+    <string name="pleaseExchangeKeys">Bitte Schlüssel tauschen.</string>
 </resources>

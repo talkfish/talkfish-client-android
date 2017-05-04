@@ -5,13 +5,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:paddingLeft="8dp"
-              android:paddingRight="8dp">
+              android:paddingRight="8dp"
+                android:background="@color/app_background">
 
     <ProgressBar
         android:id="@+id/progress_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:indeterminate="true"
         android:visibility="gone" />
 
@@ -20,7 +21,8 @@
         android:id="@+id/listFragment"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+      android:background="@color/app_background"
         class="de.kochon.enrico.secrettalkmessenger.activities.ConversationListActivity$MyListFragment"
         tools:layout="@layout/rowlayout_big" />
 

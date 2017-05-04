@@ -99,9 +99,9 @@ public class ChatActivity extends Activity {
                         new InputStreamReader(
                                 connection.getInputStream()));
                 String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    // do nothing
-                }
+                do {
+                    inputLine = in.readLine();
+                } while (inputLine != null);
 
                 in.close();
                 success = true;
@@ -197,7 +197,7 @@ public class ChatActivity extends Activity {
         }
         if (null != chatMessage) {
             if (!conversation.hasAtLeastOneKeyForSending()) {
-                chatMessage.setText("Schlüssel fehlen!");
+                chatMessage.setText(R.string.pleaseExchangeKeys);
                 chatMessage.setEnabled(false);
             } else {
                 chatMessage.setText("");
@@ -243,7 +243,9 @@ public class ChatActivity extends Activity {
         setContentView(R.layout.activity_chat);
 
         ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         chatMessage = (EditText) findViewById(R.id.editNewMessageActivityChat);
         chatscroll = (ScrollView) findViewById(R.id.mainChatScrollView);
@@ -546,11 +548,11 @@ public class ChatActivity extends Activity {
         if (isMoi) {
             v.setBackgroundColor(0x70aaaaee);
             params.setMargins(16, 16, 64, 16);
-            params.gravity = Gravity.RIGHT;
+            params.gravity = Gravity.END;
         } else {
             v.setBackgroundColor(0x70aaeeaa);
             params.setMargins(64, 16, 16, 16);
-            params.gravity = Gravity.LEFT;
+            params.gravity = Gravity.START;
         }
 
         v.setLayoutParams(params);

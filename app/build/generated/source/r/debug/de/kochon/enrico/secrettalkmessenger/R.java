@@ -208,17 +208,18 @@ public final class R {
         public static final int messageNewMessagesInConv=0x7f060034;
         public static final int messageNoNewMessagesInChan=0x7f060035;
         public static final int none_paired=0x7f060036;
-        public static final int select_device=0x7f060037;
-        public static final int textChannelEndpoint=0x7f060038;
-        public static final int textChannelID=0x7f060039;
-        public static final int textChannelName=0x7f06003a;
-        public static final int textChannelProtocol=0x7f06003b;
-        public static final int textChannelReceive=0x7f06003c;
-        public static final int textChannelSend=0x7f06003d;
-        public static final int textConfigName=0x7f06003e;
-        public static final int textConversationName=0x7f06003f;
-        public static final int textNewConversationName=0x7f060040;
-        public static final int title_activity_capture_photo=0x7f060041;
-        public static final int welcome=0x7f060042;
+        public static final int pleaseExchangeKeys=0x7f060037;
+        public static final int select_device=0x7f060038;
+        public static final int textChannelEndpoint=0x7f060039;
+        public static final int textChannelID=0x7f06003a;
+        public static final int textChannelName=0x7f06003b;
+        public static final int textChannelProtocol=0x7f06003c;
+        public static final int textChannelReceive=0x7f06003d;
+        public static final int textChannelSend=0x7f06003e;
+        public static final int textConfigName=0x7f06003f;
+        public static final int textConversationName=0x7f060040;
+        public static final int textNewConversationName=0x7f060041;
+        public static final int title_activity_capture_photo=0x7f060042;
+        public static final int welcome=0x7f060043;
     }
 }
