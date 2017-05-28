@@ -221,18 +221,18 @@ public class ConversationListActivity extends Activity implements ChannelCacheRe
 
 
     public void indicateRefresh() {
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner_chat);
         progressBar.setVisibility(View.VISIBLE);
     }
 
     public void stopRefreshIndication() {
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner_chat);
         progressBar.setVisibility(View.INVISIBLE);
 
     }
 
 
-    public void refreshConversationsFromCache(int idchannel) {
+    public void refreshConversationsFromCache(long idchannel) {
         boolean gotNewInChan = false;
         boolean gotNewInConv = false;
         for (int index_for_conversations = 0; index_for_conversations < getCount(); index_for_conversations++) {

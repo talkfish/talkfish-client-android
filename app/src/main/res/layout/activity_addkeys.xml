@@ -49,6 +49,58 @@
                     android:layout_height="wrap_content"
                     android:text="@string/btncaptionRenameConversation" />
             </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColor="@color/app_foreground"
+                android:text="@string/textNewConversationSendingFish" />
+
+            <TextView
+                android:id="@+id/viewConversationSendingFish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/app_foreground"
+                android:inputType="text"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:textColor="@color/app_foreground"
+                android:text="@string/textNewConversationReceivingFish" />
+
+            <TextView
+                android:id="@+id/viewConversationReceivingFish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/app_foreground"
+                android:inputType="text"
+                />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/viewConversationMessageDetails"
             android:layout_width="match_parent"

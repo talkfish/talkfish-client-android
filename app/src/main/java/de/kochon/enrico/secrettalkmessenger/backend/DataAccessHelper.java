@@ -412,6 +412,18 @@ public class DataAccessHelper {
     }
 
 
+   public long addNewChannel(Channel channel) {
+      SQLiteDatabase db = dbhelper.getWritableDatabase();
+      ContentValues channelValues = new ContentValues();
+      channelValues.put(SqlOpenHelper.CHANNELS_COLUMN_NAME, channel.name);
+      channelValues.put(SqlOpenHelper.CHANNELS_COLUMN_PROTOCOL, channel.protocol);
+      channelValues.put(SqlOpenHelper.CHANNELS_COLUMN_ENDPOINT, channel.endpoint);
+      channelValues.put(SqlOpenHelper.CHANNELS_COLUMN_ISFORRECEIVING, channel.isforreceiving);
+      long id = db.insert(SqlOpenHelper.TABLE_NAME_CHANNELS, null, channelValues);
+      channel.id= id;
+      return id;
+   }
+
     public long addNewConversation(Conversation conversation) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         ContentValues conversationValues = new ContentValues();
@@ -586,7 +598,7 @@ public class DataAccessHelper {
 //      // TODO: update meta and set current to -1
 //   }
 
-    public String[] loadCacheForChannel(int idchannel, int maxSize) {
+    public String[] loadCacheForChannel(long idchannel, int maxSize) {
         if (maxSize <= 0) throw new IllegalArgumentException("Cachesize must be positive!");
 
         String[] cachecontent = new String[maxSize];
@@ -621,7 +633,7 @@ public class DataAccessHelper {
     }
 
 
-    public boolean hasCacheEntry(int idchannel, int cachekey) {
+    public boolean hasCacheEntry(long idchannel, int cachekey) {
         Log.d(TFApp.LOGKEY, String.format("hasCacheEntry: checking existence for cache %d and key %d",
                 idchannel, cachekey));
         SQLiteDatabase db = dbhelper.getReadableDatabase();
@@ -662,7 +674,7 @@ public class DataAccessHelper {
     /**
      * method updates or creates appropriate cacheentry
      */
-    public boolean setCacheForCacheMetaIDAndKey(int idchannel, int cachekey, String newValue) {
+    public boolean setCacheForCacheMetaIDAndKey(long idchannel, int cachekey, String newValue) {
         Log.d(TFApp.LOGKEY, String.format("setCacheForCacheMetaIDAndKey: setting cacheval for cache %d and key %d to %s",
                 idchannel, cachekey, newValue));
         boolean isNewEntry = !hasCacheEntry(idchannel, cachekey);
@@ -687,7 +699,7 @@ public class DataAccessHelper {
     }
 
 
-    public int getCurrentOffsetForChannel(int idchannel) {
+    public int getCurrentOffsetForChannel(long idchannel) {
         Log.d(TFApp.LOGKEY, String.format("getCurrentOffsetForChannel: channel %d", idchannel));
 
         SQLiteDatabase db = dbhelper.getReadableDatabase();
@@ -706,23 +718,26 @@ public class DataAccessHelper {
         if (listCursor != null && listCursor.moveToFirst()) {
             if (listCursor.getCount() != 1) {
                 Log.d(TFApp.LOGKEY, String.format("ERROR: amount of rows is %d", listCursor.getCount()));
+                listCursor.close();
                 return -1;
             }
             if (listCursor.getColumnCount() != 1) {
                 Log.d(TFApp.LOGKEY, String.format("ERROR: amount of columns is %d", listCursor.getColumnCount()));
+                listCursor.close();
                 return -1;
             }
             int colind = listCursor.getColumnIndex(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_CURRENTOFFSET);
             currentOffset = listCursor.getInt(colind);
-
-            listCursor.close();
+        }
+        if (listCursor != null) {
+           listCursor.close();
         }
         //Log.d(TFApp.LOGKEY, String.format("current offset is %d.", currentOffset));
         return currentOffset;
     }
 
 
-    public boolean setCurrentOffsetForChannel(int idchannel, int newOffset) {
+    public boolean setCurrentOffsetForChannel(long idchannel, int newOffset) {
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         ContentValues cacheMetaValues = new ContentValues();
         cacheMetaValues.put(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_CURRENTOFFSET, newOffset);
@@ -783,7 +798,12 @@ public class DataAccessHelper {
         return id;
     }
 
-   public String getFullLog() {
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    public String getFullLog() {
       StringBuilder sb = new StringBuilder();
       SQLiteDatabase database = dbhelper.getReadableDatabase();
 

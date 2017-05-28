@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,17 +19,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +37,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.ByteBuffer;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -132,7 +127,7 @@ public class ChatActivity extends Activity {
 
         @Override
         protected void onPreExecute() {
-            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner_chat);
             progressBar.setVisibility(View.VISIBLE);
         }
 
@@ -153,7 +148,7 @@ public class ChatActivity extends Activity {
                 Toast.makeText(ChatActivity.this, "Die Nachricht konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
             }
             ChatActivity.this.fullReload();
-            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner_chat);
             progressBar.setVisibility(View.INVISIBLE);
             ChatActivity.this.scrollDown();
             chatscroll.requestFocus(); // close softkeyboard
@@ -176,7 +171,7 @@ public class ChatActivity extends Activity {
                 Toast.makeText(ChatActivity.this, "Das Photo konnte leider nicht gesendet werden!", Toast.LENGTH_LONG).show();
             }
             ChatActivity.this.fullReload();
-            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_spinner_chat);
             progressBar.setVisibility(View.INVISIBLE);
             ChatActivity.this.scrollDown();
             chatscroll.requestFocus(); // close softkeyboard

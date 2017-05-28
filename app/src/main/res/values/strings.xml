@@ -52,7 +52,10 @@
     <string name="btncaptionChatsReceive">#</string>
 
     <string name="activityCaptionCreateNewConversation">Neue Unterhaltung</string>
-    <string name="textNewConversationName">Kontakt:</string>
+    <string name="textNewConversationName">Anzeigename:</string>
+    <string name="textNewConversationSendingFish">An:</string>
+    <string name="editNewConversationSendingFishDefault">wird generiert &#8230;</string>
+    <string name="textNewConversationReceivingFish">Von:</string>
 
     <string name="textConversationName">Unterhaltung:</string>
     <string name="textChannelReceive">Empfangskanal:</string>
@@ -64,13 +67,15 @@
     <string name="btncaptionDeleteConversation">Unterhaltung\nlöschen</string>
 
     <string name="activityCaptionSettings">Einstellungen</string>
-    <string name="textConfigName">Name:</string>
+    <string name="textConfigName">Anzeigename:</string>
+    <string name="textConfigServerBaseURL">Server-URL:</string>
     <string name="btncaptionChannels">Kanäle</string>
-    <string name="btncaptionDownloadLatest">APK von talkfish.de herunterladen</string>
+    <string name="btncaptionOpenWebsite">www.talkfish.de besuchen</string>
     <string name="captionSettingsAlarmOnOff">Aktualisierung im Hintergrund:</string>
     <string name="captionSettingsBackgroundMobile">immer</string>
     <string name="captionSettingsBackgroundWifi">nur im WLAN</string>
     <string name="captionSettingsBackgroundOff">nie</string>
+    <string name="settingConfigSetFeedback">Setze: </string>
 
     <string name="activityCaptionChannels">Kanäle</string>
     <string name="btncaptionChannelsOK">Zurück</string>
@@ -110,4 +115,7 @@
     <string name="btnCaptionLog">Anwendungsprotokoll anzeigen</string>
 
     <string name="pleaseExchangeKeys">Bitte Schlüssel tauschen.</string>
+
+    <string name="errorNewConversationOffline">Das Anlegen einer neuen Unterhaltung ist fehlgeschlagen. Für die Neuanlage wird eine Onlineverbindung benötigt.</string>
+    <string name="activityNewConversationInfoProcessStarted">Eine neue Unterhaltung wird angelegt. Bitte kurz warten.</string>
 </resources>

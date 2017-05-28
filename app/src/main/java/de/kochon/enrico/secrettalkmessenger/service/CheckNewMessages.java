@@ -133,7 +133,7 @@ public class CheckNewMessages extends Service {
                             }
 
                             for (Channel channel : channelCacheMap.keySet()) {
-                                int idchannel = channel.id;
+                                long idchannel = channel.id;
                                 String endpoint = channel.endpoint;
 
                                 String baseurl = endpoint + "/get/";

@@ -34,7 +34,7 @@ public class TFApp extends Application {
     private DataAccessHelper dataAccessHelper;
 
     public static final String LOGKEY = "talkfish";
-    public static final String DOWNLOADLOCATION = "http://www.talkfish.de/download/talkfish.apk";
+    public static final String WEBSITELOCATION = "http://www.talkfish.de";
 
     @Override
     public void onCreate() {
@@ -123,7 +123,7 @@ public class TFApp extends Application {
       String[] splitResult = timeInfo.split(":");
       if (splitResult.length == 2) {
          try {
-            long last = new Long(splitResult[1]);
+            long last = Long.valueOf(splitResult[1]);
             java.util.Date d = new java.util.Date();
             long now = d.getTime();
             return now - last;

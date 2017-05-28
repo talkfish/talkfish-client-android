@@ -2,7 +2,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/output"
 	android:editable="false"
-   android:textSize="24dp"
+   android:textSize="16dp"
    android:layout_width="fill_parent" 
    android:layout_height="wrap_content" 
     />

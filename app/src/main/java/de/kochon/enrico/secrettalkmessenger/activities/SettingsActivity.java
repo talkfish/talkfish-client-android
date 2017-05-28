@@ -29,8 +29,10 @@ public class SettingsActivity extends Activity implements OnClickListener {
 	
 	private ConfigHelper configHelper;
 	private EditText configName;
-	private Button ok;
-	private Button downloadLatest;
+   private EditText configServerBaseURL;
+	private Button okConfigName;
+   private Button okConfigServerBaseURL;
+	private Button openWebsite;
 	private Button channels;
    private Button log;
 
@@ -78,15 +80,23 @@ public class SettingsActivity extends Activity implements OnClickListener {
        configHelper = ((TFApp)(this.getApplication())).configHelper;
          
        configName = (EditText) findViewById(R.id.editConfigName);
-       ok = (Button) findViewById(R.id.buttonSettingsOk);
-       if (configName != null && ok != null) {
+       okConfigName = (Button) findViewById(R.id.buttonSettingsOk);
+       if (configName != null && okConfigName != null) {
           configName.setText(configHelper.getName());
-          ok.setOnClickListener(this);
+          okConfigName.setOnClickListener(this);
        }
+
+      configServerBaseURL = (EditText) findViewById(R.id.editConfigServerBaseURL);
+      okConfigServerBaseURL = (Button) findViewById(R.id.buttonSettingsOkServerBaseURL);
+      if (configServerBaseURL != null && okConfigServerBaseURL != null) {
+         configServerBaseURL.setText(configHelper.getServerBaseURL());
+         okConfigServerBaseURL.setOnClickListener(this);
+      }
+
        channels = (Button) findViewById(R.id.buttonSettingsChannels);
        if (channels != null) { channels.setOnClickListener(this); }
-       downloadLatest = (Button) findViewById(R.id.buttonSettingsDownloadLatest);
-       if (downloadLatest  != null) { downloadLatest.setOnClickListener(this); }
+       openWebsite = (Button) findViewById(R.id.buttonSettingsOpenWebsite);
+       if (openWebsite  != null) { openWebsite.setOnClickListener(this); }
 
       String currentmode = configHelper.getBackground();
       background_mobile = (RadioButton) findViewById(R.id.background_mobile_data);
@@ -142,23 +152,30 @@ public class SettingsActivity extends Activity implements OnClickListener {
          Intent intentChannels = new Intent(SettingsActivity.this, ChannelListActivity.class);
          startActivityForResult(intentChannels, 0);
 		}
-		if (v == downloadLatest) {
-         Intent intentGetLatest = new Intent(Intent.ACTION_VIEW, 
+		if (v == openWebsite) {
+         Intent intentOpenWebsite = new Intent(Intent.ACTION_VIEW,
                                              Uri.parse(((TFApp)
-                                             (this.getApplication())).DOWNLOADLOCATION));
-         startActivityForResult(intentGetLatest, 0);
+                                             (this.getApplication())).WEBSITELOCATION));
+         startActivityForResult(intentOpenWebsite, 0);
 		}
       if (v == log) {
          Intent intentShowLog = new Intent(SettingsActivity.this, LogViewActivity.class);
          startActivityForResult(intentShowLog, 0);
       }
-		if (v == ok) {
+		if (v == okConfigName) {
 			String newName = configName.getText().toString();
 			if (!configHelper.getName().equals(newName)) {
 				configHelper.setName(newName);
-				Toast.makeText(this, "Speichere Namen: " + newName, Toast.LENGTH_LONG).show();
+				Toast.makeText(this, getString(R.string.settingConfigSetFeedback) + newName, Toast.LENGTH_LONG).show();
 			}
 		}
+      if (v == okConfigServerBaseURL) {
+         String newServerBaseURL = configServerBaseURL.getText().toString();
+         if (!configHelper.getServerBaseURL().equals(newServerBaseURL)) {
+            configHelper.setServerBaseURL(newServerBaseURL);
+            Toast.makeText(this, getString(R.string.settingConfigSetFeedback) + newServerBaseURL, Toast.LENGTH_LONG).show();
+         }
+      }
 	}
 	
 	

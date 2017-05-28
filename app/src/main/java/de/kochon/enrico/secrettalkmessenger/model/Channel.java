@@ -2,13 +2,24 @@ package de.kochon.enrico.secrettalkmessenger.model;
 
 public class Channel {
 
-   public final int id;
+   public long id;
    public final String name;
    public final String protocol;
    public String endpoint;
    public final boolean isforreceiving;
 
-   public Channel(int id, String name, String protocol, String endpoint, boolean isforreceiving) {
+   public final String DEFAULT_PROTOCOL = "secrettalk";
+
+
+   public Channel(String name, String endpoint, boolean isforreceiving) {
+      this.id = -1;
+      this.name = name;
+      this.endpoint = endpoint;
+      this.protocol = DEFAULT_PROTOCOL;
+      this.isforreceiving = isforreceiving;
+   }
+
+   public Channel(long id, String name, String protocol, String endpoint, boolean isforreceiving) {
       this.id = id;
       this.name = name;
       this.protocol = protocol;

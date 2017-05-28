@@ -33,6 +33,8 @@ public class AddKeysActivity extends Activity {
     protected TextView nameText;
     protected TextView conversationDetails;
     protected TextView keyDetails;
+    protected TextView sendFish;
+    protected TextView receiveFish;
     protected Conversation conversation;
     protected long conversationID;
 
@@ -48,7 +50,11 @@ public class AddKeysActivity extends Activity {
         nameText = (TextView) findViewById(R.id.viewConversationName);
         conversationDetails = (TextView) findViewById(R.id.viewConversationMessageDetails);
         keyDetails = (TextView) findViewById(R.id.viewConversationKeyDetails);
-        if (null != conversation && null != nameText && null != conversationDetails && null != keyDetails) {
+        sendFish = (TextView) findViewById(R.id.viewConversationSendingFish);
+        receiveFish = (TextView) findViewById(R.id.viewConversationReceivingFish);
+        if (null != conversation && null != nameText
+                && null != conversationDetails && null != keyDetails
+                && null != sendFish && null != receiveFish) {
             nameText.setText(conversation.getNick());
 
             conversationDetails.setSingleLine(false);
@@ -62,6 +68,8 @@ public class AddKeysActivity extends Activity {
             keyDetails.setSingleLine(false);
             keyDetails.setText(String.format("Sendeschlüssel: %d\nEmpfangsschlüssel: %d",
                     conversation.countActiveSendKeys(), conversation.countActiveReceiveKeys()));
+            sendFish.setText(conversation.getChannelForSending().endpoint);
+            receiveFish.setText(conversation.getChannelForReceiving().endpoint);
         } else {
             Toast.makeText(this, String.format("Technischer Fehler. Unterhaltung mit ID %d kann nicht angezeigt werden.", conversationID),
                     Toast.LENGTH_LONG).show();

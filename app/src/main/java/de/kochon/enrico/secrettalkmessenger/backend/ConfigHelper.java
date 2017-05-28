@@ -25,6 +25,10 @@ public class ConfigHelper {
 
    public static final String CONFIG_KEY_KEEP_ALIVE = "keepalive";
    public static final String CONFIG_KEY_PERIODIC_MESSAGE_CHECK = "periodicmessagecheck";
+
+   public static final String CONFIG_KEY_SERVER_BASE_URL = "server_base_url";
+   public static final String CONFIG_KEY_SERVER_BASE_URL_DEFAULT = "http://fishnode1.de/p2";
+
    
    private SqlOpenHelper dbhelper;
    
@@ -182,5 +186,11 @@ public class ConfigHelper {
       setConfig(CONFIG_KEY_PERIODIC_MESSAGE_CHECK, timeInfo);
    }
 
-   
+   public String getServerBaseURL() {
+      return getValueForKey(CONFIG_KEY_SERVER_BASE_URL, CONFIG_KEY_SERVER_BASE_URL_DEFAULT);
+   }
+
+   public void setServerBaseURL(String serverBaseURL) {
+      setConfig(CONFIG_KEY_SERVER_BASE_URL, serverBaseURL);
+   }
 }

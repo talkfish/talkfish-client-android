@@ -60,7 +60,7 @@ public class ChannelListActivity extends ListActivity {
       if (null != chan) {
          Intent intentEditChannel = new Intent(ChannelListActivity.this, EditChannelActivity.class);
          Bundle state = new Bundle();
-         state.putInt(EditChannelActivity.EDIT_CHANNEL_ID_KEY, chan.id);
+         state.putLong(EditChannelActivity.EDIT_CHANNEL_ID_KEY, chan.id);
          intentEditChannel.putExtras(state); 
          startActivityForResult(intentEditChannel, 0);
       }

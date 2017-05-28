@@ -10,13 +10,13 @@ import android.util.Log;
 public class RefreshCacheForChannel extends AsyncTask<String, Void, String> {
 
 
-   private int idchannel;
+   private long idchannel;
    private DataAccessHelper dataAccessHelper;
    private ConfigHelper configHelper;
    private ChannelCacheRefreshable refreshable;
    private TFApp app;
 
-   public RefreshCacheForChannel(TFApp app, int idchannel, DataAccessHelper dataAccessHelper, ConfigHelper configHelper, ChannelCacheRefreshable refreshable) {
+   public RefreshCacheForChannel(TFApp app, long idchannel, DataAccessHelper dataAccessHelper, ConfigHelper configHelper, ChannelCacheRefreshable refreshable) {
       super();
       this.app = app;
       this.idchannel = idchannel;

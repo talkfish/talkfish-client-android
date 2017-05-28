@@ -16,13 +16,13 @@
 
 
     <Button
-    	android:id="@+id/buttonSettingsDownloadLatest"
+    	android:id="@+id/buttonSettingsOpenWebsite"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_marginTop="@dimen/vertical_spacer"
     	android:layout_marginLeft="@dimen/activity_horizontal_margin"
     	android:layout_marginRight="@dimen/activity_horizontal_margin"
-    	android:text="@string/btncaptionDownloadLatest" />
+    	android:text="@string/btncaptionOpenWebsite" />
 
         <TextView
             android:id="@+id/textVersionsinfo"
@@ -65,6 +65,39 @@
             android:text="@string/btncaptionOK" />
         
         </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/vertical_spacer"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textConfigServerBaseURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:textColor="@color/app_foreground"
+            android:text="@string/textConfigServerBaseURL" />
+
+        <EditText
+            android:id="@+id/editConfigServerBaseURL"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_foreground"
+            android:text=""
+            android:inputType="text"/>
+        <Button
+            android:id="@+id/buttonSettingsOkServerBaseURL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/btncaptionOK" />
+
+    </LinearLayout>
 
     <Button
     	android:id="@+id/buttonSettingsChannels"
