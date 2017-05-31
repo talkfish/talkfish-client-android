@@ -10,7 +10,7 @@ import de.kochon.enrico.secrettalkmessenger.TFApp;
 
 
 public class KeepAliveCheck extends BroadcastReceiver {    
-   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 300;
+   public final static int DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS = 600;
    public final static String KEEPALIVECHECK_KEEPALIVE = "ka_alive";
 
    @Override

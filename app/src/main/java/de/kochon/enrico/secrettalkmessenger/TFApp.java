@@ -80,7 +80,6 @@ public class TFApp extends Application {
       PrintWriter pw = new PrintWriter(sw);
       e.printStackTrace(pw);
       exception.append(sw.toString()); // stack trace as a string
-      Log.d(LOGKEY, exception.toString());
       addToApplicationLog(exception.toString(),10);
    }
 
@@ -90,6 +89,7 @@ public class TFApp extends Application {
    }
 
    public void addToApplicationLog(String message, int loglevel) {
+      Log.d(LOGKEY, String.format("[level: %d] %s", loglevel, message));
       getDAH().appendLogMessage(message, loglevel);
    }
 
@@ -145,8 +145,8 @@ public class TFApp extends Application {
 
          if (-1 == lag_KeepAlive || lag_KeepAlive > 2*KeepAliveCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000 ) {
             addToApplicationLog(
-                    String.format("*** ChatActivity registered not working keepalivecheckalarm (last run before %d ms), resetting it! ***",
-                            lag_KeepAlive), 5);
+                    String.format("*** App registered not working keepalivecheckalarm (last run before %d s), resetting it! ***",
+                            lag_KeepAlive/1000), 5);
             KeepAliveCheck.setAlarm(activity);
          }
          long lag_PeriodicMessageCheck = getLagToLastKeepAliveMarkerInMillis(PeriodicMessageCheck.PERIODICMESSAGECHECK_KEEPALIVE);
@@ -154,8 +154,8 @@ public class TFApp extends Application {
          if (-1 == lag_PeriodicMessageCheck || lag_PeriodicMessageCheck > 3*PeriodicMessageCheck.DEFAULT_RECURRENCE_INTERVAL_IN_SECONDS * 1000) {
             addToApplicationLog(
                     String.format(
-                            "*** ChatActivity registered not working messagecheckalarm (last run before %d ms), resetting it! ***",
-                            lag_PeriodicMessageCheck), 5);
+                            "*** App registered not working messagecheckalarm (last run before %d s), resetting it! ***",
+                            lag_PeriodicMessageCheck/1000), 5);
             PeriodicMessageCheck.setAlarm(activity);
          }
       }

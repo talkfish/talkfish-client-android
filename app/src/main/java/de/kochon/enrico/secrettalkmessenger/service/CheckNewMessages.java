@@ -139,8 +139,11 @@ public class CheckNewMessages extends Service {
                                 String baseurl = endpoint + "/get/";
 
                                 int persistedOffset = ((TFApp) (CheckNewMessages.this.getApplication())).getDAH().getCurrentOffsetForChannel(idchannel);
-                                if (-1 == persistedOffset)
-                                    persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
+                                if (-1 == persistedOffset) {
+                                   ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("loading cache for %s, persisted offset is -1", endpoint));
+
+                                   persistedOffset = 0; // fix for scenario of fresh installed apps and server where m_000.txt does not yet exist
+                                }
                                 String currentTarget = baseurl + "current.txt?r="+NetworkIO.getRandomSuffixForAvoidingCachedRefreshs();
                                 int mc = NetworkIO.getCurrentMessageOffsetOnServer(currentTarget);
                                ((TFApp) (CheckNewMessages.this.getApplication())).addToApplicationLog(String.format("%d - got current offset on server for channel with endpoint %s : %d", myIter, currentTarget, mc));

@@ -32,6 +32,9 @@ public class CreateNewConversationActivity extends Activity {
 
    public final static String NEW_CONVERSATION_ID_KEY = "NEW_CONVERSATION_ID_KEY";
 
+   public final static String DEFAULT_SUBFOLDER = "ealj/";
+   public final static  int SUBPATHLENGTH = 10;
+
    protected Channel defaultSending;
    protected Channel defaultReceiving;
    
@@ -132,6 +135,10 @@ public class CreateNewConversationActivity extends Activity {
             Channel newChannelSending = new Channel(name, basePath+sendingEndpoint, false);
             long receive_rowid = ((TFApp)(CreateNewConversationActivity.this.getApplication()))
                     .getDAH().addNewChannel(newChannelReceiving);
+            if (receive_rowid != -1L) {
+               ((TFApp)(CreateNewConversationActivity.this.getApplication()))
+                       .getDAH().addNewChannelCacheMeta(receive_rowid);
+            }
             long send_rowid = ((TFApp)(CreateNewConversationActivity.this.getApplication()))
                     .getDAH().addNewChannel(newChannelSending);
             if(-1 != receive_rowid && -1 != send_rowid) {
@@ -183,10 +190,11 @@ public class CreateNewConversationActivity extends Activity {
       receivingFish = (EditText) findViewById(R.id.editNewConversationReceivingFish);
 
       if (btnOk != null && convName != null && receivingFish != null) {
+         receivingFish.setText(DEFAULT_SUBFOLDER);
          btnOk.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                String receivingEndpoint = receivingFish.getText().toString();
-               if (generatedSendingEndpoint != null && generatedSendingEndpoint != "" && receivingEndpoint != "") {
+               if (generatedSendingEndpoint != null && generatedSendingEndpoint != "" && receivingEndpoint != "" && SUBPATHLENGTH == receivingEndpoint.length()) {
                   Toast.makeText(CreateNewConversationActivity.this, getString(R.string.activityNewConversationInfoProcessStarted), Toast.LENGTH_LONG).show();
                   createNewConversation(generatedSendingEndpoint, receivingEndpoint);
                }

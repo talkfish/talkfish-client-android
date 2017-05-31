@@ -63,7 +63,7 @@ public class EditChannelActivity extends Activity {
 
       Intent data = getIntent();
       if (data.hasExtra(EDIT_CHANNEL_ID_KEY)) {
-         int channelID = data.getIntExtra(EDIT_CHANNEL_ID_KEY, -1);
+         long channelID = data.getLongExtra(EDIT_CHANNEL_ID_KEY, -1);
          chan = ((TFApp)(this.getApplication())).getDAH().loadChannel(channelID);
          idText = (TextView) findViewById(R.id.viewChannelID);
          nameEdit = (TextView) findViewById(R.id.viewChannelName);

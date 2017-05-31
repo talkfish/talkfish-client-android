@@ -77,12 +77,9 @@ public class DataAccessHelper {
         Channel needle = null;
         if (!listCursor.isAfterLast()) {
             do {
-                Log.d(TFApp.LOGKEY, String.format("loading channel, "
-                                + "searching ... - current id/val: %d/%s",
-                        listCursor.getLong(0), listCursor.getString(1)));
                 if (id == listCursor.getLong(0)) {
                     needle = new Channel(
-                            listCursor.getInt(0),
+                            listCursor.getLong(0),
                             listCursor.getString(1),
                             listCursor.getString(2),
                             listCursor.getString(3),
@@ -91,6 +88,9 @@ public class DataAccessHelper {
             } while ((null == needle) && listCursor.moveToNext());
         }
         listCursor.close();
+       if (null != needle) {
+          Log.d(TFApp.LOGKEY, String.format("loading channel with id %d and endpoint %s", id, needle.endpoint));
+       }
 
         return needle;
     }
@@ -271,8 +271,8 @@ public class DataAccessHelper {
 
         boolean hasConversationID = false;
         String nick = "n.a.";
-        int idchannel_receiving = -1;
-        int idchannel_sending = -1;
+        long idchannel_receiving = -1;
+        long idchannel_sending = -1;
         int number_received = -1;
         int number_sent = -1;
         Date lastmessagetime = new Date();
@@ -284,8 +284,8 @@ public class DataAccessHelper {
                                 + "searching ... - current id/val: %d/%s",
                         listCursor.getLong(0), listCursor.getString(3)));
                 if (id == listCursor.getLong(0)) {
-                    idchannel_receiving = listCursor.getInt(1);
-                    idchannel_sending = listCursor.getInt(2);
+                    idchannel_receiving = listCursor.getLong(1);
+                    idchannel_sending = listCursor.getLong(2);
                     nick = listCursor.getString(3);
                     number_received = listCursor.getInt(4);
                     number_sent = listCursor.getInt(5);
@@ -361,7 +361,7 @@ public class DataAccessHelper {
             List<Messagekey> keysforSending = loadAllKeysForSending(id);
 
             if (null != sending && null != receiving) {
-                Log.d(TFApp.LOGKEY, String.format("new conv %s with time %d", nick, lastmessagetime.getTime()));
+                Log.d(TFApp.LOGKEY, String.format("loading conversation %s with time %d", nick, lastmessagetime.getTime()));
                 result = new Conversation(id, nick, number_received, number_sent,
                         treesetMessages,
                         keysforReceiving,
@@ -421,6 +421,15 @@ public class DataAccessHelper {
       channelValues.put(SqlOpenHelper.CHANNELS_COLUMN_ISFORRECEIVING, channel.isforreceiving);
       long id = db.insert(SqlOpenHelper.TABLE_NAME_CHANNELS, null, channelValues);
       channel.id= id;
+      return id;
+   }
+
+   public long addNewChannelCacheMeta(long idchannel) {
+      SQLiteDatabase db = dbhelper.getWritableDatabase();
+      ContentValues cacheMetaDefault = new ContentValues();
+      cacheMetaDefault.put(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_IDCHANNEL, idchannel);
+      cacheMetaDefault.put(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_CURRENTOFFSET, -1);
+      long id = db.insert(SqlOpenHelper.TABLE_NAME_SECRETTALKCHANNELCACHE_META, null, cacheMetaDefault);
       return id;
    }
 
@@ -732,19 +741,29 @@ public class DataAccessHelper {
         if (listCursor != null) {
            listCursor.close();
         }
-        //Log.d(TFApp.LOGKEY, String.format("current offset is %d.", currentOffset));
+        Log.d(TFApp.LOGKEY, String.format("current offset is %d.", currentOffset));
         return currentOffset;
     }
 
 
     public boolean setCurrentOffsetForChannel(long idchannel, int newOffset) {
+       Log.d(TFApp.LOGKEY, String.format("setting current offset for channel with id %d to %d.", idchannel, newOffset));
+
         SQLiteDatabase db = dbhelper.getWritableDatabase();
         ContentValues cacheMetaValues = new ContentValues();
         cacheMetaValues.put(SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_CURRENTOFFSET, newOffset);
 
         String whereClause = String.format("%s=%d", SqlOpenHelper.SECRETTALKCHANNELCACHE_META_COLUMN_IDCHANNEL, idchannel);
         int result = db.update(SqlOpenHelper.TABLE_NAME_SECRETTALKCHANNELCACHE_META, cacheMetaValues, whereClause, null);
-        return (result > 0);
+         boolean success = false;
+       String successMessage = "could not store current offset";
+       if (result > 0) {
+          success = true;
+          successMessage = "successfully stored offset";
+       }
+
+       Log.d(TFApp.LOGKEY, successMessage);
+        return success;
     }
 
 
